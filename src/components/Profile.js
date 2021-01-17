@@ -1,27 +1,20 @@
 import { useState, useEffect } from "react";
-import SpotifyWebApi from "spotify-web-api-js";
-import { get } from "../utils/apis";
+import { getTopArtists } from "../spotify/apis";
+// import { get } from "../utils/api";
 
 const Profile = () => {
   const [data, setData] = useState([]);
-  const spotifyApi = new SpotifyWebApi();
 
-  const params = JSON.parse(localStorage.getItem("params"));
-
-  spotifyApi.setAccessToken(params.access_token);
+  const getData = async () => {
+    let test = await getTopArtists();
+    setData(test);
+  };
 
   useEffect(() => {
-    spotifyApi
-      .getMyTopArtists() // note that we don't pass a user id
-      .then(
-        function (data) {
-          console.log("User playlists", data);
-        },
-        function (err) {
-          console.error(err);
-        }
-      );
+    getData();
   }, []);
+
+  console.log(data);
 
   return (
     <div>

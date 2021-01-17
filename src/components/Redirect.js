@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import _ from "lodash";
-import { getParamValues } from "../utils/functions";
+import { getParamValues } from "../utils/paramValues";
 import { useHistory } from "react-router-dom";
 
 const Redirect = () => {
