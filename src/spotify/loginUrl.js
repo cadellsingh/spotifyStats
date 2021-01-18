@@ -12,6 +12,7 @@ const scopes = [
   "user-modify-playback-state",
   "playlist-read-collaborative",
   "user-library-read",
+  "user-follow-read",
 ];
 
 export const loginUrl = `${REACT_APP_AUTH_URL}?client_id=${REACT_APP_CLIENT_ID}&redirect_uri=${REACT_APP_REDIRECT_URL}&scope=${scopes.join(

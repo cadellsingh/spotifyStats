@@ -10,3 +10,11 @@ spotifyApi.setAccessToken(params.access_token);
 export const getTopArtists = async () => {
   return await spotifyApi.getMyTopArtists({ limit: 50 });
 };
+
+export const getUserInfo = async () => {
+  return await spotifyApi.getMe();
+};
+
+export const getFollowedArtists = async () => {
+  return await spotifyApi.getFollowedArtists();
+};
