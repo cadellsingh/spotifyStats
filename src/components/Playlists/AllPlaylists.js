@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 
-const Playlists = () => {
+const AllPlaylists = () => {
   return (
     <div>
-      <p>Playlists</p>
+      <p>All Playlists</p>
     </div>
   );
 };
 
-export default Playlists;
+export default AllPlaylists;
