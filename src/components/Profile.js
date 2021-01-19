@@ -8,13 +8,19 @@ import { GlobalStyles } from "../styles/globalStyling";
 import TopArtists from "./Artists.js/TopArtists";
 import Playlists from "./Playlists/Playlists";
 import TopTracks from "./Tracks/TopTracks";
+import { MainBackgroundColor } from "../styles/sharedStyles";
 
 const Layout = styled.div`
-  /* border: 2px solid red; */
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 10px;
-  height: 100vh;
+  grid-template-columns: 0.2fr 1fr;
+  grid-column-gap: 10px;
+  margin-top: 20px;
+`;
+
+const SecondLayout = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
 `;
 
 const Profile = () => {
@@ -35,10 +41,19 @@ const Profile = () => {
 
       <Layout>
         <Nav />
+        <SecondLayout>
+          <TopArtists />
+          <Playlists />
+          <TopTracks />
+        </SecondLayout>
+      </Layout>
+
+      {/* <Layout>
+        <Nav />
         <TopArtists />
         <Playlists />
         <TopTracks />
-      </Layout>
+      </Layout> */}
 
       {/* could prob move this to nav component */}
       <div>

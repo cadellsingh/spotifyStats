@@ -3,21 +3,29 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { getFollowedArtists, getUserInfo } from "../spotify/apis";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { TextColor, ContainerBackgroundColor } from "../styles/sharedStyles";
+import Header from "./Header";
+import NavListItem from "./NavListItem";
 
 const StyledNav = styled.nav`
   grid-row: span 2 / auto;
-  border: 1px solid blue;
   display: flex;
   flex-direction: column;
   text-align: center;
-  align-items: center;
-  padding-top: 30px;
-  height: 100%;
+  //align-items: center;
+  //height: 100vh;
+  border-radius: 10px;
+  /* ${ContainerBackgroundColor} */
+  /* ${TextColor} */
 `;
 
 const UserContainer = styled.div`
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  ${ContainerBackgroundColor}
+
   & img {
     height: 100px;
     border-radius: 100%;
@@ -26,12 +34,15 @@ const UserContainer = styled.div`
 `;
 
 const StyledUl = styled.ul`
+  padding: 20px;
+  border-radius: 10px;
+  ${ContainerBackgroundColor};
   text-align: left;
   list-style: none;
+  font-size: 16px;
 `;
 
 const Nav = () => {
-  // api call for user info
   const [userInfo, setUserInfo] = useState({});
 
   const getData = async () => {
@@ -46,8 +57,12 @@ const Nav = () => {
 
   const { displayName, imageUrl } = userInfo;
 
+  // can create list icon component
+
   return (
     <StyledNav>
+      <Header />
+
       <UserContainer>
         <p>{displayName}</p>
         <img src={imageUrl} alt={displayName} />
@@ -56,19 +71,17 @@ const Nav = () => {
         {/*</span>*/}
       </UserContainer>
       <StyledUl>
-        <li>Profile</li>
-        <li>Audio Analysis</li>
-        <li>
-          {/* <Link to="/profile/playlists">Playlists</Link> */}
-          {/* <Link to="/profile/topTracks">Top Tracks</Link> */}
-          Playlists
-        </li>
-        <li>Top Tracks</li>
-        <li>Top Artists</li>
-        <li>Top Genres</li>
+        <NavListItem listItem="Profile" />
+        <NavListItem listItem="Audio Analysis" />
+        <NavListItem listItem="Playlists" />
+        <NavListItem listItem="Top Tracks" />
+        <NavListItem listItem="Top Artists" />
+        <NavListItem listItem="Top Genres" />
       </StyledUl>
     </StyledNav>
   );
 };
 
 export default Nav;
+
+// add logout button

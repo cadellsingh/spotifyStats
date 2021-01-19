@@ -1,4 +1,13 @@
 import SpotifyWebApi from "spotify-web-api-js";
+import axios from "axios";
+import { setAuthHeader } from "../utils/authHeader";
+
+export const get = async (url, params) => {
+  setAuthHeader();
+  const result = await axios.get(url, params);
+
+  return result.data;
+};
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -30,5 +39,17 @@ export const getMyTopArtists = async (limit) => {
 };
 
 export const getMyTopTracks = async (limit) => {
-  return await spotifyApi.getMyTopTracks({ limit: limit });
+  const data = await spotifyApi.getMyTopTracks({ limit: limit });
+  const { items } = data;
+  return items;
+};
+
+export const getUserPlaylists = async (limit) => {
+  const data = await spotifyApi.getUserPlaylists({ limit: limit });
+  const { items } = data;
+  return items;
+};
+
+export const getTrack = async (trackId) => {
+  return await spotifyApi.getTrack(trackId);
 };

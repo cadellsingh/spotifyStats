@@ -2,20 +2,22 @@
 
 import styled from "styled-components";
 
-const ImgContainer = styled.img`
-  max-width: 100%;
+const Img = styled.img`
+  object-fit: cover;
   width: 100%;
-  height: 100%;
-  border-radius: 15px;
+  max-width: 100%;
+  height: 20vh;
+  border-radius: 10px;
 `;
 
-const DisplayImg = ({ img, name, images }) => {
+const DisplayImg = ({ data }) => {
+  const { name, images } = data;
+  const { url } = images[0];
+
   return (
-    // <ImgContainer>
-    //   {/* <p>{img}</p> */}
-    //   <img src={img} alt="" />
-    // </ImgContainer>
-    <ImgContainer src={img} alt={name} />
+    <div>
+      <Img src={url} alt={name} />
+    </div>
   );
 };
 

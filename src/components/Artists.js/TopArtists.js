@@ -8,7 +8,7 @@ const TopArtists = () => {
   const [topArtists, setTopArtists] = useState([]);
 
   const getData = async () => {
-    const data = await getMyTopArtists(6);
+    const data = await getMyTopArtists(4);
     setTopArtists(data);
   };
 
@@ -16,19 +16,18 @@ const TopArtists = () => {
     getData();
   }, []);
 
-  // can prob send images & and display image based on size
   const displayArtists =
     topArtists &&
     topArtists.map((data, index) => {
-      const { name, images } = data;
-      const { url } = images[0];
-
-      return <DisplayImg key={index} img={url} />;
+      return <DisplayImg key={index} data={data} />;
     });
 
   return (
     <StyledContainer>
-      <p>TopArtists</p>
+      <div>
+        <p>Top Artists</p>
+        <p>See all</p>
+      </div>
       {displayArtists}
     </StyledContainer>
   );
