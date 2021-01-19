@@ -8,27 +8,34 @@ import { GlobalStyles } from "../styles/globalStyling";
 import TopArtists from "./Artists.js/TopArtists";
 import Playlists from "./Playlists/Playlists";
 import TopTracks from "./Tracks/TopTracks";
-import { MainBackgroundColor } from "../styles/sharedStyles";
 
 const Layout = styled.div`
   display: grid;
   grid-template-columns: 0.2fr 1fr;
   grid-column-gap: 10px;
   margin-top: 20px;
+
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const SecondLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 15px;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Profile = () => {
-  const [data, setData] = useState([]);
+  const [userProfile, setUserProfile] = useState([]);
 
   const getData = async () => {
-    let test = await getTopArtists();
-    setData(test);
+    let data = await getTopArtists();
+    setUserProfile(data);
   };
 
   useEffect(() => {
@@ -47,13 +54,6 @@ const Profile = () => {
           <TopTracks />
         </SecondLayout>
       </Layout>
-
-      {/* <Layout>
-        <Nav />
-        <TopArtists />
-        <Playlists />
-        <TopTracks />
-      </Layout> */}
 
       {/* could prob move this to nav component */}
       <div>

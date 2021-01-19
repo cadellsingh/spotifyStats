@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import styled from "styled-components";
 import { getMyTopArtists } from "../../spotify/apis";
 import { StyledContainer } from "../../styles/styledContainer";
 import DisplayImg from "../DisplayImg";
@@ -25,7 +24,7 @@ const TopArtists = () => {
   return (
     <StyledContainer>
       <div>
-        <p>Top Artists</p>
+        <h2>Top Artists</h2>
         <p>See all</p>
       </div>
       {displayArtists}

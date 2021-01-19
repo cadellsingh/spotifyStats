@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { getUserPlaylists } from "../../spotify/apis";
 import { StyledContainer } from "../../styles/styledContainer";
 import DisplayImg from "../DisplayImg";
-import styled from "styled-components";
 
 const Playlists = () => {
   const [playlists, setPlaylists] = useState([]);
@@ -25,7 +24,7 @@ const Playlists = () => {
   return (
     <StyledContainer>
       <div>
-        <p>Playlists</p>
+        <h2>Playlists</h2>
         <p>See all</p>
       </div>
       {displayPlaylists}

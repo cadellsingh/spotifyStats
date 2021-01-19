@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import { ContainerBackgroundColor } from "../styles/sharedStyles";
+import { ContainerBackgroundColor, TextColor } from "../styles/sharedStyles";
 
 const StyledHeader = styled.header`
   padding: 20px;
   border-radius: 10px;
   width: 100%;
-  ${ContainerBackgroundColor}
+  ${ContainerBackgroundColor};
+  ${TextColor}
 `;
 
 const Header = () => {

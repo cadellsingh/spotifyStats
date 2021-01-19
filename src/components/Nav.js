@@ -1,23 +1,18 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { getFollowedArtists, getUserInfo } from "../spotify/apis";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { TextColor, ContainerBackgroundColor } from "../styles/sharedStyles";
 import Header from "./Header";
 import NavListItem from "./NavListItem";
+import Logout from "./Logout";
 
 const StyledNav = styled.nav`
   grid-row: span 2 / auto;
   display: flex;
   flex-direction: column;
   text-align: center;
-  //align-items: center;
-  //height: 100vh;
   border-radius: 10px;
-  /* ${ContainerBackgroundColor} */
-  /* ${TextColor} */
+  //display: none;
 `;
 
 const UserContainer = styled.div`
@@ -27,6 +22,7 @@ const UserContainer = styled.div`
   ${ContainerBackgroundColor}
 
   & img {
+    max-width: 100%;
     height: 100px;
     border-radius: 100%;
     margin: 15px 0;
@@ -78,6 +74,8 @@ const Nav = () => {
         <NavListItem listItem="Top Artists" />
         <NavListItem listItem="Top Genres" />
       </StyledUl>
+
+      <Logout />
     </StyledNav>
   );
 };

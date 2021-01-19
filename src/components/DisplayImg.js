@@ -8,16 +8,23 @@ const Img = styled.img`
   max-width: 100%;
   height: 20vh;
   border-radius: 10px;
+
+  @media (max-width: 700px) {
+    //object-fit: contain;
+    height: 30vh;
+  }
 `;
+
+const ImgContainer = styled.div``;
 
 const DisplayImg = ({ data }) => {
   const { name, images } = data;
   const { url } = images[0];
 
   return (
-    <div>
+    <ImgContainer>
       <Img src={url} alt={name} />
-    </div>
+    </ImgContainer>
   );
 };
 
