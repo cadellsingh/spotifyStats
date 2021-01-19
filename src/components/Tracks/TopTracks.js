@@ -6,24 +6,46 @@ import { ContainerBackgroundColor, TextColor } from "../../styles/sharedStyles";
 
 const TopTracksContainer = styled.div`
   grid-column: span 2 / auto;
-  /* display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-columns:
-  grid-row-gap: 15px; */
   width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 10px;
   padding: 15px;
   border-radius: 10px;
-  text-align: center;
   ${ContainerBackgroundColor}
 
   & div:first-of-type {
-    grid-column: span 2 / auto;
     display: flex;
-    ${TextColor}
+    align-items: center;
   }
 
   & div:first-of-type p:first-of-type {
     margin-right: 5px;
+  }
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+
+  @media (max-width: 800px) {
+    grid-column: span 1 / auto;
+  }
+`;
+
+const TracksText = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  ${TextColor};
+
+  & h2 {
+    margin-right: 5px;
+  }
+
+  & p:hover {
+    cursor: pointer;
+    text-decoration: underline;
   }
 `;
 
@@ -49,10 +71,10 @@ const TopTracks = () => {
 
   return (
     <TopTracksContainer>
-      <div>
-        <p>Top Tracks</p>
-        <p>See more</p>
-      </div>
+      <TracksText>
+        <h2>Top Tracks</h2>
+        <p>See all</p>
+      </TracksText>
       {displayTracks}
     </TopTracksContainer>
   );
