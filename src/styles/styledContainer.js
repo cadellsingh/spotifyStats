@@ -4,11 +4,10 @@ import styled from "styled-components";
 import { ContainerBackgroundColor, TextColor } from "../styles/sharedStyles";
 
 export const StyledContainer = styled.div`
-  ${ContainerBackgroundColor}
+  ${ContainerBackgroundColor};
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
-  grid-auto-rows: 20px auto auto;
   padding: 15px;
   border-radius: 10px;
   ${TextColor}
@@ -17,5 +16,11 @@ export const StyledContainer = styled.div`
     grid-column: span 2 / auto;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  & div:first-of-type p:hover {
+    cursor: pointer;
+    text-decoration: underline;
   }
 `;
