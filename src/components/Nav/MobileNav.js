@@ -52,6 +52,7 @@ const MobileNav = () => {
           <NavListItem listItem="Top Tracks" />
           <NavListItem listItem="Top Artists" />
           <NavListItem listItem="Top Genres" />
+          <NavListItem listItem="Recently Played" />
         </MobileLinks>
       </Overlay>
     </StyledNav>

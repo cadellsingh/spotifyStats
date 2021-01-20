@@ -15,8 +15,6 @@ const RecentlyPlayedTracks = () => {
     getData();
   }, []);
 
-  console.log(recentTracks);
-
   const displayTracks =
     recentTracks &&
     recentTracks.map((data, index) => {

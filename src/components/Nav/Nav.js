@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import { Link, Route, Switch } from "react-router-dom";
 import { getFollowedArtists, getUserInfo } from "../../spotify/apis";
+import AllPlaylists from "../Playlists/AllPlaylists";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 

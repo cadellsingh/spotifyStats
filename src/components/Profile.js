@@ -50,20 +50,16 @@ const Profile = () => {
 
       <Layout>
         <Nav />
-        <SecondLayout>
-          <TopArtists />
-          <Playlists />
-          <TopTracks />
-          <RecentlyPlayedTracks />
-        </SecondLayout>
-      </Layout>
-
-      {/* could prob move this to nav component */}
-      <div>
         <Switch>
-          <Route path="/profile/playlists" component={AllPlaylists} />
+          <Route path="/playlists/" component={AllPlaylists} />
+          <SecondLayout>
+            <TopArtists />
+            <Playlists />
+            <TopTracks />
+            <RecentlyPlayedTracks />
+          </SecondLayout>
         </Switch>
-      </div>
+      </Layout>
     </>
   );
 };
