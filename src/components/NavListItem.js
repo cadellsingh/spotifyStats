@@ -12,6 +12,12 @@ const ListItem = styled.li`
     font-size: 12px;
     margin: auto 0;
   }
+
+  @media (max-width: 700px) {
+    & span {
+      display: none;
+    }
+  }
 `;
 
 const NavListItem = ({ listItem }) => {
