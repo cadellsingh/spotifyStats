@@ -50,6 +50,12 @@ export const getUserPlaylists = async (limit) => {
   return items;
 };
 
+export const getMyRecentlyPlayed = async (limit) => {
+  const data = await spotifyApi.getMyRecentlyPlayedTracks({ limit: limit });
+  const { items } = data;
+  return items;
+};
+
 export const getTrack = async (trackId) => {
   return await spotifyApi.getTrack(trackId);
 };

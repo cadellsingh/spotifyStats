@@ -3,20 +3,22 @@ import { Link, Route, Switch } from "react-router-dom";
 import { getTopArtists } from "../spotify/apis";
 import AllPlaylists from "./Playlists/AllPlaylists";
 import styled from "styled-components";
-import Nav from "./Nav";
+import Nav from "./Nav/Nav";
 import { GlobalStyles } from "../styles/globalStyling";
-import TopArtists from "./Artists.js/TopArtists";
+import TopArtists from "./Artists/TopArtists";
 import Playlists from "./Playlists/Playlists";
 import TopTracks from "./Tracks/TopTracks";
+import RecentlyPlayedTracks from "./RecentlyPlayed/RecentlyPlayedTracks";
 
 const Layout = styled.div`
   display: grid;
   grid-template-columns: 0.2fr 1fr;
   grid-column-gap: 10px;
-  margin-top: 20px;
+  padding: 20px 0;
 
   @media (max-width: 700px) {
     grid-template-columns: 1fr;
+    grid-row-gap: 20px;
   }
 `;
 
@@ -52,6 +54,7 @@ const Profile = () => {
           <TopArtists />
           <Playlists />
           <TopTracks />
+          <RecentlyPlayedTracks />
         </SecondLayout>
       </Layout>
 
