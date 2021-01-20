@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { millisToMinutesAndSeconds } from "../../utils/functions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMusic } from "@fortawesome/free-solid-svg-icons";
+import { millisToMinutesAndSeconds } from "../utils/functions";
 
 const StyledTrack = styled.div`
   display: flex;
@@ -10,21 +12,28 @@ const StyledTrack = styled.div`
   }
 `;
 
+const Icon = styled.span`
+  font-size: 35px;
+  margin-right: 15px;
+`;
+
 const Img = styled.img`
   height: 60px;
   width: 60px;
   border-radius: 5px;
-  margin-right: 15px; ;
+  margin-right: 15px;
 `;
-
-const Artists = styled.div``;
 
 const Duration = styled.p`
   margin-left: auto;
 `;
 
-const EachTrack = ({ data }) => {
-  const { artists, name, album, duration_ms } = data;
+const DisplayTrack = ({ data, type }) => {
+  const { track } = data || {};
+
+  const { artists, name, album, duration_ms } =
+    type === "recent" ? track : data;
+
   const { images } = album;
   const { url } = images[0];
   const duration = millisToMinutesAndSeconds(duration_ms);
@@ -37,15 +46,21 @@ const EachTrack = ({ data }) => {
   return (
     <StyledTrack>
       <div>
-        <Img src={url} alt={name} />
+        {url ? (
+          <Img src={url} alt={name} />
+        ) : (
+          <Icon>
+            <FontAwesomeIcon icon={faMusic} />
+          </Icon>
+        )}
       </div>
       <div>
         <p>{name}</p>
-        <Artists>{displayArtists}</Artists>
+        <div>{displayArtists}</div>
       </div>
       <Duration>{duration}</Duration>
     </StyledTrack>
   );
 };
 
-export default EachTrack;
+export default DisplayTrack;
