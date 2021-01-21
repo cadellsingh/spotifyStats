@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getUserPlaylists } from "../../spotify/apis";
-import { StyledContainer } from "../../styles/styledContainer";
+import { StyledContainer } from "../../styles/sharedContainers";
 import DisplayImg from "../DisplayImg";
 
 const Playlists = () => {

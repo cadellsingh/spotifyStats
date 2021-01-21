@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getMyTopTracks } from "../../spotify/apis";
-import { TracksContainer, TracksText } from "../../styles/styledContainer";
+import { TracksContainer, TracksText } from "../../styles/sharedContainers";
 import DisplayTrack from "../DisplayTrack";
 
 const TopTracks = () => {

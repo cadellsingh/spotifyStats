@@ -32,8 +32,11 @@ export const getFollowedArtists = async () => {
   return await spotifyApi.getFollowedArtists();
 };
 
-export const getMyTopArtists = async (limit) => {
-  const data = await spotifyApi.getMyTopArtists({ limit: limit });
+export const getMyTopArtists = async (limit, timeRange = "long_term") => {
+  const data = await spotifyApi.getMyTopArtists({
+    limit: limit,
+    time_range: timeRange,
+  });
   const { items } = data;
   return items;
 };

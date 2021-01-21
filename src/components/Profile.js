@@ -9,6 +9,7 @@ import TopArtists from "./Artists/TopArtists";
 import Playlists from "./Playlists/Playlists";
 import TopTracks from "./Tracks/TopTracks";
 import RecentlyPlayedTracks from "./RecentlyPlayed/RecentlyPlayedTracks";
+import AllTopArtists from "./Artists/AllTopArtists";
 
 const Layout = styled.div`
   display: grid;
@@ -27,7 +28,7 @@ const SecondLayout = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 15px;
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
   }
 `;
@@ -44,6 +45,8 @@ const Profile = () => {
     getData();
   }, []);
 
+  console.log(userProfile);
+
   return (
     <>
       <GlobalStyles />
@@ -51,7 +54,8 @@ const Profile = () => {
       <Layout>
         <Nav />
         <Switch>
-          <Route path="/playlists/" component={AllPlaylists} />
+          <Route path="/profile/playlists/" component={AllPlaylists} />
+          <Route path="/profile/topArtists/" component={AllTopArtists} />
           <SecondLayout>
             <TopArtists />
             <Playlists />

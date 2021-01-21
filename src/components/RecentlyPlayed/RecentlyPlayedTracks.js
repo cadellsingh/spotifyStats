@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getMyRecentlyPlayed } from "../../spotify/apis";
-import { TracksText, TracksContainer } from "../../styles/styledContainer";
+import { TracksText, TracksContainer } from "../../styles/sharedContainers";
 import DisplayTrack from "../DisplayTrack";
 
 const RecentlyPlayedTracks = () => {
