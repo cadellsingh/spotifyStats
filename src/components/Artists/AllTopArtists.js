@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { getMyTopArtists } from "../../spotify/apis";
 import { ContainerBackgroundColor, TextColor } from "../../styles/sharedStyles";
 import DisplayTopArtists from "../DisplayTopArtists";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
+import AllTopTracks from "../Tracks/AllTopTracks";
 
 const Container = styled.div`
   border-radius: 10px;
@@ -17,21 +19,23 @@ const Text = styled.div`
     ${TextColor}
     margin-bottom: 15px;
   }
+`;
 
-  & ul {
-    display: flex;
+const Range = styled.div`
+  display: flex;
+`;
+
+const RangeButton = styled.button`
+  cursor: pointer;
+
+  ${(props) => props.isActive && TextColor}
+
+  :nth-child(2n) {
+    margin: 0 15px;
   }
 
-  & ul li {
-    cursor: pointer;
-  }
-
-  & ul li:hover {
+  :hover {
     text-decoration: underline;
-  }
-
-  & ul li:nth-child(2n) {
-    margin: 0 20px;
   }
 `;
 
@@ -58,16 +62,18 @@ const ArtistsContainer = styled.div`
 `;
 
 const AllTopArtists = () => {
+  const { path } = useRouteMatch();
+  const [timeRange, setTimeRange] = useState("long_term");
   const [topArtists, setTopArtists] = useState([]);
 
   const getData = async () => {
-    const data = await getMyTopArtists(50, "long_term");
+    const data = await getMyTopArtists(50, timeRange);
     setTopArtists(data);
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [timeRange]);
 
   const displayArtists =
     topArtists &&
@@ -75,20 +81,37 @@ const AllTopArtists = () => {
       return <DisplayTopArtists key={index} data={data} />;
     });
 
-  const handleClick = (type) => {};
-
   return (
-    <Container>
-      <Text>
-        <h2>Top Artists</h2>
-        <ul>
-          <li>All time</li>
-          <li>Last 6 months</li>
-          <li>Last month</li>
-        </ul>
-      </Text>
-      <ArtistsContainer>{displayArtists}</ArtistsContainer>
-    </Container>
+    <Switch>
+      <Route path={`${path}/:artistId`} component={AllTopTracks} />
+      <Container>
+        <Text>
+          <h2>Top Artists</h2>
+
+          <Range>
+            <RangeButton
+              onClick={() => setTimeRange("long_term")}
+              isActive={timeRange === "long_term"}
+            >
+              All time
+            </RangeButton>
+            <RangeButton
+              onClick={() => setTimeRange("medium_term")}
+              isActive={timeRange === "medium_term"}
+            >
+              Last 6 months
+            </RangeButton>
+            <RangeButton
+              onClick={() => setTimeRange("short_term")}
+              isActive={timeRange === "short_term"}
+            >
+              Last month
+            </RangeButton>
+          </Range>
+        </Text>
+        <ArtistsContainer>{displayArtists}</ArtistsContainer>
+      </Container>
+    </Switch>
   );
 };
 
