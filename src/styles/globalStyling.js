@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { MainBackgroundColor } from "./sharedStyles";
+import { MainBackgroundColor, TextColor } from "./sharedStyles";
 
 export const GlobalStyles = createGlobalStyle`
   * {
@@ -27,5 +27,18 @@ export const GlobalStyles = createGlobalStyle`
 
   ul {
     list-style: none;
+  }
+
+  button {
+    background-color: inherit;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h2 {
+    ${TextColor}
   }
 `;

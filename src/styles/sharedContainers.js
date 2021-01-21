@@ -10,7 +10,6 @@ export const StyledContainer = styled.div`
   grid-gap: 10px;
   padding: 15px;
   border-radius: 10px;
-  ${TextColor}
 
   & div:first-of-type {
     grid-column: span 2 / auto;
@@ -21,6 +20,10 @@ export const StyledContainer = styled.div`
 
   & div:first-of-type p:hover {
     cursor: pointer;
+    text-decoration: underline;
+  }
+
+  & span:hover {
     text-decoration: underline;
   }
 `;
@@ -60,13 +63,12 @@ export const TracksText = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  ${TextColor};
 
   & h2 {
     margin-right: 5px;
   }
 
-  & p:hover {
+  & span:hover {
     cursor: pointer;
     text-decoration: underline;
   }
