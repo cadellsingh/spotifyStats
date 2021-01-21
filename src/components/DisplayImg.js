@@ -3,16 +3,19 @@
 import styled from "styled-components";
 
 const Img = styled.img`
-  object-fit: cover;
-  width: 100%;
   max-width: 100%;
-  height: 20vh;
-  border-radius: 10px;
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+  border-radius: 15px;
+
+  /* @media (max-width: 850px) {
+    height: 20vh;
+  }
 
   @media (max-width: 700px) {
-    //object-fit: contain;
-    height: 30vh;
-  }
+    height: 50vh;
+  } */
 `;
 
 const ImgContainer = styled.div``;
