@@ -84,33 +84,35 @@ const AllTopArtists = () => {
   return (
     <Switch>
       <Route path={`${path}/:artistId`} component={AllTopTracks} />
-      <Container>
-        <Text>
-          <h2>Top Artists</h2>
+      <div>
+        <Container>
+          <Text>
+            <h2>Top Artists</h2>
 
-          <Range>
-            <RangeButton
-              onClick={() => setTimeRange("long_term")}
-              isActive={timeRange === "long_term"}
-            >
-              All time
-            </RangeButton>
-            <RangeButton
-              onClick={() => setTimeRange("medium_term")}
-              isActive={timeRange === "medium_term"}
-            >
-              Last 6 months
-            </RangeButton>
-            <RangeButton
-              onClick={() => setTimeRange("short_term")}
-              isActive={timeRange === "short_term"}
-            >
-              Last month
-            </RangeButton>
-          </Range>
-        </Text>
-        <ArtistsContainer>{displayArtists}</ArtistsContainer>
-      </Container>
+            <Range>
+              <RangeButton
+                onClick={() => setTimeRange("long_term")}
+                isActive={timeRange === "long_term"}
+              >
+                All time
+              </RangeButton>
+              <RangeButton
+                onClick={() => setTimeRange("medium_term")}
+                isActive={timeRange === "medium_term"}
+              >
+                Last 6 months
+              </RangeButton>
+              <RangeButton
+                onClick={() => setTimeRange("short_term")}
+                isActive={timeRange === "short_term"}
+              >
+                Last month
+              </RangeButton>
+            </Range>
+          </Text>
+          <ArtistsContainer>{displayArtists}</ArtistsContainer>
+        </Container>
+      </div>
     </Switch>
   );
 };

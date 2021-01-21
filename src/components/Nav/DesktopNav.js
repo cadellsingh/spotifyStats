@@ -3,6 +3,8 @@ import { ContainerBackgroundColor } from "../../styles/sharedStyles";
 import Header from "../Header";
 import NavListItem from "../NavListItem";
 import Logout from "../Logout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
 
 const StyledNav = styled.nav`
   grid-row: span 2 / auto;
@@ -24,6 +26,10 @@ const UserContainer = styled.div`
     border-radius: 100%;
     margin: 15px 0;
   }
+
+  & span {
+    font-size: 30px;
+  }
 `;
 
 const StyledUl = styled.ul`
@@ -38,16 +44,22 @@ const StyledUl = styled.ul`
 const DesktopNav = ({ userInfo }) => {
   const { displayName, imageUrl } = userInfo;
 
+  const displayImg = imageUrl ? (
+    <img src={imageUrl} alt={displayName} />
+  ) : (
+    <span>
+      <FontAwesomeIcon icon={faUserAlt} />
+    </span>
+  );
+
   return (
     <StyledNav>
       <Header />
 
       <UserContainer>
         <p>{displayName}</p>
-        <img src={imageUrl} alt={displayName} />
-        {/*<span>*/}
-        {/*  <FontAwesomeIcon icon={faUserAlt} />*/}
-        {/*</span>*/}
+
+        {displayImg}
       </UserContainer>
       <StyledUl>
         <NavListItem listItem="Profile" />

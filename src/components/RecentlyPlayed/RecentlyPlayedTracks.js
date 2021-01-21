@@ -24,15 +24,17 @@ const RecentlyPlayedTracks = () => {
     });
 
   return (
-    <TracksContainer>
-      <TracksText>
-        <h2>Recently Played</h2>
-        <span>
-          <Link to={`${url}/recentlyPlayed`}>See more</Link>
-        </span>
-      </TracksText>
-      {displayTracks}
-    </TracksContainer>
+    <div>
+      <TracksContainer>
+        <TracksText>
+          <h2>Recently Played</h2>
+          <span>
+            <Link to={`${url}/recentlyPlayed`}>See more</Link>
+          </span>
+        </TracksText>
+        {displayTracks}
+      </TracksContainer>
+    </div>
   );
 };
 

@@ -24,15 +24,17 @@ const TopArtists = () => {
     });
 
   return (
-    <StyledContainer>
-      <div>
-        <h2>Top Artists</h2>
-        <span>
-          <Link to={`${url}/topArtists`}>See more</Link>
-        </span>
-      </div>
-      {displayArtists}
-    </StyledContainer>
+    <div>
+      <StyledContainer>
+        <div>
+          <h2>Top Artists</h2>
+          <span>
+            <Link to={`${url}/topArtists`}>See more</Link>
+          </span>
+        </div>
+        {displayArtists}
+      </StyledContainer>
+    </div>
   );
 };
 

@@ -24,15 +24,17 @@ const Playlists = () => {
     });
 
   return (
-    <StyledContainer>
-      <div>
-        <h2>Playlists</h2>
-        <span>
-          <Link to={`${url}/allPlaylists`}>See more</Link>
-        </span>
-      </div>
-      {displayPlaylists}
-    </StyledContainer>
+    <div>
+      <StyledContainer>
+        <div>
+          <h2>Playlists</h2>
+          <span>
+            <Link to={`${url}/allPlaylists`}>See more</Link>
+          </span>
+        </div>
+        {displayPlaylists}
+      </StyledContainer>
+    </div>
   );
 };
 

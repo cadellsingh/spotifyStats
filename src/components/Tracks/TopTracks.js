@@ -24,15 +24,17 @@ const TopTracks = () => {
     });
 
   return (
-    <TracksContainer>
-      <TracksText>
-        <h2>Top Tracks</h2>
-        <span>
-          <Link to={`${url}/topTracks`}>See more</Link>
-        </span>
-      </TracksText>
-      {displayTracks}
-    </TracksContainer>
+    <div>
+      <TracksContainer>
+        <TracksText>
+          <h2>Top Tracks</h2>
+          <span>
+            <Link to={`${url}/topTracks`}>See more</Link>
+          </span>
+        </TracksText>
+        {displayTracks}
+      </TracksContainer>
+    </div>
   );
 };
 
