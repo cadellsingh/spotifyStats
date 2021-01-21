@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { getTopArtists } from "../spotify/apis";
 import AllPlaylists from "./Playlists/AllPlaylists";
 import styled from "styled-components";
 import Nav from "./Nav/Nav";
 import { GlobalStyles } from "../styles/globalStyling";
-import TopArtists from "./Artists/TopArtists";
-import Playlists from "./Playlists/Playlists";
-import TopTracks from "./Tracks/TopTracks";
-import RecentlyPlayedTracks from "./RecentlyPlayed/RecentlyPlayedTracks";
 import AllTopArtists from "./Artists/AllTopArtists";
+import MainContent from "./MainContent";
+import AllTopTracks from "./Tracks/AllTopTracks";
+import AllRecentlyPlayed from "./RecentlyPlayed/AllRecentlyPlayed";
 
 const Layout = styled.div`
   display: grid;
@@ -23,17 +22,8 @@ const Layout = styled.div`
   }
 `;
 
-const SecondLayout = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 15px;
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
 const Profile = () => {
+  const { url, path } = useRouteMatch();
   const [userProfile, setUserProfile] = useState([]);
 
   const getData = async () => {
@@ -54,14 +44,15 @@ const Profile = () => {
       <Layout>
         <Nav />
         <Switch>
-          <Route path="/profile/playlists/" component={AllPlaylists} />
-          <Route path="/profile/topArtists/" component={AllTopArtists} />
-          <SecondLayout>
-            <TopArtists />
-            <Playlists />
-            <TopTracks />
-            <RecentlyPlayedTracks />
-          </SecondLayout>
+          <Route exact path={path} component={MainContent} />
+          <Route path={`${path}/playlists`} component={AllPlaylists} />
+          <Route path={`${path}/topArtists`} component={AllTopArtists} />
+          <Route path={`${path}/topTracks`} component={AllTopTracks} />
+          <Route path={`${path}/allPlaylists`} component={AllPlaylists} />
+          <Route
+            path={`${path}/recentlyPlayed`}
+            component={AllRecentlyPlayed}
+          />
         </Switch>
       </Layout>
     </>
