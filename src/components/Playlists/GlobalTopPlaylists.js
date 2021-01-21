@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
-import { getUserPlaylists } from "../../spotify/apis";
+import { getPopularPlaylists } from "../../spotify/apis";
 import DisplayImg from "../DisplayImg";
 
 const GlobalTopPlaylists = () => {
   const [playlists, setPlaylists] = useState([]);
 
   const getData = async () => {
-    const data = await getUserPlaylists();
+    const data = await getPopularPlaylists("party");
     setPlaylists(data);
   };
 
   useEffect(() => {
     getData();
   }, []);
+
+  console.log(playlists);
 
   const displayPlaylists =
     playlists &&

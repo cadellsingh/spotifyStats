@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+import { Link, useRouteMatch } from "react-router-dom";
 
 const ListItem = styled.li`
   margin: 10px 0;
@@ -21,9 +22,10 @@ const ListItem = styled.li`
 `;
 
 const NavListItem = ({ listItem }) => {
+  const { url } = useRouteMatch();
   return (
     <ListItem>
-      {listItem}
+      <Link to={`${url}/topTracks`}>{listItem}</Link>
       <span>
         <FontAwesomeIcon icon={faChevronRight} />
       </span>
@@ -32,10 +34,3 @@ const NavListItem = ({ listItem }) => {
 };
 
 export default NavListItem;
-
-// {
-//   /* <Link to="/profile/playlists">Playlists</Link> */
-// }
-// {
-//   /* <Link to="/profile/topTracks">Top Tracks</Link> */
-// }

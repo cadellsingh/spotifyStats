@@ -84,7 +84,7 @@ const AllTopArtists = () => {
   return (
     <Switch>
       <Route path={`${path}/:artistId`} component={AllTopTracks} />
-      <div>
+      <>
         <Container>
           <Text>
             <h2>Top Artists</h2>
@@ -112,7 +112,7 @@ const AllTopArtists = () => {
           </Text>
           <ArtistsContainer>{displayArtists}</ArtistsContainer>
         </Container>
-      </div>
+      </>
     </Switch>
   );
 };

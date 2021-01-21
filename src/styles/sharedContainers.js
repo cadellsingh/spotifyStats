@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ContainerBackgroundColor, TextColor } from "./sharedStyles";
+import { ContainerBackgroundColor } from "./sharedStyles";
 
 // this container is used for TopArtists / Playlists
 // on Profile page

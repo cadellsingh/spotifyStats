@@ -6,7 +6,6 @@ import { getMyTopTracks } from "../../spotify/apis";
 import DisplayTrack from "../DisplayTrack";
 
 const Container = styled.div`
-  width: 90%;
   border-radius: 10px;
   padding: 15px;
   margin: 0 auto;
@@ -24,6 +23,11 @@ const Text = styled.div`
 
 const Range = styled.div`
   display: flex;
+
+  @media (max-width: 430px) {
+    font-size: 15px;
+    justify-content: center;
+  }
 `;
 
 const RangeButton = styled.button`
@@ -38,11 +42,22 @@ const RangeButton = styled.button`
   :hover {
     text-decoration: underline;
   }
+
+  @media (max-width: 430px) {
+    font-size: 15px;
+  }
 `;
 
 const TracksContainer = styled.div`
   display: grid;
+  grid-template-columns: 1fr 1fr;
   grid-row-gap: 15px;
+  grid-column-gap: 20px;
+
+  @media (max-width: 1050px) {
+    grid-template-columns: 1fr;
+    grid-row-gap: 10px;
+  }
 `;
 
 const AllTopTracks = () => {
@@ -69,7 +84,7 @@ const AllTopTracks = () => {
     <div>
       <Container>
         <Text>
-          <h2>Top Songs</h2>
+          <h2>Top Tracks</h2>
 
           <Range>
             <RangeButton

@@ -62,7 +62,7 @@ const DesktopNav = ({ userInfo }) => {
         {displayImg}
       </UserContainer>
       <StyledUl>
-        <NavListItem listItem="Profile" />
+        <NavListItem listItem="topTracks" />
         <NavListItem listItem="Audio Analysis" />
         <NavListItem listItem="Playlists" />
         <NavListItem listItem="Top Tracks" />

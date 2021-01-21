@@ -62,6 +62,13 @@ export const getMyRecentlyPlayed = async (limit) => {
   return items;
 };
 
+export const getPopularPlaylists = async (type) => {
+  const data = await spotifyApi.getCategoryPlaylists(type);
+  const { playlists } = data;
+  const { items } = playlists;
+  return items;
+};
+
 export const getTrack = async (trackId) => {
   return await spotifyApi.getTrack(trackId);
 };
