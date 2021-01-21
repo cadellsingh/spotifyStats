@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { getMyTopTracks } from "../../spotify/apis";
 import { TracksContainer, TracksText } from "../../styles/sharedContainers";
 import DisplayTrack from "../DisplayTrack";
+import { Link, useRouteMatch } from "react-router-dom";
 
 const TopTracks = () => {
+  const { url } = useRouteMatch();
   const [topTracks, setTopTracks] = useState([]);
 
   const getData = async () => {
@@ -25,7 +27,9 @@ const TopTracks = () => {
     <TracksContainer>
       <TracksText>
         <h2>Top Tracks</h2>
-        <p>See all</p>
+        <span>
+          <Link to={`${url}/topTracks`}>See more</Link>
+        </span>
       </TracksText>
       {displayTracks}
     </TracksContainer>

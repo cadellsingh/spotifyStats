@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { getUserPlaylists } from "../../spotify/apis";
 import { StyledContainer } from "../../styles/sharedContainers";
 import DisplayImg from "../DisplayImg";
+import { Link, useRouteMatch } from "react-router-dom";
 
 const Playlists = () => {
+  const { url } = useRouteMatch();
   const [playlists, setPlaylists] = useState([]);
 
   const getData = async () => {
@@ -25,7 +27,9 @@ const Playlists = () => {
     <StyledContainer>
       <div>
         <h2>Playlists</h2>
-        <p>See all</p>
+        <span>
+          <Link to={`${url}/allPlaylists`}>See more</Link>
+        </span>
       </div>
       {displayPlaylists}
     </StyledContainer>

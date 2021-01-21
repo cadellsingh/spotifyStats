@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { getMyRecentlyPlayed } from "../../spotify/apis";
 import { TracksText, TracksContainer } from "../../styles/sharedContainers";
 import DisplayTrack from "../DisplayTrack";
+import { Link, useRouteMatch } from "react-router-dom";
 
 const RecentlyPlayedTracks = () => {
+  const { url } = useRouteMatch();
   const [recentTracks, setRecentTracks] = useState([]);
 
   const getData = async () => {
@@ -25,7 +27,9 @@ const RecentlyPlayedTracks = () => {
     <TracksContainer>
       <TracksText>
         <h2>Recently Played</h2>
-        <p>See all</p>
+        <span>
+          <Link to={`${url}/recentlyPlayed`}>See more</Link>
+        </span>
       </TracksText>
       {displayTracks}
     </TracksContainer>
