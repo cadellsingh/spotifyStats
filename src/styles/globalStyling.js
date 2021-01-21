@@ -19,4 +19,13 @@ export const GlobalStyles = createGlobalStyle`
   html, body {
     height: 100%;
   }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+  }
 `;
