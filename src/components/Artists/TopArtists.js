@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { getMyTopArtists } from "../../spotify/apis";
-import { StyledContainer } from "../../styles/styledContainer";
+import { StyledContainer } from "../../styles/sharedContainers";
 import DisplayImg from "../DisplayImg";
+import { Link } from "react-router-dom";
 
 const TopArtists = () => {
   const [topArtists, setTopArtists] = useState([]);
@@ -25,7 +26,10 @@ const TopArtists = () => {
     <StyledContainer>
       <div>
         <h2>Top Artists</h2>
-        <p>See all</p>
+        <p>
+          {" "}
+          <Link to="/profile/topArtists/">See more</Link>
+        </p>
       </div>
       {displayArtists}
     </StyledContainer>
