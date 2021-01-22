@@ -3,6 +3,7 @@ import TopArtists from "./Artists/TopArtists";
 import Playlists from "./Playlists/Playlists";
 import TopTracks from "./Tracks/TopTracks";
 import RecentlyPlayedTracks from "./RecentlyPlayed/RecentlyPlayedTracks";
+import "aos/dist/aos.css";
 
 const Layout = styled.div`
   display: grid;
@@ -16,7 +17,11 @@ const Layout = styled.div`
 
 const MainContent = () => {
   return (
-    <Layout>
+    <Layout
+      data-aos="zoom-out-up"
+      data-aos-duration="1500"
+      data-aos-easing="ease-in-out"
+    >
       <TopArtists />
       <Playlists />
       <TopTracks />

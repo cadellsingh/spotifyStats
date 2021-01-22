@@ -9,6 +9,9 @@ import AllTopArtists from "./Artists/AllTopArtists";
 import MainContent from "./MainContent";
 import AllTopTracks from "./Tracks/AllTopTracks";
 import AllRecentlyPlayed from "./RecentlyPlayed/AllRecentlyPlayed";
+import Aos from "aos";
+
+import SpotifyWebApi from "spotify-web-api-js";
 
 const Layout = styled.div`
   display: grid;
@@ -26,16 +29,28 @@ const Profile = () => {
   const { url, path } = useRouteMatch();
   const [userProfile, setUserProfile] = useState([]);
 
-  const getData = async () => {
-    let data = await getTopArtists();
-    setUserProfile(data);
-  };
+  const params = JSON.parse(localStorage.getItem("params"));
+  const spotifyApi = new SpotifyWebApi();
+  spotifyApi.setAccessToken(params.access_token);
+
+  // const getTopArtists = async () => {
+  //   return await spotifyApi.getMyTopArtists({ limit: 50 });
+  // };
+
+  // const getData = async () => {
+  //   let data = await getTopArtists();
+  //   setUserProfile(data);
+  // };
+
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   useEffect(() => {
-    getData();
+    Aos.init({ duration: 2000 });
   }, []);
 
-  console.log(userProfile);
+  console.log(`userProfile: ${userProfile}`);
 
   return (
     <>

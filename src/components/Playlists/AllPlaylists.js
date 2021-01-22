@@ -3,7 +3,7 @@ import { ContainerBackgroundColor } from "../../styles/sharedStyles";
 import GlobalTopPlaylists from "./GlobalTopPlaylists";
 import UserPlaylists from "./UserPlaylists";
 
-const Main = styled.div`
+const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 15px;
@@ -24,8 +24,12 @@ const PlaylistsContainer = styled.div`
 
 const AllPlaylists = () => {
   return (
-    <div>
-      <Main>
+    <div
+      data-aos="zoom-out-up"
+      data-aos-duration="1500"
+      data-aos-easing="ease-in-out"
+    >
+      <Container>
         <div>
           <PlaylistsContainer>
             <h2>Your Playlists</h2>
@@ -38,7 +42,7 @@ const AllPlaylists = () => {
             <GlobalTopPlaylists />
           </PlaylistsContainer>
         </div>
-      </Main>
+      </Container>
     </div>
   );
 };

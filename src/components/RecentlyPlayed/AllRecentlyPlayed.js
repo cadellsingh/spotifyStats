@@ -47,7 +47,11 @@ const AllRecentlyPlayed = () => {
     });
 
   return (
-    <div>
+    <div
+      data-aos="zoom-out-up"
+      data-aos-duration="1500"
+      data-aos-easing="ease-in-out"
+    >
       <Container>
         <h2>Recently Played Tracks</h2>
         <TracksContainer>{displayTracks}</TracksContainer>

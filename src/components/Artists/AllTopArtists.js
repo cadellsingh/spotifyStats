@@ -85,7 +85,11 @@ const AllTopArtists = () => {
     <Switch>
       <Route path={`${path}/:artistId`} component={AllTopTracks} />
       <>
-        <Container>
+        <Container
+          data-aos="zoom-out-up"
+          data-aos-duration="1500"
+          data-aos-easing="ease-in-out"
+        >
           <Text>
             <h2>Top Artists</h2>
 
