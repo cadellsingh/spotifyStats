@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
-import { getTopArtists } from "../spotify/apis";
+import { BrowserRouter, Route, Switch, useRouteMatch } from "react-router-dom";
+import { getAccessToken, getTopArtists, token } from "../spotify/apis";
 import AllPlaylists from "./Playlists/AllPlaylists";
 import styled from "styled-components";
 import Nav from "./Nav/Nav";
@@ -12,6 +12,7 @@ import AllRecentlyPlayed from "./RecentlyPlayed/AllRecentlyPlayed";
 import Aos from "aos";
 
 import SpotifyWebApi from "spotify-web-api-js";
+import AppRouter from "../router/AppRouter";
 
 const Layout = styled.div`
   display: grid;
@@ -26,41 +27,45 @@ const Layout = styled.div`
 `;
 
 const Profile = () => {
-  const { url, path } = useRouteMatch();
-  const [userProfile, setUserProfile] = useState([]);
+  // const { url, path } = useRouteMatch();
+  const [accessToken, setAccessToken] = useState([]);
 
-  const params = JSON.parse(localStorage.getItem("params"));
-  // const expiryTime = JSON.parse(localStorage.getItem("expiry_time"));
-  console.log(params);
-  // console.log(expiryTime);
-
-  // const spotifyApi = new SpotifyWebApi();
-  // spotifyApi.setAccessToken(params.access_token);
-
-  // const getTopArtists = async () => {
-  //   return await spotifyApi.getMyTopArtists({ limit: 50 });
-  // };
+  // const getToken = token;
 
   // const getData = async () => {
-  //   let data = await getTopArtists();
-  //   setUserProfile(data);
+  //   let data = await getAccessToken();
+  //   setAccessToken(data);
   // };
 
+  // set access token in useEffect
+  // if it returns null then redirect to home
+
   // useEffect(() => {
+  //   Aos.init();
+  //   setAccessToken(token);
   //   getData();
   // }, []);
 
-  useEffect(() => {
-    Aos.init();
-  }, []);
+  if (accessToken === null) {
+    console.log("no token");
+  }
 
-  console.log(`userProfile: ${userProfile}`);
+  // console.log(getToken);
 
   return (
     <>
       <GlobalStyles />
+      <BrowserRouter>
+        <Layout>
+          <Nav>
+            <Switch>
+              <Route path="/" component={MainContent} />
+            </Switch>
+          </Nav>
+        </Layout>
+      </BrowserRouter>
 
-      <Layout>
+      {/* <Layout>
         <Nav />
         <Switch>
           <Route exact path={path} component={MainContent} />
@@ -73,7 +78,7 @@ const Profile = () => {
             component={AllRecentlyPlayed}
           />
         </Switch>
-      </Layout>
+      </Layout> */}
     </>
   );
 };

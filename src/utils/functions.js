@@ -1,13 +1,13 @@
-export const getParamValues = (url) => {
-  return url
-    .slice(1)
-    .split("&")
-    .reduce((prev, curr) => {
-      const [title, value] = curr.split("=");
-      prev[title] = value;
-      return prev;
-    }, {});
-};
+// export const getParamValues = (url) => {
+//   return url
+//     .slice(1)
+//     .split("&")
+//     .reduce((prev, curr) => {
+//       const [title, value] = curr.split("=");
+//       prev[title] = value;
+//       return prev;
+//     }, {});
+// };
 
 export const millisToMinutesAndSeconds = (millis) => {
   let minutes = Math.floor(millis / 60000);
@@ -25,4 +25,19 @@ export const camelCaseString = (str) => {
   });
 
   return string.join("");
+};
+
+export const getAccessToken = () => {
+  const hash = window.location.hash
+    .substring(1)
+    .split("&")
+    .reduce(function (initial, item) {
+      if (item) {
+        let parts = item.split("=");
+        initial[parts[0]] = decodeURIComponent(parts[1]);
+      }
+      return initial;
+    }, {});
+
+  return hash;
 };

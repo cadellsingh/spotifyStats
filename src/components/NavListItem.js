@@ -23,11 +23,12 @@ const ListItem = styled.li`
 `;
 
 const NavListItem = ({ listItem, link }) => {
-  const { url } = useRouteMatch();
+  // const { url } = useRouteMatch();
 
   return (
     <ListItem>
-      <Link to={`${url}${link}`}>{listItem}</Link>
+      {/* <Link to={`${url}${link}`}>{listItem}</Link> */}
+      <Link>{listItem}</Link>
       <span>
         <FontAwesomeIcon icon={faChevronRight} />
       </span>

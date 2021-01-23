@@ -1,19 +1,24 @@
 import SpotifyWebApi from "spotify-web-api-js";
-import axios from "axios";
-import { setAuthHeader } from "../utils/authHeader";
-
-export const get = async (url, params) => {
-  setAuthHeader();
-  const result = await axios.get(url, params);
-
-  return result.data;
-};
+import { getParamValues } from "../utils/functions";
 
 const spotifyApi = new SpotifyWebApi();
 
+// export const setToken = () => {
+//   localStorage.setItem("params", JSON.stringify(access_token));
+// };
+
 // extract access token
-const params = JSON.parse(localStorage.getItem("params"));
-spotifyApi.setAccessToken(params.access_token);
+const getToken = () => {
+  const token = JSON.parse(localStorage.getItem("params"));
+
+  if (token) {
+    spotifyApi.setAccessToken(token);
+  }
+
+  return token;
+};
+
+export const token = getToken();
 
 // APIS CALLS
 export const getTopArtists = async () => {

@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import _ from "lodash";
-import { getParamValues } from "../utils/functions";
+// import { getParamValues } from "../utils/functions";
 import { useHistory } from "react-router-dom";
+// import { setToken } from "../spotify/apis";
 
 const Redirect = () => {
   const history = useHistory();
@@ -9,21 +10,24 @@ const Redirect = () => {
   useEffect(() => {
     const { location } = window;
 
-    try {
-      if (_.isEmpty(location.hash)) {
-        return history.push("/profile");
-      }
+    // setToken();
+    history.push("/");
 
-      const access_token = getParamValues(location.hash);
-      const expiryTime = new Date().getTime + access_token.expires_in * 1000;
+    // try {
+    //   if (_.isEmpty(location.hash)) {
+    //     return history.push("/");
+    //   }
 
-      localStorage.setItem("params", JSON.stringify(access_token));
-      localStorage.setItem("expiry_time", expiryTime);
+    //   const access_token = getParamValues(location.hash);
+    //   const expiryTime = new Date().getTime + access_token.expires_in * 1000;
 
-      history.push("/profile");
-    } catch (error) {
-      history.push("/");
-    }
+    //   localStorage.setItem("params", JSON.stringify(access_token));
+    //   localStorage.setItem("expiry_time", expiryTime);
+
+    //   history.push("/");
+    // } catch (error) {
+    //   history.push("/");
+    // }
   });
 
   return null;

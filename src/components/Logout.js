@@ -19,8 +19,12 @@ const Logout = () => {
   const history = useHistory();
 
   const handleClick = () => {
-    window.localStorage.removeItem("expiry_time");
-    return history.push("/");
+    // so i can remove the cookie, and reload
+    // when reload check if token is there
+    // if not redirect to login
+
+    window.localStorage.removeItem("params");
+    window.location.reload();
   };
 
   return <LogoutButton onClick={handleClick}>Logout</LogoutButton>;
