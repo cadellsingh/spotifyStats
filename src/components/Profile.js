@@ -30,8 +30,12 @@ const Profile = () => {
   const [userProfile, setUserProfile] = useState([]);
 
   const params = JSON.parse(localStorage.getItem("params"));
-  const spotifyApi = new SpotifyWebApi();
-  spotifyApi.setAccessToken(params.access_token);
+  // const expiryTime = JSON.parse(localStorage.getItem("expiry_time"));
+  console.log(params);
+  // console.log(expiryTime);
+
+  // const spotifyApi = new SpotifyWebApi();
+  // spotifyApi.setAccessToken(params.access_token);
 
   // const getTopArtists = async () => {
   //   return await spotifyApi.getMyTopArtists({ limit: 50 });
@@ -47,7 +51,7 @@ const Profile = () => {
   // }, []);
 
   useEffect(() => {
-    Aos.init({ duration: 2000 });
+    Aos.init();
   }, []);
 
   console.log(`userProfile: ${userProfile}`);

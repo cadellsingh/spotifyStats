@@ -5,6 +5,7 @@ import NavListItem from "../NavListItem";
 import Logout from "../Logout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const StyledNav = styled.nav`
   grid-row: span 2 / auto;
@@ -62,13 +63,13 @@ const DesktopNav = ({ userInfo }) => {
         {displayImg}
       </UserContainer>
       <StyledUl>
-        <NavListItem listItem="topTracks" />
-        <NavListItem listItem="Audio Analysis" />
-        <NavListItem listItem="Playlists" />
-        <NavListItem listItem="Top Tracks" />
-        <NavListItem listItem="Top Artists" />
-        <NavListItem listItem="Top Genres" />
-        <NavListItem listItem="Recently Played" />
+        <NavListItem listItem="Profile" link="" />
+        <NavListItem listItem="Audio Analysis" link="/audioAnalysis" />
+        <NavListItem listItem="Playlists" link="/playlists" />
+        <NavListItem listItem="Top Tracks" link="/topTracks" />
+        <NavListItem listItem="Top Artists" link="/topArtists" />
+        <NavListItem listItem="Top Genres" link="/topGenres" />
+        <NavListItem listItem="Recently Played" link="/recentlyPlayed" />
       </StyledUl>
 
       <Logout />
