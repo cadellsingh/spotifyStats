@@ -6,6 +6,7 @@ import { getMyTopTracks } from "../../spotify/apis";
 import DisplayTrack from "../DisplayTrack";
 
 const Container = styled.div`
+  width: 100%;
   border-radius: 10px;
   padding: 15px;
   margin: 0 auto;
@@ -81,39 +82,41 @@ const AllTopTracks = () => {
     });
 
   return (
-    <div>
-      <Container
-        data-aos="zoom-out-up"
-        data-aos-duration="1500"
-        data-aos-easing="ease-in-out"
-      >
-        <Text>
-          <h2>Top Tracks</h2>
+    <>
+      <div>
+        <Container
+          data-aos="fade-down"
+          data-aos-duration="1500"
+          data-aos-easing="ease-in-out"
+        >
+          <Text>
+            <h2>Top Tracks</h2>
 
-          <Range>
-            <RangeButton
-              onClick={() => setTimeRange("long_term")}
-              isActive={timeRange === "long_term"}
-            >
-              All time
-            </RangeButton>
-            <RangeButton
-              onClick={() => setTimeRange("medium_term")}
-              isActive={timeRange === "medium_term"}
-            >
-              Last 6 months
-            </RangeButton>
-            <RangeButton
-              onClick={() => setTimeRange("short_term")}
-              isActive={timeRange === "short_term"}
-            >
-              Last month
-            </RangeButton>
-          </Range>
-        </Text>
-        <TracksContainer>{displayTracks}</TracksContainer>
-      </Container>
-    </div>
+            <Range>
+              <RangeButton
+                onClick={() => setTimeRange("long_term")}
+                isActive={timeRange === "long_term"}
+              >
+                All time
+              </RangeButton>
+              <RangeButton
+                onClick={() => setTimeRange("medium_term")}
+                isActive={timeRange === "medium_term"}
+              >
+                Last 6 months
+              </RangeButton>
+              <RangeButton
+                onClick={() => setTimeRange("short_term")}
+                isActive={timeRange === "short_term"}
+              >
+                Last month
+              </RangeButton>
+            </Range>
+          </Text>
+          <TracksContainer>{displayTracks}</TracksContainer>
+        </Container>
+      </div>
+    </>
   );
 };
 

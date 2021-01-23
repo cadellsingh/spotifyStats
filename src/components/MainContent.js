@@ -18,7 +18,7 @@ const Layout = styled.div`
 const MainContent = () => {
   return (
     <Layout
-      data-aos="zoom-out-up"
+      data-aos="fade-down"
       data-aos-duration="1500"
       data-aos-easing="ease-in-out"
     >

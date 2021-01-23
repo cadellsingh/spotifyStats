@@ -11,8 +11,9 @@ const Container = styled.div`
   ${ContainerBackgroundColor}
 
   & h2 {
-    ${TextColor}
     margin-bottom: 15px;
+    margin: auto 0;
+    ${TextColor};
   }
 `;
 
@@ -48,7 +49,7 @@ const AllRecentlyPlayed = () => {
 
   return (
     <div
-      data-aos="zoom-out-up"
+      data-aos="fade-down"
       data-aos-duration="1500"
       data-aos-easing="ease-in-out"
     >

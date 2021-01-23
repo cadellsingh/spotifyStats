@@ -14,8 +14,6 @@ const GlobalTopPlaylists = () => {
     getData();
   }, []);
 
-  console.log(playlists);
-
   const displayPlaylists =
     playlists &&
     playlists.map((data, index) => {
