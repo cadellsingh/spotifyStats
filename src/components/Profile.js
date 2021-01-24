@@ -38,6 +38,8 @@ const Profile = () => {
             <Route path="/playlists" component={AllPlaylists} />
             <Route path="/topArtists" component={AllTopArtists} />
             <Route path="/topTracks" component={AllTopTracks} />
+            {/* <Route path="/topGenres" component={TopGenres} /> */}
+
             <Route path="/recentlyPlayed" component={AllRecentlyPlayed} />
           </Switch>
         </Layout>

@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import { getMyTopArtists } from "../../spotify/apis";
 import { StyledContainer } from "../../styles/sharedContainers";
 import DisplayImg from "../DisplayImg";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const TopArtists = () => {
-  const { url } = useRouteMatch();
   const [topArtists, setTopArtists] = useState([]);
 
   const getData = async () => {

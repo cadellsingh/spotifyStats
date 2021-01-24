@@ -5,7 +5,6 @@ import NavListItem from "../NavListItem";
 import Logout from "../Logout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 
 const StyledNav = styled.nav`
   grid-row: span 2 / auto;

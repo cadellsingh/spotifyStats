@@ -1,8 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
-import { Link, useRouteMatch } from "react-router-dom";
-import { camelCaseString } from "../utils/functions";
+import { Link } from "react-router-dom";
 
 const ListItem = styled.li`
   margin: 10px 0;
@@ -15,6 +14,10 @@ const ListItem = styled.li`
     margin: auto 0;
   }
 
+  @media (max-width: 1150px) {
+    font-size: 15px;
+  }
+
   @media (max-width: 700px) {
     & span {
       display: none;
@@ -23,11 +26,8 @@ const ListItem = styled.li`
 `;
 
 const NavListItem = ({ listItem, link }) => {
-  // const { url } = useRouteMatch();
-
   return (
     <ListItem>
-      {/* <Link to={`${url}${link}`}>{listItem}</Link> */}
       <Link to={link}>{listItem}</Link>
       <span>
         <FontAwesomeIcon icon={faChevronRight} />

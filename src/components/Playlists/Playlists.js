@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import { getUserPlaylists } from "../../spotify/apis";
 import { StyledContainer } from "../../styles/sharedContainers";
 import DisplayImg from "../DisplayImg";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Playlists = () => {
-  const { url } = useRouteMatch();
   const [playlists, setPlaylists] = useState([]);
 
   const getData = async () => {

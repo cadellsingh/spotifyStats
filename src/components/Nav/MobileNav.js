@@ -46,13 +46,13 @@ const MobileNav = () => {
           <span onClick={() => setShowLinks(false)}>
             <FontAwesomeIcon icon={faTimes} />
           </span>
-          <NavListItem listItem="Profile" />
-          <NavListItem listItem="Audio Analysis" />
-          <NavListItem listItem="Playlists" />
-          <NavListItem listItem="Top Tracks" />
-          <NavListItem listItem="Top Artists" />
-          <NavListItem listItem="Top Genres" />
-          <NavListItem listItem="Recently Played" />
+          <NavListItem listItem="Profile" link="" />
+          <NavListItem listItem="Audio Analysis" link="/audioAnalysis" />
+          <NavListItem listItem="Playlists" link="/playlists" />
+          <NavListItem listItem="Top Tracks" link="/topTracks" />
+          <NavListItem listItem="Top Artists" link="/topArtists" />
+          <NavListItem listItem="Top Genres" link="/topGenres" />
+          <NavListItem listItem="Recently Played" link="/recentlyPlayed" />
         </MobileLinks>
       </Overlay>
     </StyledNav>
