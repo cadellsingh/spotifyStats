@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch, useRouteMatch } from "react-router-dom";
-import { getAccessToken, getTopArtists, token } from "../spotify/apis";
+import { useEffect } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AllPlaylists from "./Playlists/AllPlaylists";
 import styled from "styled-components";
 import Nav from "./Nav/Nav";
@@ -10,9 +9,6 @@ import MainContent from "./MainContent";
 import AllTopTracks from "./Tracks/AllTopTracks";
 import AllRecentlyPlayed from "./RecentlyPlayed/AllRecentlyPlayed";
 import Aos from "aos";
-
-import SpotifyWebApi from "spotify-web-api-js";
-import AppRouter from "../router/AppRouter";
 
 const Layout = styled.div`
   display: grid;
@@ -27,58 +23,25 @@ const Layout = styled.div`
 `;
 
 const Profile = () => {
-  // const { url, path } = useRouteMatch();
-  const [accessToken, setAccessToken] = useState([]);
-
-  // const getToken = token;
-
-  // const getData = async () => {
-  //   let data = await getAccessToken();
-  //   setAccessToken(data);
-  // };
-
-  // set access token in useEffect
-  // if it returns null then redirect to home
-
-  // useEffect(() => {
-  //   Aos.init();
-  //   setAccessToken(token);
-  //   getData();
-  // }, []);
-
-  if (accessToken === null) {
-    console.log("no token");
-  }
-
-  // console.log(getToken);
+  useEffect(() => {
+    Aos.init();
+  }, []);
 
   return (
     <>
       <GlobalStyles />
       <BrowserRouter>
         <Layout>
-          <Nav>
-            <Switch>
-              <Route path="/" component={MainContent} />
-            </Switch>
-          </Nav>
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={MainContent} />
+            <Route path="/playlists" component={AllPlaylists} />
+            <Route path="/topArtists" component={AllTopArtists} />
+            <Route path="/topTracks" component={AllTopTracks} />
+            <Route path="/recentlyPlayed" component={AllRecentlyPlayed} />
+          </Switch>
         </Layout>
       </BrowserRouter>
-
-      {/* <Layout>
-        <Nav />
-        <Switch>
-          <Route exact path={path} component={MainContent} />
-          <Route path={`${path}/playlists`} component={AllPlaylists} />
-          <Route path={`${path}/topArtists`} component={AllTopArtists} />
-          <Route path={`${path}/topTracks`} component={AllTopTracks} />
-          <Route path={`${path}/allPlaylists`} component={AllPlaylists} />
-          <Route
-            path={`${path}/recentlyPlayed`}
-            component={AllRecentlyPlayed}
-          />
-        </Switch>
-      </Layout> */}
     </>
   );
 };

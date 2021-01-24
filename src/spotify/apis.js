@@ -1,24 +1,10 @@
 import SpotifyWebApi from "spotify-web-api-js";
-import { getParamValues } from "../utils/functions";
 
 const spotifyApi = new SpotifyWebApi();
 
-// export const setToken = () => {
-//   localStorage.setItem("params", JSON.stringify(access_token));
-// };
-
-// extract access token
-const getToken = () => {
-  const token = JSON.parse(localStorage.getItem("params"));
-
-  if (token) {
-    spotifyApi.setAccessToken(token);
-  }
-
-  return token;
+export const setAccessToken = (token) => {
+  spotifyApi.setAccessToken(token);
 };
-
-export const token = getToken();
 
 // APIS CALLS
 export const getTopArtists = async () => {

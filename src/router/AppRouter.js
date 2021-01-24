@@ -1,38 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import Login from "../components/Login";
 import NotFound from "../components/NotFound";
 import Profile from "../components/Profile";
 import Redirect from "../components/Redirect";
-import { token } from "../spotify/apis";
-// import { token } from "../spotify/apis";
-import { getAccessToken, getParamValues } from "../utils/functions";
-
-const hash = window.location.hash
-  .substring(1)
-  .split("&")
-  .reduce(function (initial, item) {
-    if (item) {
-      let parts = item.split("=");
-      initial[parts[0]] = decodeURIComponent(parts[1]);
-    }
-    return initial;
-  }, {});
-
-window.location.hash = "";
+import { setAccessToken } from "../spotify/apis";
 
 const AppRouter = () => {
   const [accessToken, setToken] = useState("");
 
   useEffect(() => {
-    let access_token = hash.access_token;
-    if (access_token) {
-      localStorage.setItem("params", JSON.stringify(access_token));
+    const params = JSON.parse(localStorage.getItem("params"));
+
+    if (params) {
+      const { access_token } = params;
       setToken(access_token);
+      setAccessToken(access_token);
     }
   }, []);
-
-  console.log(accessToken);
 
   return (
     // <BrowserRouter>
@@ -46,13 +31,15 @@ const AppRouter = () => {
     //   </div>
     // </BrowserRouter>
 
-    <div>{accessToken ? <Profile /> : <Login />}</div>
+    // <div>{accessToken ? <Profile /> : <Login />}</div>
 
-    // <BrowserRouter>
-    //   <div>{accessToken ? <Profile /> : <Login />}</div>
-    //   <Route path="/redirect" component={Redirect} />
-    // </BrowserRouter>
+    <BrowserRouter>
+      {accessToken ? <Profile /> : <Login />}
+      <Route path="/redirect" component={Redirect} />
+    </BrowserRouter>
   );
 };
+
+// prob dont need redirect component
 
 export default AppRouter;
