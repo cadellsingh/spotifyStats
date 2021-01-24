@@ -29,7 +29,7 @@ const RecentlyPlayedTracks = () => {
         <TracksText>
           <h2>Recently Played</h2>
           <span>
-            <Link to={`${url}/recentlyPlayed`}>See more</Link>
+            <Link to="/recentlyPlayed">See more</Link>
           </span>
         </TracksText>
         {displayTracks}

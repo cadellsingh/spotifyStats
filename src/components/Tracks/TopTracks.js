@@ -29,7 +29,7 @@ const TopTracks = () => {
         <TracksText>
           <h2>Top Tracks</h2>
           <span>
-            <Link to={`${url}/topTracks`}>See more</Link>
+            <Link to="/topTracks">See more</Link>
           </span>
         </TracksText>
         {displayTracks}

@@ -29,7 +29,7 @@ const TopArtists = () => {
         <div>
           <h2>Top Artists</h2>
           <span>
-            <Link to={`${url}/topArtists`}>See more</Link>
+            <Link to="/topArtists">See more</Link>
           </span>
         </div>
         {displayArtists}

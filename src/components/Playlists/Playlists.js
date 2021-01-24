@@ -29,7 +29,7 @@ const Playlists = () => {
         <div>
           <h2>Playlists</h2>
           <span>
-            <Link to={`${url}/playlists`}>See more</Link>
+            <Link to="/playlists">See more</Link>
           </span>
         </div>
         {displayPlaylists}

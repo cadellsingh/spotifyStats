@@ -28,7 +28,7 @@ const NavListItem = ({ listItem, link }) => {
   return (
     <ListItem>
       {/* <Link to={`${url}${link}`}>{listItem}</Link> */}
-      <Link>{listItem}</Link>
+      <Link to={link}>{listItem}</Link>
       <span>
         <FontAwesomeIcon icon={faChevronRight} />
       </span>
