@@ -28,7 +28,7 @@ const TopArtists = () => {
         <div>
           <h2>Top Artists</h2>
           <span>
-            <Link to="/topArtists">See more</Link>
+            <Link to="/artists">See more</Link>
           </span>
         </div>
         {displayArtists}

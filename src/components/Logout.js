@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ContainerBackgroundColor } from "../styles/sharedStyles";
+import { ContainerBackgroundColor, TextColor } from "../styles/sharedStyles";
 
 const LogoutButton = styled.button`
   padding: 20px;
@@ -10,7 +10,7 @@ const LogoutButton = styled.button`
   cursor: pointer;
 
   :hover {
-    border: 1px solid #05b075;
+    ${TextColor}
   }
 `;
 

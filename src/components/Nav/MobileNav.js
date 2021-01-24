@@ -49,9 +49,9 @@ const MobileNav = () => {
           <NavListItem listItem="Profile" link="" />
           <NavListItem listItem="Audio Analysis" link="/audioAnalysis" />
           <NavListItem listItem="Playlists" link="/playlists" />
-          <NavListItem listItem="Top Tracks" link="/topTracks" />
-          <NavListItem listItem="Top Artists" link="/topArtists" />
-          <NavListItem listItem="Top Genres" link="/topGenres" />
+          <NavListItem listItem="Top Tracks" link="/tracks" />
+          <NavListItem listItem="Top Artists" link="/artists" />
+          <NavListItem listItem="Top Genres" link="/genres" />
           <NavListItem listItem="Recently Played" link="/recentlyPlayed" />
         </MobileLinks>
       </Overlay>

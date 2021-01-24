@@ -9,6 +9,10 @@ import MainContent from "./MainContent";
 import AllTopTracks from "./Tracks/AllTopTracks";
 import AllRecentlyPlayed from "./RecentlyPlayed/AllRecentlyPlayed";
 import Aos from "aos";
+import Playlist from "./Playlists/Playlist";
+import Track from "./Tracks/Track";
+import Artist from "./Artists/Artist";
+import AudioAnalysis from "./AudioAnalysis";
 
 const Layout = styled.div`
   display: grid;
@@ -35,9 +39,18 @@ const Profile = () => {
           <Nav />
           <Switch>
             <Route exact path="/" component={MainContent} />
+
+            {/* <Route path="/audioAnalysis" component={AudioAnalysis} /> */}
+
             <Route path="/playlists" component={AllPlaylists} />
-            <Route path="/topArtists" component={AllTopArtists} />
-            <Route path="/topTracks" component={AllTopTracks} />
+            <Route path="/playlist/:playlistId" component={Playlist} />
+
+            <Route path="/artists" component={AllTopArtists} />
+            <Route path="/artist/artistId" component={Artist} />
+
+            <Route path="/tracks" component={AllTopTracks} />
+            <Route path="/track/trackId" component={Track} />
+
             {/* <Route path="/topGenres" component={TopGenres} /> */}
 
             <Route path="/recentlyPlayed" component={AllRecentlyPlayed} />

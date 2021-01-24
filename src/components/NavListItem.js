@@ -2,12 +2,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { TextColor } from "../styles/sharedStyles";
 
 const ListItem = styled.li`
   margin: 10px 0;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+
+  :hover {
+    ${TextColor}
+  }
 
   & span {
     font-size: 12px;

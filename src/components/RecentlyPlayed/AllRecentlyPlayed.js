@@ -11,7 +11,6 @@ const Container = styled.div`
   ${ContainerBackgroundColor}
 
   & h2 {
-    margin-bottom: 15px;
     margin: auto 0;
     ${TextColor};
   }
@@ -22,6 +21,7 @@ const TracksContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 15px;
   grid-column-gap: 20px;
+  margin-top: 15px;
 
   @media (max-width: 1050px) {
     grid-template-columns: 1fr;

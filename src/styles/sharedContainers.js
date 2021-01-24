@@ -66,6 +66,7 @@ export const TracksText = styled.div`
 
   & h2 {
     margin-right: 5px;
+    margin-bottom: 15px;
   }
 
   & span:hover {

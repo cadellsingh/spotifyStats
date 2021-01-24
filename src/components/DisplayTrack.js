@@ -24,6 +24,10 @@ const Img = styled.img`
   margin-right: 15px;
 `;
 
+const Artists = styled.div`
+  display: flex;
+`;
+
 const Duration = styled.p`
   margin-left: auto;
 `;
@@ -56,7 +60,7 @@ const DisplayTrack = ({ data, type }) => {
       </div>
       <div>
         <p>{name}</p>
-        <div>{displayArtists}</div>
+        <Artists>{displayArtists}</Artists>
       </div>
       <Duration>{duration}</Duration>
     </StyledTrack>
