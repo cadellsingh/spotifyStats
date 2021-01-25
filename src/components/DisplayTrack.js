@@ -32,39 +32,44 @@ const Duration = styled.p`
   margin-left: auto;
 `;
 
-const DisplayTrack = ({ data, type }) => {
-  const { track } = data || {};
+const DisplayTrack = ({ data }) => {
+  const { artists, name, album, duration_ms } = data || {};
 
-  const { artists, name, album, duration_ms } =
-    type === "recent" ? track : data;
+  const { images } = album || {};
+  let displayImg;
 
-  const { images } = album;
-  const { url } = images[0];
+  if (images && images.length > 0) {
+    const { url } = images[0];
+    displayImg = <Img src={url} alt={name} />;
+  } else {
+    displayImg = (
+      <Icon>
+        <FontAwesomeIcon icon={faMusic} />
+      </Icon>
+    );
+  }
+
   const duration = millisToMinutesAndSeconds(duration_ms);
 
-  const displayArtists = artists.map((artist, index) => {
-    const { name } = artist;
-    return <p key={index}>{name}</p>;
-  });
+  const displayArtists =
+    artists &&
+    artists.map((artist, index) => {
+      const { name } = artist;
+      return <p key={index}>{name}</p>;
+    });
 
-  return (
+  const displayTrack = images ? (
     <StyledTrack>
-      <div>
-        {url ? (
-          <Img src={url} alt={name} />
-        ) : (
-          <Icon>
-            <FontAwesomeIcon icon={faMusic} />
-          </Icon>
-        )}
-      </div>
+      <div>{displayImg}</div>
       <div>
         <p>{name}</p>
         <Artists>{displayArtists}</Artists>
       </div>
       <Duration>{duration}</Duration>
     </StyledTrack>
-  );
+  ) : null;
+
+  return <> {displayTrack}</>;
 };
 
 export default DisplayTrack;
