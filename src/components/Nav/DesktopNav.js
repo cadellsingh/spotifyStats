@@ -22,8 +22,8 @@ const UserContainer = styled.div`
 
   & img {
     max-width: 100%;
-    height: 100px;
-    border-radius: 100%;
+    height: 150px;
+    border-radius: 10px;
     margin: 15px 0;
   }
 

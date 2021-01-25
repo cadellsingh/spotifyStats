@@ -4,12 +4,12 @@ import { ContainerBackgroundColor } from "./sharedStyles";
 // this container is used for TopArtists / Playlists
 // on Profile page
 export const StyledContainer = styled.div`
-  ${ContainerBackgroundColor};
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
   padding: 15px;
   border-radius: 10px;
+  ${ContainerBackgroundColor};
 
   & div:first-of-type {
     grid-column: span 2 / auto;

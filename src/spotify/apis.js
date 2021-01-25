@@ -41,14 +41,14 @@ export const getMyTopTracks = async (limit, timeRange = "long_term") => {
   return items;
 };
 
-export const getUserPlaylists = async (limit = 50) => {
-  const data = await spotifyApi.getUserPlaylists({ limit: limit });
+export const getMyRecentlyPlayed = async (limit) => {
+  const data = await spotifyApi.getMyRecentlyPlayedTracks({ limit: limit });
   const { items } = data;
   return items;
 };
 
-export const getMyRecentlyPlayed = async (limit) => {
-  const data = await spotifyApi.getMyRecentlyPlayedTracks({ limit: limit });
+export const getUserPlaylists = async (limit = 50) => {
+  const data = await spotifyApi.getUserPlaylists({ limit: limit });
   const { items } = data;
   return items;
 };
@@ -58,6 +58,14 @@ export const getPopularPlaylists = async (type) => {
   const { playlists } = data;
   const { items } = playlists;
   return items;
+};
+
+export const getPlaylist = async (id) => {
+  const data = await spotifyApi.getPlaylist(id);
+  const { description, images, name, tracks } = data;
+  const { url } = images[0];
+  const { items } = tracks;
+  return { description, url, name, items };
 };
 
 export const getTrack = async (trackId) => {

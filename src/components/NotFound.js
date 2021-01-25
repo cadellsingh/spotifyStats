@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 const NotFound = () => {
   return (
     <div>
-      <p>you lost buddy</p>
       <p>
-        {" "}
-        <Link to="/profile">Home</Link>
+        Um, you look a bit lost... lets get you back{" "}
+        <span>
+          <Link to="/">Home</Link>
+        </span>
       </p>
     </div>
   );
