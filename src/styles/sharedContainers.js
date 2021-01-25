@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ContainerBackgroundColor } from "./sharedStyles";
+import { ContainerBackgroundColor, ContainerBackground } from "./sharedStyles";
 
 // this container is used for TopArtists / Playlists
 // on Profile page
@@ -7,9 +7,7 @@ export const StyledContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
-  padding: 15px;
-  border-radius: 10px;
-  ${ContainerBackgroundColor};
+  ${ContainerBackground};
 
   & div:first-of-type {
     grid-column: span 2 / auto;
@@ -35,9 +33,7 @@ export const TracksContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-row-gap: 10px;
-  padding: 15px;
-  border-radius: 10px;
-  ${ContainerBackgroundColor}
+  ${ContainerBackground};
 
   & div:first-of-type {
     display: flex;

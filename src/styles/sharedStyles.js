@@ -11,3 +11,9 @@ export const MainBackgroundColor = css`
 export const ContainerBackgroundColor = css`
   background-color: #202225;
 `;
+
+export const ContainerBackground = css`
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #202225;
+`;
