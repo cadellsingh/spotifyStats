@@ -7,43 +7,45 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 15px;
+
+  & div h2 {
+    grid-column: span 2 / auto;
+    padding: 15px;
+    border-radius: 10px;
+    ${ContainerBackgroundColor};
+  }
 `;
 
 const PlaylistsContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  margin-top: 15px;
   padding: 15px;
   border-radius: 10px;
-  grid-gap: 15px;
   ${ContainerBackgroundColor};
-
-  & h2 {
-    grid-column: span 2 / auto;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
 `;
 
 const AllPlaylists = () => {
   return (
-    <div>
-      <Container
-        data-aos="fade-down"
-        data-aos-duration="1500"
-        data-aos-easing="ease-in-out"
-      >
-        <div>
-          <PlaylistsContainer>
-            <h2>Your Playlists</h2>
-            <UserPlaylists />
-          </PlaylistsContainer>
-        </div>
-        <div>
-          <PlaylistsContainer>
-            <h2>Global Top Playlists</h2>
-            <GlobalTopPlaylists />
-          </PlaylistsContainer>
-        </div>
-      </Container>
-    </div>
+    <Container
+      data-aos="fade-down"
+      data-aos-duration="1500"
+      data-aos-easing="ease-in-out"
+    >
+      <div>
+        <h2>Your Playlists</h2>
+        <PlaylistsContainer>
+          <UserPlaylists />
+        </PlaylistsContainer>
+      </div>
+      <div>
+        <h2>Global Top Playlists</h2>
+        <PlaylistsContainer>
+          <GlobalTopPlaylists />
+        </PlaylistsContainer>
+      </div>
+    </Container>
   );
 };
 

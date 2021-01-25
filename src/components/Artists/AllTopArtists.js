@@ -4,14 +4,11 @@ import { getMyTopArtists } from "../../spotify/apis";
 import { ContainerBackgroundColor, TextColor } from "../../styles/sharedStyles";
 import DisplayTopArtists from "../DisplayTopArtists";
 
-const Container = styled.div`
-  border-radius: 10px;
-  padding: 15px;
-  ${ContainerBackgroundColor}
-`;
-
 const Text = styled.div`
   margin-bottom: 15px;
+  border-radius: 10px;
+  padding: 15px;
+  ${ContainerBackgroundColor};
 
   & h2 {
     ${TextColor}
@@ -45,6 +42,9 @@ const ArtistsContainer = styled.div`
   grid-gap: 10px;
   grid-column-gap: 10px;
   grid-row-gap: 20px;
+  border-radius: 10px;
+  padding: 15px;
+  ${ContainerBackgroundColor};
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr 1fr 1fr;
@@ -75,42 +75,40 @@ const AllTopArtists = () => {
   const displayArtists =
     topArtists &&
     topArtists.map((data, index) => {
-      return <DisplayTopArtists key={index} data={data} />;
+      return <DisplayTopArtists key={index} data={data} type="artist" />;
     });
 
   return (
-    <div>
-      <Container
-        data-aos="fade-down"
-        data-aos-duration="1500"
-        data-aos-easing="ease-in-out"
-      >
-        <Text>
-          <h2>Top Artists</h2>
+    <div
+      data-aos="fade-down"
+      data-aos-duration="1500"
+      data-aos-easing="ease-in-out"
+    >
+      <Text>
+        <h2>Top Artists</h2>
 
-          <Range>
-            <RangeButton
-              onClick={() => setTimeRange("long_term")}
-              isActive={timeRange === "long_term"}
-            >
-              All time
-            </RangeButton>
-            <RangeButton
-              onClick={() => setTimeRange("medium_term")}
-              isActive={timeRange === "medium_term"}
-            >
-              Last 6 months
-            </RangeButton>
-            <RangeButton
-              onClick={() => setTimeRange("short_term")}
-              isActive={timeRange === "short_term"}
-            >
-              Last month
-            </RangeButton>
-          </Range>
-        </Text>
-        <ArtistsContainer>{displayArtists}</ArtistsContainer>
-      </Container>
+        <Range>
+          <RangeButton
+            onClick={() => setTimeRange("long_term")}
+            isActive={timeRange === "long_term"}
+          >
+            All time
+          </RangeButton>
+          <RangeButton
+            onClick={() => setTimeRange("medium_term")}
+            isActive={timeRange === "medium_term"}
+          >
+            Last 6 months
+          </RangeButton>
+          <RangeButton
+            onClick={() => setTimeRange("short_term")}
+            isActive={timeRange === "short_term"}
+          >
+            Last month
+          </RangeButton>
+        </Range>
+      </Text>
+      <ArtistsContainer>{displayArtists}</ArtistsContainer>
     </div>
   );
 };

@@ -19,7 +19,7 @@ const TopArtists = () => {
   const displayArtists =
     topArtists &&
     topArtists.map((data, index) => {
-      return <DisplayImg key={index} data={data} />;
+      return <DisplayImg key={index} data={data} type="artist" />;
     });
 
   return (

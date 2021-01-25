@@ -1,20 +1,14 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { ContainerBackgroundColor, TextColor } from "../../styles/sharedStyles";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { getMyTopTracks } from "../../spotify/apis";
 import DisplayTrack from "../DisplayTrack";
 
-const Container = styled.div`
-  width: 100%;
-  border-radius: 10px;
-  padding: 15px;
-  margin: 0 auto;
-  ${ContainerBackgroundColor};
-`;
-
 const Text = styled.div`
   margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  ${ContainerBackgroundColor};
 
   & h2 {
     ${TextColor}
@@ -54,6 +48,9 @@ const TracksContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 15px;
   grid-column-gap: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  ${ContainerBackgroundColor};
 
   @media (max-width: 1050px) {
     grid-template-columns: 1fr;
@@ -62,7 +59,6 @@ const TracksContainer = styled.div`
 `;
 
 const AllTopTracks = () => {
-  const { path } = useRouteMatch();
   const [timeRange, setTimeRange] = useState("long_term");
   const [topTracks, setTopTracks] = useState([]);
 
@@ -82,41 +78,37 @@ const AllTopTracks = () => {
     });
 
   return (
-    <>
-      <div>
-        <Container
-          data-aos="fade-down"
-          data-aos-duration="1500"
-          data-aos-easing="ease-in-out"
-        >
-          <Text>
-            <h2>Top Tracks</h2>
+    <div
+      data-aos="fade-down"
+      data-aos-duration="1500"
+      data-aos-easing="ease-in-out"
+    >
+      <Text>
+        <h2>Top Tracks</h2>
 
-            <Range>
-              <RangeButton
-                onClick={() => setTimeRange("long_term")}
-                isActive={timeRange === "long_term"}
-              >
-                All time
-              </RangeButton>
-              <RangeButton
-                onClick={() => setTimeRange("medium_term")}
-                isActive={timeRange === "medium_term"}
-              >
-                Last 6 months
-              </RangeButton>
-              <RangeButton
-                onClick={() => setTimeRange("short_term")}
-                isActive={timeRange === "short_term"}
-              >
-                Last month
-              </RangeButton>
-            </Range>
-          </Text>
-          <TracksContainer>{displayTracks}</TracksContainer>
-        </Container>
-      </div>
-    </>
+        <Range>
+          <RangeButton
+            onClick={() => setTimeRange("long_term")}
+            isActive={timeRange === "long_term"}
+          >
+            All time
+          </RangeButton>
+          <RangeButton
+            onClick={() => setTimeRange("medium_term")}
+            isActive={timeRange === "medium_term"}
+          >
+            Last 6 months
+          </RangeButton>
+          <RangeButton
+            onClick={() => setTimeRange("short_term")}
+            isActive={timeRange === "short_term"}
+          >
+            Last month
+          </RangeButton>
+        </Range>
+      </Text>
+      <TracksContainer>{displayTracks}</TracksContainer>
+    </div>
   );
 };
 

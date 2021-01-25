@@ -5,13 +5,11 @@ import { ContainerBackgroundColor, TextColor } from "../../styles/sharedStyles";
 import DisplayTrack from "../DisplayTrack";
 
 const Container = styled.div`
-  border-radius: 10px;
-  padding: 15px;
-  margin: 0 auto;
-  ${ContainerBackgroundColor}
-
   & h2 {
     margin: auto 0;
+    padding: 15px;
+    border-radius: 10px;
+    ${ContainerBackgroundColor};
     ${TextColor};
   }
 `;
@@ -22,6 +20,9 @@ const TracksContainer = styled.div`
   grid-row-gap: 15px;
   grid-column-gap: 20px;
   margin-top: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  ${ContainerBackgroundColor};
 
   @media (max-width: 1050px) {
     grid-template-columns: 1fr;
@@ -48,16 +49,14 @@ const AllRecentlyPlayed = () => {
     });
 
   return (
-    <div
+    <Container
       data-aos="fade-down"
       data-aos-duration="1500"
       data-aos-easing="ease-in-out"
     >
-      <Container>
-        <h2>Recently Played Tracks</h2>
-        <TracksContainer>{displayTracks}</TracksContainer>
-      </Container>
-    </div>
+      <h2>Recently Played Tracks</h2>
+      <TracksContainer>{displayTracks}</TracksContainer>
+    </Container>
   );
 };
 

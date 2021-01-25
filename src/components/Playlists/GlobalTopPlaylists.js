@@ -17,7 +17,7 @@ const GlobalTopPlaylists = () => {
   const displayPlaylists =
     playlists &&
     playlists.map((data, index) => {
-      return <DisplayImg key={index} data={data} />;
+      return <DisplayImg key={index} data={data} type="playlist" />;
     });
 
   return <>{displayPlaylists}</>;
