@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { getMyTopArtists } from "../../spotify/apis";
-import { ContainerBackgroundColor, TextColor } from "../../styles/sharedStyles";
-import DisplayTopArtists from "../DisplayTopArtists";
+import { TextColor, ContainerBackground } from "../../styles/sharedStyles";
+import DisplayImg from "../DisplayImg";
 
 const Text = styled.div`
   margin-bottom: 15px;
-  border-radius: 10px;
-  padding: 15px;
-  ${ContainerBackgroundColor};
+  ${ContainerBackground};
 
   & h2 {
     ${TextColor}
@@ -37,14 +35,9 @@ const RangeButton = styled.button`
 const ArtistsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  justify-content: center;
-  text-align: center;
-  grid-gap: 10px;
   grid-column-gap: 10px;
   grid-row-gap: 20px;
-  border-radius: 10px;
-  padding: 15px;
-  ${ContainerBackgroundColor};
+  ${ContainerBackground};
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr 1fr 1fr;
@@ -75,7 +68,7 @@ const AllTopArtists = () => {
   const displayArtists =
     topArtists &&
     topArtists.map((data, index) => {
-      return <DisplayTopArtists key={index} data={data} type="artist" />;
+      return <DisplayImg key={index} data={data} type="artist" />;
     });
 
   return (

@@ -1,13 +1,10 @@
-import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { ContainerBackgroundColor, TextColor } from "../styles/sharedStyles";
+import { TextColor, ContainerBackground } from "../styles/sharedStyles";
 
 const LogoutButton = styled.button`
-  padding: 20px;
-  border-radius: 10px;
   width: 100%;
   margin-top: 15px;
-  ${ContainerBackgroundColor};
+  ${ContainerBackground};
   cursor: pointer;
 
   :hover {

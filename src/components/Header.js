@@ -1,13 +1,11 @@
 import styled from "styled-components";
-import { ContainerBackgroundColor, TextColor } from "../styles/sharedStyles";
+import { TextColor, ContainerBackground } from "../styles/sharedStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const StyledHeader = styled.header`
-  padding: 20px;
-  border-radius: 10px;
   width: 100%;
-  ${ContainerBackgroundColor};
+  ${ContainerBackground};
   ${TextColor};
 
   & span {

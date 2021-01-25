@@ -1,24 +1,106 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import {
+  getArtist,
+  getArtistRelatedArtists,
+  getArtistTopTracks,
+} from "../../spotify/apis";
+import { ContainerBackground } from "../../styles/sharedStyles";
+import DisplayTrack from "../DisplayTrack";
+import DisplayImg from "../DisplayImg";
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 15px;
+
+  & h2 {
+    ${ContainerBackground};
+    margin: 15px 0;
+  }
+`;
+
+const ArtistDetails = styled.div`
+  ${ContainerBackground};
+`;
+
+const ArtistTracks = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 15px;
+  ${ContainerBackground};
+`;
+
+const RelatedArtists = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  ${ContainerBackground};
+`;
 
 const Artist = () => {
   const { artistId } = useParams();
-  const [artist, setArtist] = useState([]);
+  const [artistInfo, setArtistInfo] = useState([]);
 
-  // const getData = async () => {
-  //   const data = await getMyTopArtists(50, timeRange);
-  //   setTopArtists(data);
-  // };
+  const getData = async () => {
+    const { followers, genres, imageUrl, name } = await getArtist(artistId);
+    const topTracks = await getArtistTopTracks(artistId, "US");
+    const relatedArtists = await getArtistRelatedArtists(artistId);
+    setArtistInfo({
+      followers,
+      genres,
+      imageUrl,
+      name,
+      topTracks,
+      relatedArtists,
+    });
+  };
 
-  // useEffect(() => {
-  //   getData();
-  // }, [timeRange]);
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const {
+    followers,
+    genres,
+    imageUrl,
+    name,
+    topTracks,
+    relatedArtists,
+  } = artistInfo;
+
+  const displayTracks =
+    topTracks &&
+    topTracks.map((data, index) => {
+      return <DisplayTrack key={index} data={data} />;
+    });
+
+  const displayRelatedArtists =
+    relatedArtists &&
+    relatedArtists.slice(0, 10).map((data, index) => {
+      return <DisplayImg key={index} data={data} type="artist" />;
+    });
 
   return (
-    <div>
-      <h1>Artist</h1>
-      <h1>id: {artistId}</h1>
+    <div
+      data-aos="fade-down"
+      data-aos-duration="1500"
+      data-aos-easing="ease-in-out"
+    >
+      <ArtistDetails>{name}</ArtistDetails>
+      <Container>
+        <div>
+          <h2>Current Top Tracks</h2>
+          <div>
+            <ArtistTracks>{displayTracks}</ArtistTracks>
+          </div>
+        </div>
+        <div>
+          <h2>Related Artists</h2>
+          <RelatedArtists>{displayRelatedArtists}</RelatedArtists>
+        </div>
+      </Container>
     </div>
   );
 };

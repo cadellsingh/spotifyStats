@@ -19,7 +19,8 @@ const RecentlyPlayedTracks = () => {
   const displayTracks =
     recentTracks &&
     recentTracks.map((data, index) => {
-      return <DisplayTrack key={index} data={data} type="recent" />;
+      const { track } = data;
+      return <DisplayTrack key={index} data={track} />;
     });
 
   return (

@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { getMyRecentlyPlayed } from "../../spotify/apis";
-import { ContainerBackgroundColor, TextColor } from "../../styles/sharedStyles";
+import { TextColor, ContainerBackground } from "../../styles/sharedStyles";
 import DisplayTrack from "../DisplayTrack";
 
 const Container = styled.div`
   & h2 {
     margin: auto 0;
-    padding: 15px;
-    border-radius: 10px;
-    ${ContainerBackgroundColor};
+    ${ContainerBackground};
     ${TextColor};
   }
 `;
@@ -20,9 +18,7 @@ const TracksContainer = styled.div`
   grid-row-gap: 15px;
   grid-column-gap: 20px;
   margin-top: 15px;
-  padding: 15px;
-  border-radius: 10px;
-  ${ContainerBackgroundColor};
+  ${ContainerBackground};
 
   @media (max-width: 1050px) {
     grid-template-columns: 1fr;
@@ -45,7 +41,8 @@ const AllRecentlyPlayed = () => {
   const displayTracks =
     recentTracks &&
     recentTracks.map((data, index) => {
-      return <DisplayTrack key={index} data={data} type="recent" />;
+      const { track } = data;
+      return <DisplayTrack key={index} data={track} />;
     });
 
   return (

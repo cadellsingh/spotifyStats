@@ -38,7 +38,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
   }
 
-  h2 {
+  h2, h3 {
     ${TextColor}
   }
 `;

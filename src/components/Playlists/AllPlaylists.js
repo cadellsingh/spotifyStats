@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ContainerBackgroundColor } from "../../styles/sharedStyles";
+import { ContainerBackground } from "../../styles/sharedStyles";
 import GlobalTopPlaylists from "./GlobalTopPlaylists";
 import UserPlaylists from "./UserPlaylists";
 
@@ -10,17 +10,13 @@ const Container = styled.div`
 
   & div h2 {
     grid-column: span 2 / auto;
-    padding: 15px;
-    border-radius: 10px;
-    ${ContainerBackgroundColor};
+    ${ContainerBackground};
   }
 `;
 
 const PlaylistsContainer = styled.div`
   margin-top: 15px;
-  padding: 15px;
-  border-radius: 10px;
-  ${ContainerBackgroundColor};
+  ${ContainerBackground};
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 15px;

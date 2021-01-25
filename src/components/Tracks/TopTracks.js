@@ -3,8 +3,6 @@ import { getMyTopTracks } from "../../spotify/apis";
 import { TracksContainer, TracksText } from "../../styles/sharedContainers";
 import DisplayTrack from "../DisplayTrack";
 import { Link, useRouteMatch } from "react-router-dom";
-import styled from "styled-components";
-import { ContainerBackgroundColor } from "../../styles/sharedStyles";
 
 const TopTracks = () => {
   const { url } = useRouteMatch();
@@ -22,7 +20,7 @@ const TopTracks = () => {
   const displayTracks =
     topTracks &&
     topTracks.map((data, index) => {
-      return <DisplayTrack key={index} data={data} type="top" />;
+      return <DisplayTrack key={index} data={data} />;
     });
 
   return (

@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { ContainerBackgroundColor, TextColor } from "../../styles/sharedStyles";
+import { TextColor, ContainerBackground } from "../../styles/sharedStyles";
 import { getMyTopTracks } from "../../spotify/apis";
 import DisplayTrack from "../DisplayTrack";
 
 const Text = styled.div`
   margin-bottom: 15px;
-  padding: 15px;
-  border-radius: 10px;
-  ${ContainerBackgroundColor};
+  ${ContainerBackground};
 
   & h2 {
     ${TextColor}
@@ -48,9 +46,7 @@ const TracksContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 15px;
   grid-column-gap: 20px;
-  padding: 15px;
-  border-radius: 10px;
-  ${ContainerBackgroundColor};
+  ${ContainerBackground};
 
   @media (max-width: 1050px) {
     grid-template-columns: 1fr;
@@ -74,7 +70,7 @@ const AllTopTracks = () => {
   const displayTracks =
     topTracks &&
     topTracks.map((data, index) => {
-      return <DisplayTrack key={index} data={data} type="top" />;
+      return <DisplayTrack key={index} data={data} />;
     });
 
   return (
