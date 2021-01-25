@@ -63,9 +63,28 @@ export const getPopularPlaylists = async (type) => {
 export const getPlaylist = async (id) => {
   const data = await spotifyApi.getPlaylist(id);
   const { description, images, name, tracks } = data;
-  const { url } = images[0];
+  const { url: imageUrl } = images[0];
   const { items } = tracks;
-  return { description, url, name, items };
+  return { description, imageUrl, name, items };
+};
+
+export const getArtist = async (id) => {
+  const data = await spotifyApi.getArtist(id);
+  const { followers, genres, images, name } = data;
+  const { url: imageUrl } = images[0];
+  return { followers, genres, imageUrl, name };
+};
+
+export const getArtistTopTracks = async (id, code) => {
+  const data = await spotifyApi.getArtistTopTracks(id, code);
+  const { tracks } = data;
+  return tracks;
+};
+
+export const getArtistRelatedArtists = async (id) => {
+  const data = await spotifyApi.getArtistRelatedArtists(id);
+  const { artists } = data;
+  return artists;
 };
 
 export const getTrack = async (trackId) => {
