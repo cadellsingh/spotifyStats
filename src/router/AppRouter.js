@@ -4,20 +4,21 @@ import Login from "../components/Login";
 import Profile from "../components/Profile";
 import Redirect from "../components/Redirect";
 import Aos from "aos";
-import { setAccessToken } from "../spotify/apis";
+import { setSpotifyToken } from "../spotify/apis";
 import { GlobalStyles } from "../styles/globalStyling";
+import { getAccessTokenFromStorage } from "../spotify/tokens";
 
 const AppRouter = () => {
   const [accessToken, setToken] = useState("");
 
   useEffect(() => {
     Aos.init();
-    const params = JSON.parse(localStorage.getItem("params"));
+    const params = getAccessTokenFromStorage();
 
     if (params) {
       const { access_token } = params;
       setToken(access_token);
-      setAccessToken(access_token);
+      setSpotifyToken(access_token);
     }
   }, []);
 

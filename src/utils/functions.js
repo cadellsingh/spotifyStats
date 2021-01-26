@@ -1,3 +1,5 @@
+import { removeToken } from "../spotify/tokens";
+
 export const getParamValues = (url) => {
   return url
     .slice(1)
@@ -17,7 +19,7 @@ export const millisToMinutesAndSeconds = (millis) => {
 
 export const handleLogout = () => {
   console.log("logging out");
-  window.localStorage.removeItem("params");
+  removeToken();
   window.location.reload();
 };
 

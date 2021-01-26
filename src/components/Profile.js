@@ -14,6 +14,7 @@ import AudioAnalysis from "./AudioAnalysis";
 import NotFound from "./NotFound";
 import Logout from "./Logout";
 import { handleLogout } from "../utils/functions";
+import { getAccessTokenFromStorage, getExpiryTime } from "../spotify/tokens";
 
 const Layout = styled.div`
   display: grid;
@@ -29,7 +30,10 @@ const Layout = styled.div`
 
 const Profile = () => {
   useEffect(() => {
-    const expiry = localStorage.getItem("expiry_time");
+    const token = getAccessTokenFromStorage();
+    console.log(token);
+
+    const expiry = getExpiryTime();
     const timer = setTimeout(() => handleLogout(), 5000);
     return () => clearTimeout(timer);
   }, []);

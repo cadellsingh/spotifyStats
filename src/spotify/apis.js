@@ -2,7 +2,7 @@ import SpotifyWebApi from "spotify-web-api-js";
 
 const spotifyApi = new SpotifyWebApi();
 
-export const setAccessToken = (token) => {
+export const setSpotifyToken = (token) => {
   spotifyApi.setAccessToken(token);
 };
 
