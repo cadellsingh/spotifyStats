@@ -6,7 +6,7 @@ const GlobalTopPlaylists = () => {
   const [playlists, setPlaylists] = useState([]);
 
   const getData = async () => {
-    const data = await getPopularPlaylists("party");
+    const data = await getPopularPlaylists("toplists");
     setPlaylists(data);
   };
 

@@ -24,8 +24,14 @@ const Img = styled.img`
   margin-right: 15px;
 `;
 
-const Artists = styled.div`
+const Artists = styled.p`
   display: flex;
+  flex-wrap: wrap;
+`;
+
+const SongName = styled.p`
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const Duration = styled.p`
@@ -53,17 +59,17 @@ const DisplayTrack = ({ data }) => {
 
   const displayArtists =
     artists &&
-    artists.map((artist, index) => {
+    artists.map((artist) => {
       const { name } = artist;
-      return <p key={index}>{name}</p>;
+      return name;
     });
 
   const displayTrack = images ? (
     <StyledTrack>
       <div>{displayImg}</div>
       <div>
-        <p>{name}</p>
-        <Artists>{displayArtists}</Artists>
+        <SongName>{name}</SongName>
+        <Artists>{displayArtists.join(" ")}</Artists>
       </div>
       <Duration>{duration}</Duration>
     </StyledTrack>

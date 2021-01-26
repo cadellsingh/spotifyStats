@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { getPlaylist } from "../../spotify/apis";
 import { ContainerBackground } from "../../styles/sharedStyles";
 import DisplayTrack from "../DisplayTrack";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeadphonesAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Container = styled.div`
   width: 100%;
@@ -19,6 +21,10 @@ const PlaylistInfo = styled.div`
     height: auto;
     border-radius: 10px;
     height: auto;
+  }
+
+  & span {
+    font-size: 120px;
   }
 
   & div {
@@ -92,6 +98,14 @@ const Playlist = () => {
       return <DisplayTrack key={index} data={track} />;
     });
 
+  const displayImg = imageUrl ? (
+    <img src={imageUrl} alt={name} />
+  ) : (
+    <span>
+      <FontAwesomeIcon icon={faHeadphonesAlt} />
+    </span>
+  );
+
   return (
     <Container
       data-aos="fade-down"
@@ -99,7 +113,7 @@ const Playlist = () => {
       data-aos-easing="ease-in-out"
     >
       <PlaylistInfo>
-        <img src={imageUrl} alt={name} />
+        {displayImg}
         <div>
           <h3>{name}</h3>
           <p>{description}</p>

@@ -15,8 +15,10 @@ const Redirect = () => {
       }
 
       const access_token = getParamValues(location.hash);
+      const tokenTimestamp = Date.now();
       const expiryTime = access_token.expires_in * 1000;
 
+      localStorage.setItem("tokenTimestamp", tokenTimestamp);
       localStorage.setItem("params", JSON.stringify(access_token));
       localStorage.setItem("expiry_time", expiryTime);
 

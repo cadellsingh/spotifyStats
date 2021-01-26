@@ -16,8 +16,9 @@ const Container = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 15px;
 
-  & h2 {
+  & h3 {
     ${ContainerBackground};
+    font-size: 22px;
     margin: 15px 0;
   }
 
@@ -29,6 +30,18 @@ const Container = styled.div`
 const ArtistDetails = styled.div`
   display: flex;
   ${ContainerBackground};
+
+  & h3 {
+    font-size: 25px;
+  }
+
+  & p {
+    font-size: 20px;
+  }
+
+  & p:first-of-type {
+    margin: 6px 0;
+  }
 
   & img {
     max-width: 100%;
@@ -65,11 +78,11 @@ const Artist = () => {
   const [artistInfo, setArtistInfo] = useState([]);
 
   const getData = async () => {
-    const { followers, genres, imageUrl, name } = await getArtist(artistId);
+    const { total, genres, imageUrl, name } = await getArtist(artistId);
     const topTracks = await getArtistTopTracks(artistId, "US");
     const relatedArtists = await getArtistRelatedArtists(artistId);
     setArtistInfo({
-      followers,
+      total,
       genres,
       imageUrl,
       name,
@@ -83,17 +96,13 @@ const Artist = () => {
   }, []);
 
   const {
-    followers,
+    total,
     genres,
     imageUrl,
     name,
     topTracks,
     relatedArtists,
   } = artistInfo;
-
-  console.log(genres);
-
-  // const { total } = followers;
 
   const displayTracks =
     topTracks &&
@@ -118,19 +127,19 @@ const Artist = () => {
         <div>
           {/* data is undefined */}
           <h3>{name}</h3>
-          {/* <p>Followers: {formatNumber(total)}</p> */}
-          <p>Genres: {genres.join(", ")}</p>
+          <p>Followers: {total}</p>
+          <p>Genres: {genres && genres.join(", ")}</p>
         </div>
       </ArtistDetails>
       <Container>
         <div>
-          <h2>Current Top Tracks</h2>
+          <h3>Current Top Tracks</h3>
           <div>
             <ArtistTracks>{displayTracks}</ArtistTracks>
           </div>
         </div>
         <div>
-          <h2>Related Artists</h2>
+          <h3>Related Artists</h3>
           <RelatedArtists>{displayRelatedArtists}</RelatedArtists>
         </div>
       </Container>

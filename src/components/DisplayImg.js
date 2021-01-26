@@ -1,20 +1,33 @@
 // used for displaying artist/playlist img in TopArtists / Playlists component
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { faHeadphonesAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 
 const ImgContainer = styled.div`
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  :hover {
+    transition: ease-in 0.4s;
+    opacity: 0.6;
+  }
+`;
+
+const Icon = styled.div`
+  width: 100%;
+  height: 100%;
+  font-size: 150px;
+  text-align: center;
 
   & span {
-    border: 1px solid red;
-    width: 100%;
-    font-size: 50px;
+    margin: auto;
+  }
+
+  @media (max-width: 450px) {
+    font-size: 100px;
   }
 `;
 
@@ -27,6 +40,7 @@ const Img = styled.img`
 `;
 
 const DisplayImg = ({ data, type }) => {
+  const { url } = useRouteMatch();
   const { name, images, id } = data || {};
 
   let displayImg;
@@ -36,9 +50,11 @@ const DisplayImg = ({ data, type }) => {
     displayImg = <Img src={url} alt={name} />;
   } else {
     displayImg = (
-      <span>
-        <FontAwesomeIcon icon={faUserAlt} />
-      </span>
+      <Icon>
+        <span>
+          <FontAwesomeIcon icon={faHeadphonesAlt} />
+        </span>
+      </Icon>
     );
   }
 

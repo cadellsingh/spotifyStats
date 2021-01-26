@@ -30,7 +30,7 @@ const Layout = styled.div`
 const Profile = () => {
   useEffect(() => {
     const expiry = localStorage.getItem("expiry_time");
-    const timer = setTimeout(() => handleLogout(), expiry);
+    const timer = setTimeout(() => handleLogout(), 5000);
     return () => clearTimeout(timer);
   }, []);
 
