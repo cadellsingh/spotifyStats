@@ -14,3 +14,13 @@ export const millisToMinutesAndSeconds = (millis) => {
   let seconds = ((millis % 60000) / 1000).toFixed(0);
   return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 };
+
+export const handleLogout = () => {
+  console.log("logging out");
+  window.localStorage.removeItem("params");
+  window.location.reload();
+};
+
+export const formatNumber = (str) => {
+  return String(str).replace(/(.)(?=(\d{3})+$)/g, "$1,");
+};

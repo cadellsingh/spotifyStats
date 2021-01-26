@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { TextColor, ContainerBackground } from "../styles/sharedStyles";
+import { handleLogout } from "../utils/functions";
 
 const LogoutButton = styled.button`
   width: 100%;
@@ -13,12 +14,7 @@ const LogoutButton = styled.button`
 `;
 
 const Logout = () => {
-  const handleClick = () => {
-    window.localStorage.removeItem("params");
-    window.location.reload();
-  };
-
-  return <LogoutButton onClick={handleClick}>Logout</LogoutButton>;
+  return <LogoutButton onClick={handleLogout}>Logout</LogoutButton>;
 };
 
 export default Logout;
