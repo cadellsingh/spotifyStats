@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import AllPlaylists from "./Playlists/AllPlaylists";
 import styled from "styled-components";
@@ -11,6 +12,8 @@ import Track from "./Tracks/Track";
 import Artist from "./Artists/Artist";
 import AudioAnalysis from "./AudioAnalysis";
 import NotFound from "./NotFound";
+import Logout from "./Logout";
+import { handleLogout } from "../utils/functions";
 
 const Layout = styled.div`
   display: grid;
@@ -25,6 +28,12 @@ const Layout = styled.div`
 `;
 
 const Profile = () => {
+  useEffect(() => {
+    const expiry = localStorage.getItem("expiry_time");
+    const timer = setTimeout(() => handleLogout(), expiry);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Layout>
       <Nav />

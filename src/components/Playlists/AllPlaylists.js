@@ -12,10 +12,14 @@ const Container = styled.div`
     grid-column: span 2 / auto;
     ${ContainerBackground};
   }
+
+  @media (max-width: 950px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const PlaylistsContainer = styled.div`
-  margin-top: 15px;
+  margin: 15px 0;
   ${ContainerBackground};
   display: grid;
   grid-template-columns: 1fr 1fr;

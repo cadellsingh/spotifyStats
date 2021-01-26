@@ -21,12 +21,6 @@ const PlaylistInfo = styled.div`
     height: auto;
   }
 
-  @media (max-width: 500px) {
-    & img {
-      width: 150px;
-    }
-  }
-
   & div {
     display: flex;
     flex-direction: column;
@@ -54,6 +48,10 @@ const PlaylistInfo = styled.div`
 
     & div p {
       font-size: 15px;
+    }
+
+    & div h3 {
+      font-size: 22px;
     }
   }
 `;

@@ -9,6 +9,7 @@ import {
 import { ContainerBackground } from "../../styles/sharedStyles";
 import DisplayTrack from "../DisplayTrack";
 import DisplayImg from "../DisplayImg";
+import { formatNumber } from "../../utils/functions";
 
 const Container = styled.div`
   display: grid;
@@ -19,10 +20,30 @@ const Container = styled.div`
     ${ContainerBackground};
     margin: 15px 0;
   }
+
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const ArtistDetails = styled.div`
+  display: flex;
   ${ContainerBackground};
+
+  & img {
+    max-width: 100%;
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    height: auto;
+  }
+
+  & div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 25px;
+    margin-top: 25px;
+  }
 `;
 
 const ArtistTracks = styled.div`
@@ -70,6 +91,10 @@ const Artist = () => {
     relatedArtists,
   } = artistInfo;
 
+  console.log(genres);
+
+  // const { total } = followers;
+
   const displayTracks =
     topTracks &&
     topTracks.map((data, index) => {
@@ -88,7 +113,15 @@ const Artist = () => {
       data-aos-duration="1500"
       data-aos-easing="ease-in-out"
     >
-      <ArtistDetails>{name}</ArtistDetails>
+      <ArtistDetails>
+        <img src={imageUrl} alt={name} />
+        <div>
+          {/* data is undefined */}
+          <h3>{name}</h3>
+          {/* <p>Followers: {formatNumber(total)}</p> */}
+          <p>Genres: {genres.join(", ")}</p>
+        </div>
+      </ArtistDetails>
       <Container>
         <div>
           <h2>Current Top Tracks</h2>

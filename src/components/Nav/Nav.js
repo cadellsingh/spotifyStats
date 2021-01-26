@@ -12,7 +12,7 @@ const Nav = () => {
 
     const resizeListener = () => {
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => setWidth(window.innerWidth), 500);
+      timeoutId = setTimeout(() => setWidth(window.innerWidth), 1000);
     };
 
     window.addEventListener("resize", resizeListener);

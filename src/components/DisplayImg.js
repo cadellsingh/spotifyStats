@@ -7,7 +7,6 @@ import styled from "styled-components";
 
 const ImgContainer = styled.div`
   cursor: pointer;
-  /* text-align: center; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,16 +42,11 @@ const DisplayImg = ({ data, type }) => {
     );
   }
 
-  console.log(images);
-
-  const linkUrl = type === "artist" ? `artist/${id}` : `playlist/${id}`;
+  const linkUrl = type === "artist" ? `/artist/${id}` : `/playlist/${id}`;
 
   return (
     <Link to={linkUrl}>
-      <ImgContainer>
-        {/* <Img src={test} alt={name} /> */}
-        {displayImg}
-      </ImgContainer>
+      <ImgContainer>{displayImg}</ImgContainer>
     </Link>
   );
 };
