@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { getMyTopArtists } from "../../spotify/apis";
+import { SixGridContainer } from "../../styles/sharedContainers";
 import { TextColor, ContainerBackground } from "../../styles/sharedStyles";
 import DisplayImg from "../DisplayImg";
 
@@ -101,7 +102,7 @@ const AllTopArtists = () => {
           </RangeButton>
         </Range>
       </Text>
-      <ArtistsContainer>{displayArtists}</ArtistsContainer>
+      <SixGridContainer>{displayArtists}</SixGridContainer>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getMyRecentlyPlayed } from "../../spotify/apis";
-import { TracksText, TracksContainer } from "../../styles/sharedContainers";
+import { SeeMoreText2, OneGridContainer } from "../../styles/sharedContainers";
 import DisplayTrack from "../DisplayTrack";
 import { Link } from "react-router-dom";
 
@@ -24,17 +24,15 @@ const RecentlyPlayedTracks = () => {
     });
 
   return (
-    <div>
-      <TracksContainer>
-        <TracksText>
-          <h2>Recently Played</h2>
-          <span>
-            <Link to="/recentlyPlayed">See more</Link>
-          </span>
-        </TracksText>
-        {displayTracks}
-      </TracksContainer>
-    </div>
+    <OneGridContainer>
+      <SeeMoreText2>
+        <h2>Recently Played</h2>
+        <span>
+          <Link to="/recentlyPlayed">See more</Link>
+        </span>
+      </SeeMoreText2>
+      {displayTracks}
+    </OneGridContainer>
   );
 };
 

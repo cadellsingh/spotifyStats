@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-import AllPlaylists from "./Playlists/AllPlaylists";
 import styled from "styled-components";
 import Nav from "./Nav/Nav";
 import AllTopArtists from "./Artists/AllTopArtists";
@@ -10,11 +9,11 @@ import AllRecentlyPlayed from "./RecentlyPlayed/AllRecentlyPlayed";
 import Playlist from "./Playlists/Playlist";
 import Track from "./Tracks/Track";
 import Artist from "./Artists/Artist";
-import AudioAnalysis from "./AudioAnalysis";
 import NotFound from "./NotFound";
-import Logout from "./Logout";
 import { handleLogout } from "../utils/functions";
-import { getAccessTokenFromStorage, getExpiryTime } from "../spotify/tokens";
+import { getExpiryTime, tokenExpired } from "../spotify/tokens";
+import UserPlaylists from "./Playlists/UserPlaylists";
+import AllPlaylists from "./SpotifyPlaylists/AllPlaylists";
 
 const Layout = styled.div`
   display: grid;
@@ -30,11 +29,10 @@ const Layout = styled.div`
 
 const Profile = () => {
   useEffect(() => {
-    const token = getAccessTokenFromStorage();
-    console.log(token);
+    tokenExpired();
 
     const expiry = getExpiryTime();
-    const timer = setTimeout(() => handleLogout(), 5000);
+    const timer = setTimeout(() => handleLogout(), expiry);
     return () => clearTimeout(timer);
   }, []);
 
@@ -44,9 +42,9 @@ const Profile = () => {
       <Switch>
         <Route exact path="/" component={MainContent} />
 
-        {/* <Route path="/audioAnalysis" component={AudioAnalysis} /> */}
+        <Route path="/spotifyPlaylists" component={AllPlaylists} />
 
-        <Route path="/playlists" component={AllPlaylists} />
+        <Route path="/playlists" component={UserPlaylists} />
         <Route path="/playlist/:playlistId" component={Playlist} />
 
         <Route path="/artists" component={AllTopArtists} />
@@ -54,8 +52,6 @@ const Profile = () => {
 
         <Route path="/tracks" component={AllTopTracks} />
         <Route path="/track/:trackId" component={Track} />
-
-        {/* <Route path="/topGenres" component={TopGenres} /> */}
 
         <Route path="/recentlyPlayed" component={AllRecentlyPlayed} />
 

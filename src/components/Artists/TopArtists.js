@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getMyTopArtists } from "../../spotify/apis";
-import { StyledContainer } from "../../styles/sharedContainers";
+import { ThreeGridContainer, SeeMoreText } from "../../styles/sharedContainers";
 import DisplayImg from "../DisplayImg";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ const TopArtists = () => {
   const [topArtists, setTopArtists] = useState([]);
 
   const getData = async () => {
-    const data = await getMyTopArtists(4);
+    const data = await getMyTopArtists(6);
     setTopArtists(data);
   };
 
@@ -23,17 +23,15 @@ const TopArtists = () => {
     });
 
   return (
-    <div>
-      <StyledContainer>
-        <div>
-          <h2>Top Artists</h2>
-          <span>
-            <Link to="/artists">See more</Link>
-          </span>
-        </div>
-        {displayArtists}
-      </StyledContainer>
-    </div>
+    <ThreeGridContainer>
+      <SeeMoreText>
+        <h2>Top Artists</h2>
+        <span>
+          <Link to="/artists">See more</Link>
+        </span>
+      </SeeMoreText>
+      {displayArtists}
+    </ThreeGridContainer>
   );
 };
 

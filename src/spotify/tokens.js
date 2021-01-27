@@ -11,6 +11,10 @@ export const setTokenTimestamp = () => {
   localStorage.setItem("tokenTimestamp", tokenTimestamp);
 };
 
+export const getTokenTimestamp = () => {
+  return localStorage.getItem("tokenTimestamp");
+};
+
 export const setExpiryTime = (time) => {
   localStorage.setItem("expiry_time", time * 1000);
 };
@@ -21,4 +25,11 @@ export const getExpiryTime = () => {
 
 export const removeToken = () => {
   window.localStorage.removeItem("params");
+};
+
+export const tokenExpired = () => {
+  if (Date.now() - getTokenTimestamp() > getExpiryTime()) {
+    removeToken();
+    window.location.reload();
+  }
 };

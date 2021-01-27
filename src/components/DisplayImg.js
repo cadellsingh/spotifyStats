@@ -34,13 +34,12 @@ const Icon = styled.div`
 const Img = styled.img`
   max-width: 100%;
   width: 100%;
-  height: 30vh;
+  height: 25vh;
   object-fit: cover;
   border-radius: 15px;
 `;
 
 const DisplayImg = ({ data, type }) => {
-  const { url } = useRouteMatch();
   const { name, images, id } = data || {};
 
   let displayImg;
@@ -59,6 +58,8 @@ const DisplayImg = ({ data, type }) => {
   }
 
   const linkUrl = type === "artist" ? `/artist/${id}` : `/playlist/${id}`;
+
+  // i could prob pass a prop saying to include link or no
 
   return (
     <Link to={linkUrl}>

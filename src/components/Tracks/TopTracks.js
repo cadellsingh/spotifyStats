@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { getMyTopTracks } from "../../spotify/apis";
-import { TracksContainer, TracksText } from "../../styles/sharedContainers";
+import { OneGridContainer, SeeMoreText2 } from "../../styles/sharedContainers";
 import DisplayTrack from "../DisplayTrack";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const TopTracks = () => {
-  const { url } = useRouteMatch();
   const [topTracks, setTopTracks] = useState([]);
 
   const getData = async () => {
@@ -24,17 +23,15 @@ const TopTracks = () => {
     });
 
   return (
-    <div>
-      <TracksContainer>
-        <TracksText>
-          <h2>Top Tracks</h2>
-          <span>
-            <Link to="/tracks">See more</Link>
-          </span>
-        </TracksText>
-        {displayTracks}
-      </TracksContainer>
-    </div>
+    <OneGridContainer>
+      <SeeMoreText2>
+        <h2>Top Tracks</h2>
+        <span>
+          <Link to="/tracks">See more</Link>
+        </span>
+      </SeeMoreText2>
+      {displayTracks}
+    </OneGridContainer>
   );
 };
 

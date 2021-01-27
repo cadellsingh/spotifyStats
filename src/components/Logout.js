@@ -4,7 +4,6 @@ import { handleLogout } from "../utils/functions";
 
 const LogoutButton = styled.button`
   width: 100%;
-  margin-top: 15px;
   ${ContainerBackground};
   cursor: pointer;
 

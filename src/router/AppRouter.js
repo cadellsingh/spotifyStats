@@ -31,8 +31,6 @@ const AppRouter = () => {
   );
 };
 
-// prob dont need redirect component
-
 // um you look a bit lost,  lets get you back home
 
 export default AppRouter;

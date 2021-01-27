@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { ContainerBackgroundColor } from "../../styles/sharedStyles";
+import {
+  ContainerBackgroundColor,
+  ContainerBackground,
+} from "../../styles/sharedStyles";
 import Header from "../Header";
 import NavListItem from "../NavListItem";
 import Logout from "../Logout";
@@ -14,28 +17,9 @@ const StyledNav = styled.nav`
   border-radius: 10px;
 `;
 
-const UserContainer = styled.div`
-  margin: 20px 0;
-  padding: 20px;
-  border-radius: 10px;
-  ${ContainerBackgroundColor}
-
-  & img {
-    max-width: 100%;
-    height: 150px;
-    border-radius: 10px;
-    margin: 15px 0;
-  }
-
-  & span {
-    font-size: 30px;
-  }
-`;
-
 const StyledUl = styled.ul`
-  padding: 20px;
-  border-radius: 10px;
-  ${ContainerBackgroundColor};
+  margin: 15px 0;
+  ${ContainerBackground};
   text-align: left;
   list-style: none;
   font-size: 16px;
@@ -55,19 +39,15 @@ const DesktopNav = ({ userInfo }) => {
   return (
     <StyledNav>
       <Header />
-
-      <UserContainer>
-        <p>{displayName}</p>
-
-        {displayImg}
-      </UserContainer>
       <StyledUl>
         <NavListItem listItem="Profile" link="" />
-        <NavListItem listItem="Audio Analysis" link="/audioAnalysis" />
-        <NavListItem listItem="Playlists" link="/playlists" />
-        <NavListItem listItem="Top Tracks" link="/tracks" />
-        <NavListItem listItem="Top Artists" link="/artists" />
-        <NavListItem listItem="Top Genres" link="/genres" />
+        <NavListItem listItem="Charts" link="/charts" />
+        <NavListItem listItem="Spotify Playlists" link="/spotifyPlaylists" />
+        <NavListItem listItem="New Releases" link="/newReleases" />
+
+        <NavListItem listItem="Your Playlists" link="/playlists" />
+        <NavListItem listItem="Your Top Tracks" link="/tracks" />
+        <NavListItem listItem="Your Top Artists" link="/artists" />
         <NavListItem listItem="Recently Played" link="/recentlyPlayed" />
       </StyledUl>
 

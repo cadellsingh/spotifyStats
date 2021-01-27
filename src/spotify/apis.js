@@ -82,6 +82,16 @@ export const getArtistTopTracks = async (id, code) => {
   return tracks;
 };
 
+export const getArtistAlbums = async (id, type, code) => {
+  const data = await spotifyApi.getArtistAlbums(id, {
+    include_groups: type,
+    market: code,
+    limit: 10,
+  });
+  const { items } = data;
+  return items;
+};
+
 export const getArtistRelatedArtists = async (id) => {
   const data = await spotifyApi.getArtistRelatedArtists(id);
   const { artists } = data;
@@ -90,4 +100,16 @@ export const getArtistRelatedArtists = async (id) => {
 
 export const getTrack = async (trackId) => {
   return await spotifyApi.getTrack(trackId);
+};
+
+export const getAllCategories = async () => {
+  const data = await spotifyApi.getCategories();
+  const { categories } = data;
+  const { items } = categories;
+  return items;
+};
+
+export const getCategoryPlaylists = async (id) => {
+  const data = await spotifyApi.getCategoryPlaylists(id);
+  return data;
 };

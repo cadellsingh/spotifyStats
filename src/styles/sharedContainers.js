@@ -1,72 +1,66 @@
 import styled from "styled-components";
-import { ContainerBackgroundColor, ContainerBackground } from "./sharedStyles";
+import { ContainerBackground } from "./sharedStyles";
 
-// this container is used for TopArtists / Playlists
-// on Profile page
-export const StyledContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-  ${ContainerBackground};
-
-  & div:first-of-type {
-    grid-column: span 2 / auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  & div:first-of-type p:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-
-  & span:hover {
-    text-decoration: underline;
-  }
-`;
-
-// this is used for Top Tracks & Recently Played Tracks
-// on Profile Page
-export const TracksContainer = styled.div`
-  width: 100%;
+export const OneGridContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-row-gap: 10px;
   ${ContainerBackground};
+`;
 
-  & div:first-of-type {
-    display: flex;
-    align-items: center;
-  }
+export const ThreeGridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  ${ContainerBackground};
 
-  & div:first-of-type p:first-of-type {
-    margin-right: 5px;
-  }
-
-  @media (max-width: 900px) {
-    width: 100%;
-  }
-
-  @media (max-width: 800px) {
-    grid-column: span 1 / auto;
+  @media (max-width: 450px) {
+    grid-template-columns: 1fr 1fr;
   }
 `;
 
-// this is used for Top Tracks & Recently Played Tracks
-// on Profile Page
-export const TracksText = styled.div`
+// use for top artists / playlists on profile page
+export const SeeMoreText = styled.div`
+  grid-column: span 3 / auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  & h2 {
-    margin-right: 5px;
-    margin-bottom: 15px;
-  }
+  margin-bottom: 10px;
 
   & span:hover {
-    cursor: pointer;
     text-decoration: underline;
+  }
+
+  @media (max-width: 450px) {
+    grid-column: span 2 / auto;
+  }
+`;
+
+// use for top tracks / recently played on profile page
+export const SeeMoreText2 = styled(SeeMoreText)`
+  grid-column: span 1 / auto;
+`;
+
+export const SixGridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 20px;
+  ${ContainerBackground};
+
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  @media (max-width: 850px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 720px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 450px) {
+    grid-template-columns: 1fr 1fr;
   }
 `;
