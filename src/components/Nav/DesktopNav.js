@@ -1,13 +1,8 @@
 import styled from "styled-components";
-import {
-  ContainerBackgroundColor,
-  ContainerBackground,
-} from "../../styles/sharedStyles";
+import { ContainerBackground } from "../../styles/sharedStyles";
 import Header from "../Header";
 import NavListItem from "../NavListItem";
 import Logout from "../Logout";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
 
 const StyledNav = styled.nav`
   grid-row: span 2 / auto;
@@ -18,37 +13,47 @@ const StyledNav = styled.nav`
 `;
 
 const StyledUl = styled.ul`
-  margin: 15px 0;
   ${ContainerBackground};
   text-align: left;
   list-style: none;
   font-size: 16px;
+  margin-bottom: 15px;
 `;
 
-const DesktopNav = ({ userInfo }) => {
-  const { displayName, imageUrl } = userInfo;
+const User = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  ${ContainerBackground};
 
-  const displayImg = imageUrl ? (
-    <img src={imageUrl} alt={displayName} />
-  ) : (
-    <span>
-      <FontAwesomeIcon icon={faUserAlt} />
-    </span>
-  );
+  & p:first-child {
+    margin-right: 5px;
+  }
+`;
 
+const DesktopNav = ({ userName }) => {
   return (
     <StyledNav>
       <Header />
+      <User>
+        <p>Hi 👋🏽, </p>
+        <p>{userName}</p>
+      </User>
       <StyledUl>
         <NavListItem listItem="Profile" link="" />
-        <NavListItem listItem="Charts" link="/charts" />
-        <NavListItem listItem="Spotify Playlists" link="/spotifyPlaylists" />
-        <NavListItem listItem="New Releases" link="/newReleases" />
 
         <NavListItem listItem="Your Playlists" link="/playlists" />
         <NavListItem listItem="Your Top Tracks" link="/tracks" />
         <NavListItem listItem="Your Top Artists" link="/artists" />
         <NavListItem listItem="Recently Played" link="/recentlyPlayed" />
+
+        <NavListItem listItem="Charts" link="/charts" />
+        <NavListItem listItem="Spotify Playlists" link="/spotifyPlaylists" />
+        <NavListItem listItem="New Releases" link="/newReleases" />
+        <NavListItem listItem="Vibe Out" link="/vibeOut" />
       </StyledUl>
 
       <Logout />

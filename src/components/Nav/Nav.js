@@ -4,7 +4,7 @@ import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 
 const Nav = () => {
-  const [userInfo, setUserInfo] = useState({});
+  const [userName, setUserName] = useState("");
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -23,9 +23,8 @@ const Nav = () => {
   }, []);
 
   const getData = async () => {
-    const { displayName, imageUrl } = await getUserInfo();
-
-    setUserInfo({ displayName, imageUrl });
+    const name = await getUserInfo();
+    setUserName(name);
   };
 
   useEffect(() => {
@@ -34,7 +33,7 @@ const Nav = () => {
 
   return (
     <div>
-      {width <= 700 ? <MobileNav /> : <DesktopNav userInfo={userInfo} />}
+      {width <= 700 ? <MobileNav /> : <DesktopNav userName={userName} />}
     </div>
   );
 };
