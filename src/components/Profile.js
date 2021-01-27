@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import Nav from "./Nav/Nav";
-import AllTopArtists from "./Artists/AllTopArtists";
+import UserTopArtists from "./Artists/UserTopArtists";
 import MainContent from "./MainContent";
-import AllTopTracks from "./Tracks/AllTopTracks";
+import UserTopTracks from "./Tracks/UserTopTracks";
 import AllRecentlyPlayed from "./RecentlyPlayed/AllRecentlyPlayed";
 import Playlist from "./Playlists/Playlist";
 import Track from "./Tracks/Track";
@@ -13,7 +13,7 @@ import NotFound from "./NotFound";
 import { handleLogout } from "../utils/functions";
 import { getExpiryTime, tokenExpired } from "../spotify/tokens";
 import UserPlaylists from "./Playlists/UserPlaylists";
-import AllPlaylists from "./SpotifyPlaylists/AllPlaylists";
+import Categories from "./SpotifyPlaylists/Categories";
 
 const Layout = styled.div`
   display: grid;
@@ -39,24 +39,26 @@ const Profile = () => {
   return (
     <Layout>
       <Nav />
-      <Switch>
-        <Route exact path="/" component={MainContent} />
+      <div>
+        <Switch>
+          <Route exact path="/" component={MainContent} />
 
-        <Route path="/spotifyPlaylists" component={AllPlaylists} />
+          <Route path="/spotifyPlaylists" component={Categories} />
 
-        <Route path="/playlists" component={UserPlaylists} />
-        <Route path="/playlist/:playlistId" component={Playlist} />
+          <Route path="/playlists" component={UserPlaylists} />
+          <Route path="/playlist/:playlistId" component={Playlist} />
 
-        <Route path="/artists" component={AllTopArtists} />
-        <Route path="/artist/:artistId" component={Artist} />
+          <Route path="/artists" component={UserTopArtists} />
+          <Route path="/artist/:artistId" component={Artist} />
 
-        <Route path="/tracks" component={AllTopTracks} />
-        <Route path="/track/:trackId" component={Track} />
+          <Route path="/tracks" component={UserTopTracks} />
+          <Route path="/track/:trackId" component={Track} />
 
-        <Route path="/recentlyPlayed" component={AllRecentlyPlayed} />
+          <Route path="/recentlyPlayed" component={AllRecentlyPlayed} />
 
-        <Route component={NotFound} />
-      </Switch>
+          <Route component={NotFound} />
+        </Switch>
+      </div>
     </Layout>
   );
 };
