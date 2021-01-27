@@ -53,7 +53,7 @@ const ArtistsContainer = styled.div`
   }
 `;
 
-const AllTopArtists = () => {
+const UserTopArtists = () => {
   const [timeRange, setTimeRange] = useState("long_term");
   const [topArtists, setTopArtists] = useState([]);
 
@@ -107,4 +107,4 @@ const AllTopArtists = () => {
   );
 };
 
-export default AllTopArtists;
+export default UserTopArtists;
