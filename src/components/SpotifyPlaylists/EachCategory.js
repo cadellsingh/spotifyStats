@@ -41,8 +41,8 @@ const EachCategory = ({ categoryId, name }) => {
       const { name: playlistName, id } = playlist;
 
       return (
-        <Link to={`/playlist/${id}`}>
-          <p key={index}>{playlistName}</p>
+        <Link key={index} to={`/playlist/${id}`}>
+          <p>{playlistName}</p>
         </Link>
       );
     });

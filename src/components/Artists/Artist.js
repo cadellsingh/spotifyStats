@@ -81,9 +81,9 @@ const Artist = () => {
 
   return (
     <div
-    // data-aos="fade-down"
-    // data-aos-duration="1500"
-    // data-aos-easing="ease-in-out"
+      data-aos="fade-down"
+      data-aos-duration="1500"
+      data-aos-easing="ease-in-out"
     >
       <ArtistDetails>
         <div>
