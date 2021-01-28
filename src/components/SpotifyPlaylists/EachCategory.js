@@ -5,7 +5,7 @@ import { getCategoryPlaylists } from "../../spotify/apis";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-  ${ContainerBackground}
+  ${ContainerBackground};
 
   & h3 {
     font-size: 22px;
@@ -18,12 +18,28 @@ const Playlists = styled.div`
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 15px;
 
-  & p:hover {
+  & span:hover {
     text-decoration: underline;
   }
 `;
 
-const EachCategory = ({ categoryId, name }) => {
+const category = (arr) => {
+  const temp =
+    arr &&
+    arr.map((playlist, index) => {
+      const { name: playlistName, id } = playlist;
+
+      return (
+        <Link key={index} to={`/playlist/${id}`}>
+          <span>{playlistName}</span>
+        </Link>
+      );
+    });
+
+  return temp;
+};
+
+const EachCategory = ({ categoryId, name, query }) => {
   const [playlists, setPlaylists] = useState([]);
 
   const getData = async () => {
@@ -35,23 +51,22 @@ const EachCategory = ({ categoryId, name }) => {
     getData();
   }, []);
 
-  const displayPlaylistNames =
-    playlists &&
-    playlists.map((playlist, index) => {
-      const { name: playlistName, id } = playlist;
+  const filter = playlists.filter((playlist) => {
+    const { name: playlistName } = playlist;
+    return playlistName.toLowerCase().includes(query.toLowerCase());
+  });
 
-      return (
-        <Link key={index} to={`/playlist/${id}`}>
-          <p>{playlistName}</p>
-        </Link>
-      );
-    });
+  const displayCategory = query === "" ? category(playlists) : category(filter);
 
   return (
-    <Container>
-      <h3>{name}</h3>
-      <Playlists>{displayPlaylistNames}</Playlists>
-    </Container>
+    <>
+      {displayCategory.length !== 0 && (
+        <Container>
+          <h3>{name}</h3>
+          <Playlists>{displayCategory}</Playlists>
+        </Container>
+      )}
+    </>
   );
 };
 
