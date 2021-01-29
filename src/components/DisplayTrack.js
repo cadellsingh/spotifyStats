@@ -7,6 +7,13 @@ const StyledTrack = styled.div`
   display: flex;
   align-items: center;
 
+  opacity: ${(props) => (props.preview ? ".8" : ".5")};
+
+  :hover {
+    opacity: ${(props) => (props.preview ? "1" : ".5")};
+    cursor: ${(props) => (props.preview ? "pointer" : "default")};
+  }
+
   @media (max-width: 600px) {
     font-size: 13px;
   }
@@ -39,7 +46,8 @@ const Duration = styled.p`
 `;
 
 const DisplayTrack = ({ data }) => {
-  const { artists, name, album, duration_ms } = data || {};
+  const { artists, name, album, duration_ms, preview_url } = data || {};
+  let audio = new Audio(preview_url);
 
   const { images } = album || {};
   let displayImg;
@@ -64,8 +72,14 @@ const DisplayTrack = ({ data }) => {
       return name;
     });
 
+  const handleOnMouseEnter = () => audio.play();
+
   const displayTrack = images ? (
-    <StyledTrack>
+    <StyledTrack
+      preview={preview_url}
+      onMouseEnter={preview_url && handleOnMouseEnter}
+      onMouseLeave={() => audio.pause()}
+    >
       <div>{displayImg}</div>
       <div>
         <SongName>{name}</SongName>
