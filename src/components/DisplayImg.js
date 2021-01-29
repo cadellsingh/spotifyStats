@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeadphonesAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Img from "react-optimized-image";
+import Img from "react-cool-img";
 
 const ImgContainer = styled.div`
   cursor: pointer;
@@ -47,7 +47,21 @@ const DisplayImg = ({ data, type }) => {
 
   if (images && images.length > 0) {
     const { url } = images[0];
-    displayImg = <Image src={url} alt={name} />;
+    displayImg = (
+      <Img
+        style={{
+          maxWidth: "100%",
+          width: "100%",
+          height: "25vh",
+          objectFit: "cover",
+          borderRadius: "15px",
+        }}
+        lazy={true}
+        cache={true}
+        src={url}
+        alt={name}
+      />
+    );
   } else {
     displayImg = (
       <Icon>
@@ -61,6 +75,9 @@ const DisplayImg = ({ data, type }) => {
   const linkUrl = type === "artist" ? `/artist/${id}` : `/playlist/${id}`;
 
   // i could prob pass a prop saying to include link or no
+
+  // get current url
+  // compare & if its different then refresh
 
   return (
     <Link to={linkUrl}>
