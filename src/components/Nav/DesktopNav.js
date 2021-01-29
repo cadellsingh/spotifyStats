@@ -5,11 +5,12 @@ import NavListItem from "../NavListItem";
 import Logout from "../Logout";
 
 const StyledNav = styled.nav`
-  grid-row: span 2 / auto;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  border-radius: 10px;
+  position: fixed;
+  width: 230px;
+
+  @media (max-width: 800px) {
+    width: 200px;
+  }
 `;
 
 const StyledUl = styled.ul`

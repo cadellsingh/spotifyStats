@@ -21,6 +21,24 @@ const Playlists = styled.div`
   & span:hover {
     text-decoration: underline;
   }
+
+  @media (min-width: 1500px) {
+    span {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const category = (arr) => {

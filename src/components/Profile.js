@@ -17,9 +17,13 @@ import Categories from "./SpotifyPlaylists/Categories";
 
 const Layout = styled.div`
   display: grid;
-  grid-template-columns: 0.2fr 1fr;
+  grid-template-columns: 230px 1fr;
   grid-column-gap: 10px;
   padding: 20px 0;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 200px 1fr;
+  }
 
   @media (max-width: 700px) {
     grid-template-columns: 1fr;

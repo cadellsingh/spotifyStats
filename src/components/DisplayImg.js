@@ -2,8 +2,9 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeadphonesAlt } from "@fortawesome/free-solid-svg-icons";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Img from "react-optimized-image";
 
 const ImgContainer = styled.div`
   cursor: pointer;
@@ -31,7 +32,7 @@ const Icon = styled.div`
   }
 `;
 
-const Img = styled.img`
+const Image = styled.img`
   max-width: 100%;
   width: 100%;
   height: 25vh;
@@ -46,7 +47,7 @@ const DisplayImg = ({ data, type }) => {
 
   if (images && images.length > 0) {
     const { url } = images[0];
-    displayImg = <Img src={url} alt={name} />;
+    displayImg = <Image src={url} alt={name} />;
   } else {
     displayImg = (
       <Icon>

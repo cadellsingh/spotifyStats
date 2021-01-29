@@ -8,6 +8,10 @@ const StyledHeader = styled.header`
   ${ContainerBackground};
   ${TextColor};
 
+  & h1 {
+    text-align: center;
+  }
+
   & span {
     display: none;
   }

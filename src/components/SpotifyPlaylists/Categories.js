@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { ContainerBackground, TextColor } from "../../styles/sharedStyles";
+import { ContainerBackground } from "../../styles/sharedStyles";
 import { getAllCategories } from "../../spotify/apis";
 import EachCategory from "./EachCategory";
 
@@ -14,22 +14,33 @@ const Container = styled.div`
 const Header = styled.div`
   ${ContainerBackground};
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 500px) {
+    & h2 {
+      margin: 0 auto;
+    }
+  }
 `;
 
 const Input = styled.input`
-  background-color: inherit;
+  background-color: #17181c;
+  border-radius: 10px;
+  padding: 15px;
   outline: none;
   border: none;
-  border-bottom: 1px solid white;
   font-size: 16px;
-  width: 150px;
   color: white;
-  padding: 5px 0;
 
   ::placeholder {
     color: white;
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+    margin-top: 10px;
   }
 `;
 
