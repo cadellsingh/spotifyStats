@@ -20,7 +20,7 @@ const StyledTrack = styled.div`
 `;
 
 const Icon = styled.span`
-  font-size: 35px;
+  font-size: 40px;
   margin-right: 15px;
 `;
 
@@ -45,23 +45,35 @@ const Duration = styled.p`
   margin-left: auto;
 `;
 
-const DisplayTrack = ({ data }) => {
-  const { artists, name, album, duration_ms, preview_url } = data || {};
-  let audio = new Audio(preview_url);
-
+const getImage = (album, name) => {
   const { images } = album || {};
-  let displayImg;
+  let img;
 
   if (images && images.length > 0) {
     const { url } = images[0];
-    displayImg = <Img src={url} alt={name} />;
+    img = <Img src={url} alt={name} />;
   } else {
-    displayImg = (
+    img = (
       <Icon>
-        <FontAwesomeIcon icon={faMusic} />
+        <span>
+          <FontAwesomeIcon icon={faMusic} />
+        </span>
       </Icon>
     );
   }
+
+  return img;
+};
+
+const DisplayTrack = ({ data, imageUrl }) => {
+  const { artists, name, album, duration_ms, preview_url } = data || {};
+  let audio = new Audio(preview_url);
+
+  const displayImg = album ? (
+    getImage(album, name)
+  ) : (
+    <Img src={imageUrl} alt={name} />
+  );
 
   const duration = millisToMinutesAndSeconds(duration_ms);
 
@@ -73,23 +85,22 @@ const DisplayTrack = ({ data }) => {
     });
 
   const handleOnMouseEnter = () => audio.play();
+  const handleOnMouseLeave = () => audio.pause();
 
-  const displayTrack = images ? (
+  return (
     <StyledTrack
       preview={preview_url}
       onMouseEnter={preview_url && handleOnMouseEnter}
-      onMouseLeave={() => audio.pause()}
+      onMouseLeave={preview_url && handleOnMouseLeave}
     >
       <div>{displayImg}</div>
       <div>
         <SongName>{name}</SongName>
-        <Artists>{displayArtists.join(" ")}</Artists>
+        <Artists>{displayArtists && displayArtists.join(" ")}</Artists>
       </div>
       <Duration>{duration}</Duration>
     </StyledTrack>
-  ) : null;
-
-  return <> {displayTrack}</>;
+  );
 };
 
 export default DisplayTrack;

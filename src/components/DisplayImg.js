@@ -32,14 +32,6 @@ const Icon = styled.div`
   }
 `;
 
-const Image = styled.img`
-  max-width: 100%;
-  width: 100%;
-  height: 25vh;
-  object-fit: cover;
-  border-radius: 15px;
-`;
-
 const DisplayImg = ({ data, type }) => {
   const { name, images, id } = data || {};
 
@@ -56,8 +48,7 @@ const DisplayImg = ({ data, type }) => {
           objectFit: "cover",
           borderRadius: "15px",
         }}
-        lazy={true}
-        cache={true}
+        cache
         src={url}
         alt={name}
       />
@@ -72,7 +63,11 @@ const DisplayImg = ({ data, type }) => {
     );
   }
 
-  const linkUrl = type === "artist" ? `/artist/${id}` : `/playlist/${id}`;
+  const linkUrl = {
+    artist: `/artist/${id}`,
+    playlist: `/playlist/${id}`,
+    album: `/album/${id}`,
+  }[type];
 
   // i could prob pass a prop saying to include link or no
 
