@@ -8,6 +8,19 @@ export const OneGridContainer = styled.div`
   ${ContainerBackground};
 `;
 
+export const TwoGridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 15px;
+  grid-column-gap: 20px;
+  ${ContainerBackground};
+
+  @media (max-width: 1050px) {
+    grid-template-columns: 1fr;
+    grid-row-gap: 10px;
+  }
+`;
+
 export const ThreeGridContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

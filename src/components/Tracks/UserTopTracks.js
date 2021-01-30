@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { TextColor, ContainerBackground } from "../../styles/sharedStyles";
 import { getMyTopTracks } from "../../spotify/apis";
 import DisplayTrack from "../DisplayTrack";
+import { TwoGridContainer } from "../../styles/sharedContainers";
 
 const Text = styled.div`
   margin-bottom: 15px;
@@ -38,19 +39,6 @@ const RangeButton = styled.button`
 
   @media (max-width: 430px) {
     font-size: 15px;
-  }
-`;
-
-const TracksContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-row-gap: 15px;
-  grid-column-gap: 20px;
-  ${ContainerBackground};
-
-  @media (max-width: 1050px) {
-    grid-template-columns: 1fr;
-    grid-row-gap: 10px;
   }
 `;
 
@@ -103,7 +91,7 @@ const UserTopTracks = () => {
           </RangeButton>
         </Range>
       </Text>
-      <TracksContainer>{displayTracks}</TracksContainer>
+      <TwoGridContainer>{displayTracks}</TwoGridContainer>
     </div>
   );
 };
