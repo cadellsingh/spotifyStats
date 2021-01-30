@@ -97,8 +97,14 @@ export const getArtistRelatedArtists = async (id) => {
   return artists;
 };
 
-export const getTrack = async (trackId) => {
-  return await spotifyApi.getTrack(trackId);
+export const getTrackFromAlbum = async (id) => {
+  // using album id to get track
+  const data = await spotifyApi.getAlbum(id);
+  const { tracks, images } = data;
+  const { url } = images[0];
+  const { items } = tracks;
+  const song = items[0];
+  return { song, url };
 };
 
 export const getAllCategories = async () => {
@@ -113,4 +119,15 @@ export const getCategoryPlaylists = async (id) => {
   const { playlists } = data;
   const { items } = playlists;
   return items;
+};
+
+export const getNewReleases = async () => {
+  const data = await spotifyApi.getNewReleases({ limit: 50 });
+  const { albums } = data;
+  const { items } = albums;
+  return items;
+};
+
+export const getAlbum = async (id) => {
+  return await spotifyApi.getAlbum(id);
 };
