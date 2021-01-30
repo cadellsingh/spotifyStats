@@ -7,13 +7,14 @@ import MainContent from "./MainContent";
 import UserTopTracks from "./Tracks/UserTopTracks";
 import AllRecentlyPlayed from "./RecentlyPlayed/AllRecentlyPlayed";
 import Playlist from "./Playlists/Playlist";
-import Track from "./Tracks/Track";
 import Artist from "./Artists/Artist";
 import NotFound from "./NotFound";
 import { handleLogout } from "../utils/functions";
 import { getExpiryTime, tokenExpired } from "../spotify/tokens";
 import UserPlaylists from "./Playlists/UserPlaylists";
 import Categories from "./SpotifyPlaylists/Categories";
+import NewReleases from "./NewReleases";
+import AlbumTracks from "./AlbumTracks";
 
 const Layout = styled.div`
   display: grid;
@@ -47,18 +48,24 @@ const Profile = () => {
         <Switch>
           <Route exact path="/" component={MainContent} />
 
-          <Route path="/spotifyPlaylists" component={Categories} />
-
           <Route path="/playlists" component={UserPlaylists} />
           <Route path="/playlist/:playlistId" component={Playlist} />
+
+          <Route path="/tracks" component={UserTopTracks} />
 
           <Route path="/artists" component={UserTopArtists} />
           <Route path="/artist/:artistId" component={Artist} />
 
-          <Route path="/tracks" component={UserTopTracks} />
-          <Route path="/track/:trackId" component={Track} />
+          <Route path="/album/:albumId" component={AlbumTracks} />
 
           <Route path="/recentlyPlayed" component={AllRecentlyPlayed} />
+
+          <Route path="/spotifyPlaylists" component={Categories} />
+
+          <Route path="/newReleases" component={NewReleases} />
+
+          {/* <Route path="/track/:trackId" component={Track} /> */}
+          {/* maybe dont need this ^ */}
 
           <Route component={NotFound} />
         </Switch>
