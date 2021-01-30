@@ -89,7 +89,6 @@ const Artist = () => {
         <div>
           <img src={imageUrl} alt={name} />
           <div>
-            {/* data is undefined */}
             <h2>{name}</h2>
             <p>Followers: {formatNumber(total)}</p>
             <p>{genres && genres.join(", ")}</p>

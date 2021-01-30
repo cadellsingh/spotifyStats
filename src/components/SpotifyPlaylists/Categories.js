@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { ContainerBackground } from "../../styles/sharedStyles";
 import { getAllCategories } from "../../spotify/apis";
 import EachCategory from "./EachCategory";
+import Loading from "../Loading";
 
 const Container = styled.div`
   display: grid;
@@ -67,24 +68,30 @@ const Categories = () => {
     });
 
   return (
-    <Container
-      data-aos="fade-down"
-      data-aos-duration="1500"
-      data-aos-easing="ease-in-out"
-    >
-      <Header>
-        <h2>Spotify Playlists</h2>
-        <Input
-          aria-label="Filter"
-          type="text"
-          placeholder="Filter"
-          onChange={(event) => setQuery(event.target.value)}
-          value={query}
-        />
-      </Header>
+    <>
+      {categories.length > 0 ? (
+        <Container
+          data-aos="fade-down"
+          data-aos-duration="1500"
+          data-aos-easing="ease-in-out"
+        >
+          <Header>
+            <h2>Spotify Playlists</h2>
+            <Input
+              aria-label="Filter"
+              type="text"
+              placeholder="Filter"
+              onChange={(event) => setQuery(event.target.value)}
+              value={query}
+            />
+          </Header>
 
-      {displayCategories}
-    </Container>
+          {displayCategories}
+        </Container>
+      ) : (
+        <Loading />
+      )}
+    </>
   );
 };
 

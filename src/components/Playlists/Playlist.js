@@ -119,6 +119,7 @@ const Playlist = () => {
           <p>{description}</p>
         </div>
       </PlaylistInfo>
+
       <PlaylistTracks>{displayTracks}</PlaylistTracks>
     </Container>
   );

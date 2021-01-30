@@ -4,6 +4,7 @@ import { TextColor, ContainerBackground } from "../../styles/sharedStyles";
 import { getMyTopTracks } from "../../spotify/apis";
 import DisplayTrack from "../DisplayTrack";
 import { TwoGridContainer } from "../../styles/sharedContainers";
+import Loading from "../Loading";
 
 const Text = styled.div`
   margin-bottom: 15px;
@@ -62,37 +63,43 @@ const UserTopTracks = () => {
     });
 
   return (
-    <div
-      data-aos="fade-down"
-      data-aos-duration="1500"
-      data-aos-easing="ease-in-out"
-    >
-      <Text>
-        <h2>Top Tracks</h2>
+    <>
+      {topTracks.length > 0 ? (
+        <div
+          data-aos="fade-down"
+          data-aos-duration="1500"
+          data-aos-easing="ease-in-out"
+        >
+          <Text>
+            <h2>Top Tracks</h2>
 
-        <Range>
-          <RangeButton
-            onClick={() => setTimeRange("long_term")}
-            isActive={timeRange === "long_term"}
-          >
-            All time
-          </RangeButton>
-          <RangeButton
-            onClick={() => setTimeRange("medium_term")}
-            isActive={timeRange === "medium_term"}
-          >
-            Last 6 months
-          </RangeButton>
-          <RangeButton
-            onClick={() => setTimeRange("short_term")}
-            isActive={timeRange === "short_term"}
-          >
-            Last month
-          </RangeButton>
-        </Range>
-      </Text>
-      <TwoGridContainer>{displayTracks}</TwoGridContainer>
-    </div>
+            <Range>
+              <RangeButton
+                onClick={() => setTimeRange("long_term")}
+                isActive={timeRange === "long_term"}
+              >
+                All time
+              </RangeButton>
+              <RangeButton
+                onClick={() => setTimeRange("medium_term")}
+                isActive={timeRange === "medium_term"}
+              >
+                Last 6 months
+              </RangeButton>
+              <RangeButton
+                onClick={() => setTimeRange("short_term")}
+                isActive={timeRange === "short_term"}
+              >
+                Last month
+              </RangeButton>
+            </Range>
+          </Text>
+          <TwoGridContainer>{displayTracks}</TwoGridContainer>
+        </div>
+      ) : (
+        <Loading />
+      )}
+    </>
   );
 };
 

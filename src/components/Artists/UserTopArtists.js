@@ -4,6 +4,7 @@ import { getMyTopArtists } from "../../spotify/apis";
 import { SixGridContainer } from "../../styles/sharedContainers";
 import { TextColor, ContainerBackground } from "../../styles/sharedStyles";
 import DisplayImg from "../DisplayImg";
+import Loading from "../Loading";
 
 const Text = styled.div`
   margin-bottom: 15px;
@@ -33,26 +34,6 @@ const RangeButton = styled.button`
   }
 `;
 
-const ArtistsContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 10px;
-  grid-row-gap: 20px;
-  ${ContainerBackground};
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  @media (max-width: 800px) {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  @media (max-width: 400px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
 const UserTopArtists = () => {
   const [timeRange, setTimeRange] = useState("long_term");
   const [topArtists, setTopArtists] = useState([]);
@@ -73,37 +54,43 @@ const UserTopArtists = () => {
     });
 
   return (
-    <div
-      data-aos="fade-down"
-      data-aos-duration="1500"
-      data-aos-easing="ease-in-out"
-    >
-      <Text>
-        <h2>Top Artists</h2>
+    <>
+      {topArtists.length > 0 ? (
+        <div
+          data-aos="fade-down"
+          data-aos-duration="1500"
+          data-aos-easing="ease-in-out"
+        >
+          <Text>
+            <h2>Top Artists</h2>
 
-        <Range>
-          <RangeButton
-            onClick={() => setTimeRange("long_term")}
-            isActive={timeRange === "long_term"}
-          >
-            All time
-          </RangeButton>
-          <RangeButton
-            onClick={() => setTimeRange("medium_term")}
-            isActive={timeRange === "medium_term"}
-          >
-            Last 6 months
-          </RangeButton>
-          <RangeButton
-            onClick={() => setTimeRange("short_term")}
-            isActive={timeRange === "short_term"}
-          >
-            Last month
-          </RangeButton>
-        </Range>
-      </Text>
-      <SixGridContainer>{displayArtists}</SixGridContainer>
-    </div>
+            <Range>
+              <RangeButton
+                onClick={() => setTimeRange("long_term")}
+                isActive={timeRange === "long_term"}
+              >
+                All time
+              </RangeButton>
+              <RangeButton
+                onClick={() => setTimeRange("medium_term")}
+                isActive={timeRange === "medium_term"}
+              >
+                Last 6 months
+              </RangeButton>
+              <RangeButton
+                onClick={() => setTimeRange("short_term")}
+                isActive={timeRange === "short_term"}
+              >
+                Last month
+              </RangeButton>
+            </Range>
+          </Text>
+          <SixGridContainer>{displayArtists}</SixGridContainer>
+        </div>
+      ) : (
+        <Loading />
+      )}
+    </>
   );
 };
 

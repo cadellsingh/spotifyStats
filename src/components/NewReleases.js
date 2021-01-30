@@ -5,6 +5,7 @@ import { ContainerBackground, TextColor } from "../styles/sharedStyles";
 import Album from "./Album";
 import Track from "./Track";
 import { TwoGridContainer, SixGridContainer } from "../styles/sharedContainers";
+import Loading from "./Loading";
 
 const Text = styled.div`
   margin-bottom: 15px;
@@ -89,30 +90,36 @@ const NewReleases = () => {
     );
 
   return (
-    <div
-      data-aos="fade-down"
-      data-aos-duration="1500"
-      data-aos-easing="ease-in-out"
-    >
-      <Text>
-        <h2>New Releases</h2>
-        <Release>
-          <ReleaseButton
-            onClick={() => setType("album")}
-            isActive={type === "album"}
-          >
-            Albums
-          </ReleaseButton>
-          <ReleaseButton
-            onClick={() => setType("single")}
-            isActive={type === "single"}
-          >
-            Singles
-          </ReleaseButton>
-        </Release>
-      </Text>
-      {displayNewReleases}
-    </div>
+    <>
+      {releases.length > 0 ? (
+        <div
+          data-aos="fade-down"
+          data-aos-duration="1500"
+          data-aos-easing="ease-in-out"
+        >
+          <Text>
+            <h2>New Releases</h2>
+            <Release>
+              <ReleaseButton
+                onClick={() => setType("album")}
+                isActive={type === "album"}
+              >
+                Albums
+              </ReleaseButton>
+              <ReleaseButton
+                onClick={() => setType("single")}
+                isActive={type === "single"}
+              >
+                Singles
+              </ReleaseButton>
+            </Release>
+          </Text>
+          {displayNewReleases}
+        </div>
+      ) : (
+        <Loading />
+      )}
+    </>
   );
 };
 

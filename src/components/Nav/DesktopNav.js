@@ -54,7 +54,6 @@ const DesktopNav = ({ userName }) => {
         <NavListItem listItem="Charts" link="/charts" />
         <NavListItem listItem="Spotify Playlists" link="/spotifyPlaylists" />
         <NavListItem listItem="New Releases" link="/newReleases" />
-        <NavListItem listItem="Vibe Out" link="/vibeOut" />
       </StyledUl>
 
       <Logout />

@@ -49,6 +49,7 @@ const DisplayImg = ({ data, type }) => {
           borderRadius: "15px",
         }}
         cache
+        lazy
         src={url}
         alt={name}
       />

@@ -4,6 +4,7 @@ import { getUserPlaylists } from "../../spotify/apis";
 import { SixGridContainer } from "../../styles/sharedContainers";
 import { ContainerBackground } from "../../styles/sharedStyles";
 import DisplayImg from "../DisplayImg";
+import Loading from "../Loading";
 
 const Text = styled.h2`
   grid-column: span 6 / auto;
@@ -30,14 +31,20 @@ const UserPlaylists = () => {
     });
 
   return (
-    <div
-      data-aos="fade-down"
-      data-aos-duration="1500"
-      data-aos-easing="ease-in-out"
-    >
-      <Text>Your Playlists</Text>
-      <SixGridContainer>{displayPlaylists}</SixGridContainer>
-    </div>
+    <>
+      {playlists.length > 0 ? (
+        <div
+          data-aos="fade-down"
+          data-aos-duration="1500"
+          data-aos-easing="ease-in-out"
+        >
+          <Text>Your Playlists</Text>
+          <SixGridContainer>{displayPlaylists}</SixGridContainer>
+        </div>
+      ) : (
+        <Loading />
+      )}
+    </>
   );
 };
 

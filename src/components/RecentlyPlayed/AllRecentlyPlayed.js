@@ -4,6 +4,7 @@ import { getMyRecentlyPlayed } from "../../spotify/apis";
 import { TwoGridContainer } from "../../styles/sharedContainers";
 import { TextColor, ContainerBackground } from "../../styles/sharedStyles";
 import DisplayTrack from "../DisplayTrack";
+import Loading from "../Loading";
 
 const Container = styled.div`
   & h2 {
@@ -34,14 +35,20 @@ const AllRecentlyPlayed = () => {
     });
 
   return (
-    <Container
-      data-aos="fade-down"
-      data-aos-duration="1500"
-      data-aos-easing="ease-in-out"
-    >
-      <h2>Recently Played Tracks</h2>
-      <TwoGridContainer>{displayTracks}</TwoGridContainer>
-    </Container>
+    <>
+      {recentTracks.length > 0 ? (
+        <Container
+          data-aos="fade-down"
+          data-aos-duration="1500"
+          data-aos-easing="ease-in-out"
+        >
+          <h2>Recently Played Tracks</h2>
+          <TwoGridContainer>{displayTracks}</TwoGridContainer>
+        </Container>
+      ) : (
+        <Loading />
+      )}
+    </>
   );
 };
 
