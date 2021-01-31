@@ -4,6 +4,11 @@ const Container = styled.div`
   position: absolute;
   top: 30%;
   left: 50%;
+
+  @media (max-width: 700px) {
+    top: 50%;
+    left: 50%;
+  }
 `;
 
 const rollingAnimation = keyframes`

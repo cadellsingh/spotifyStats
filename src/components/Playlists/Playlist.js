@@ -6,12 +6,14 @@ import { ContainerBackground } from "../../styles/sharedStyles";
 import DisplayTrack from "../DisplayTrack";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeadphonesAlt } from "@fortawesome/free-solid-svg-icons";
+import { TwoGridContainer } from "../../styles/sharedContainers";
 
 const Container = styled.div`
   width: 100%;
 `;
 
 const PlaylistInfo = styled.div`
+  margin-bottom: 15px;
   display: flex;
   ${ContainerBackground};
 
@@ -62,20 +64,6 @@ const PlaylistInfo = styled.div`
   }
 `;
 
-const PlaylistTracks = styled.div`
-  margin-top: 15px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-row-gap: 15px;
-  grid-column-gap: 20px;
-  ${ContainerBackground}
-
-  @media (max-width: 1050px) {
-    grid-template-columns: 1fr;
-    grid-row-gap: 10px;
-  }
-`;
-
 const Playlist = () => {
   const { playlistId } = useParams();
   const [playlistInfo, setPlaylistInfo] = useState([]);
@@ -120,7 +108,7 @@ const Playlist = () => {
         </div>
       </PlaylistInfo>
 
-      <PlaylistTracks>{displayTracks}</PlaylistTracks>
+      <TwoGridContainer>{displayTracks}</TwoGridContainer>
     </Container>
   );
 };
