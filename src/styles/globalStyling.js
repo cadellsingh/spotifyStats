@@ -20,6 +20,10 @@ export const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
 
+  input {
+    font-family: 'Montserrat', sans-serif;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
