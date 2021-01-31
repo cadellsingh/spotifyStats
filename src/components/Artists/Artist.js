@@ -62,6 +62,7 @@ const ArtistDetails = styled.div`
 const Artist = () => {
   const { artistId } = useParams();
   const [artistInfo, setArtistInfo] = useState([]);
+  const [reloadArtist, setReloadArtist] = useState(false);
 
   const getData = async () => {
     const { total, genres, imageUrl, name } = await getArtist(artistId);
@@ -76,6 +77,13 @@ const Artist = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    if (reloadArtist) {
+      window.location.reload();
+      setReloadArtist(false);
+    }
+  }, [reloadArtist]);
 
   const { total, genres, imageUrl, name } = artistInfo;
 
@@ -97,7 +105,7 @@ const Artist = () => {
       </ArtistDetails>
       <Container>
         <ArtistTopTracks artistId={artistId} />
-        <RelatedArtists artistId={artistId} />
+        <RelatedArtists artistId={artistId} setReloadArtist={setReloadArtist} />
       </Container>
     </div>
   );

@@ -1,8 +1,6 @@
-// used for displaying artist/playlist img in TopArtists / Playlists component
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeadphonesAlt } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 import Img from "react-cool-img";
 
@@ -32,7 +30,8 @@ const Icon = styled.div`
   }
 `;
 
-const DisplayImg = ({ data, type }) => {
+const DisplayImg = ({ data, type, setReloadArtist }) => {
+  const { url, path } = useRouteMatch();
   const { name, images, id } = data || {};
 
   let displayImg;
@@ -70,13 +69,14 @@ const DisplayImg = ({ data, type }) => {
     album: `/album/${id}`,
   }[type];
 
-  // i could prob pass a prop saying to include link or no
-
-  // get current url
-  // compare & if its different then refresh
+  const handleOnClick = () => {
+    if (path === "/artist/:artistId") {
+      setReloadArtist(true);
+    }
+  };
 
   return (
-    <Link to={linkUrl}>
+    <Link to={linkUrl} onClick={handleOnClick}>
       <ImgContainer>{displayImg}</ImgContainer>
     </Link>
   );

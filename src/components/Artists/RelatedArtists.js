@@ -16,7 +16,7 @@ const Artists = styled.div`
   ${ContainerBackground};
 `;
 
-const RelatedArtists = ({ artistId }) => {
+const RelatedArtists = ({ artistId, setReloadArtist }) => {
   const [relatedArtists, setRelatedArtists] = useState([]);
 
   const getData = async () => {
@@ -31,7 +31,14 @@ const RelatedArtists = ({ artistId }) => {
   const displayRelatedArtists =
     relatedArtists &&
     relatedArtists.slice(0, 10).map((data, index) => {
-      return <DisplayImg key={index} data={data} type="artist" />;
+      return (
+        <DisplayImg
+          key={index}
+          data={data}
+          type="artist"
+          setReloadArtist={setReloadArtist}
+        />
+      );
     });
 
   return (
