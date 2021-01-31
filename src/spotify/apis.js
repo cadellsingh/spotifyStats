@@ -131,3 +131,9 @@ export const getNewReleases = async () => {
 export const getAlbum = async (id) => {
   return await spotifyApi.getAlbum(id);
 };
+
+export const getAlbumTracks = async (id) => {
+  const data = await spotifyApi.getAlbumTracks(id);
+  const { items } = data;
+  return items;
+};

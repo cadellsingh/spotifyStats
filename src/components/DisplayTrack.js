@@ -45,13 +45,15 @@ const Duration = styled.p`
   margin-left: auto;
 `;
 
-const getImage = (album, name) => {
+const getImage = (album, imageUrl, name) => {
   const { images } = album || {};
   let img;
 
   if (images && images.length > 0) {
     const { url } = images[0];
     img = <Img src={url} alt={name} />;
+  } else if (imageUrl) {
+    img = <Img src={imageUrl} alt={name} />;
   } else {
     img = (
       <Icon>
@@ -69,11 +71,7 @@ const DisplayTrack = ({ data, imageUrl }) => {
   const { artists, name, album, duration_ms, preview_url } = data || {};
   let audio = new Audio(preview_url);
 
-  const displayImg = album ? (
-    getImage(album, name)
-  ) : (
-    <Img src={imageUrl} alt={name} />
-  );
+  const displayImg = getImage(album, imageUrl, name);
 
   const duration = millisToMinutesAndSeconds(duration_ms);
 
