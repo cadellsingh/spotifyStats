@@ -3,6 +3,7 @@ import { ContainerBackground } from "../../styles/sharedStyles";
 import Header from "../Header";
 import NavListItem from "../NavListItem";
 import Logout from "../Logout";
+import Search from "../Search";
 
 const StyledNav = styled.nav`
   position: fixed;
@@ -55,6 +56,8 @@ const DesktopNav = ({ userName }) => {
         <NavListItem listItem="Spotify Playlists" link="/spotifyPlaylists" />
         <NavListItem listItem="New Releases" link="/newReleases" />
       </StyledUl>
+
+      <Search />
 
       <Logout />
     </StyledNav>
