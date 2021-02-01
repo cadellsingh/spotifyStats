@@ -44,7 +44,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@fortawesome/free-brands-svg-icons": "^5.15.2"
-  }
+  "devDependencies": {}
 }
