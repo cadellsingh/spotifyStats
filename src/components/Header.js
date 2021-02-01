@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { TextColor, ContainerBackground } from "../styles/sharedStyles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -26,15 +24,18 @@ const StyledHeader = styled.header`
       margin: auto 0;
     }
   }
+
+  @media (max-width: 350px) {
+    & h1 {
+      font-size: 25px;
+    }
+  }
 `;
 
-const Header = ({ setShowLinks }) => {
+const Header = ({ setOpenMenu }) => {
   return (
     <StyledHeader>
       <h1>SpotoStats</h1>
-      <span onClick={() => setShowLinks(true)}>
-        <FontAwesomeIcon icon={faBars} />
-      </span>
     </StyledHeader>
   );
 };

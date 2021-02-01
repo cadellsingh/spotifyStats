@@ -31,6 +31,4 @@ const AppRouter = () => {
   );
 };
 
-// um you look a bit lost,  lets get you back home
-
 export default AppRouter;

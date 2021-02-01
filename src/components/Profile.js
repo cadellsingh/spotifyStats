@@ -48,25 +48,16 @@ const Profile = () => {
       <div>
         <Switch>
           <Route exact path="/" component={MainContent} />
-
           <Route path="/playlists" component={UserPlaylists} />
           <Route path="/playlist/:playlistId" component={Playlist} />
-
           <Route path="/tracks" component={UserTopTracks} />
-
           <Route path="/artists" component={UserTopArtists} />
           <Route path="/artist/:artistId" component={Artist} />
-
           <Route path="/album/:albumId" component={AlbumTracks} />
-
           <Route path="/recentlyPlayed" component={AllRecentlyPlayed} />
-
           <Route path="/spotifyPlaylists" component={Categories} />
-
           <Route path="/newReleases" component={NewReleases} />
-
           <Route path="/search/:query" component={Results} />
-
           <Route component={NotFound} />
         </Switch>
       </div>

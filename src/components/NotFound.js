@@ -10,6 +10,7 @@ const Container = styled.div`
   font-size: 20px;
 
   & a {
+    font-weight: bold;
     font-size: 50px;
     ${TextColor};
   }

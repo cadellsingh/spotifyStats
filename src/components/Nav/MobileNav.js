@@ -1,72 +1,85 @@
 import styled from "styled-components";
 import { useState } from "react";
 import Header from "../Header";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import NavListItem from "../NavListItem";
-import { ContainerBackgroundColor } from "../../styles/sharedStyles";
+import { slide as Menu } from "react-burger-menu";
+import { handleLogout } from "../../utils/functions";
+import Logout from "../Logout";
 
 const StyledNav = styled.div``;
 
-const Overlay = styled.div`
-  position: fixed; /* Sit on top of the page content */
-  width: 100%; /* Full width (cover the whole page) */
-  height: 100%; /* Full height (cover the whole page) */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-  display: ${(props) => (props.showLinks ? "block" : "none")};
-`;
+let styles = {
+  bmBurgerButton: {
+    position: "absolute",
+    width: "36px",
+    height: "30px",
+    right: "36px",
+    top: "36px",
+  },
+  bmBurgerBars: {
+    background: "#05b075",
+  },
+  bmBurgerBarsHover: {
+    background: "#a90000",
+  },
+  bmMenuWrap: {
+    position: "fixed",
+    height: "100%",
+  },
+  bmMenu: {
+    fontSize: "1.15em",
+  },
+  bmItemList: {
+    color: "white",
+    padding: "0.8em",
+  },
+  bmItem: {
+    background: "#202225",
+    display: "flex",
+  },
+  bmOverlay: {
+    background: "rgba(0, 0, 0, 0.3)",
+  },
+};
 
-const MobileLinks = styled.div`
+const Links = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 40px 30px;
-  text-align: center;
-  font-size: 35px;
+  padding: 20px;
+  outline: none;
+  border-radius: 10px;
+  margin-top: 10px;
 
-  & span {
-    margin-left: auto;
-    font-size: 20px;
+  & button {
+    font-size: 15px;
+    text-align: left;
   }
 `;
 
 const MobileNav = () => {
-  const [showLinks, setShowLinks] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
 
   return (
     <StyledNav>
-      <Header setShowLinks={setShowLinks} />
-      <Overlay showLinks={showLinks}>
-        <MobileLinks>
-          <span onClick={() => setShowLinks(false)}>
-            <FontAwesomeIcon icon={faTimes} />
-          </span>
-          <NavListItem listItem="Profile" link="" />
+      <Header setOpenMenu={setOpenMenu} />
+      <Menu right styles={styles}>
+        <Links>
+          <NavListItem
+            onClick={() => setOpenMenu(false)}
+            listItem="Profile"
+            link=""
+          />
           <NavListItem listItem="Your Playlists" link="/playlists" />
           <NavListItem listItem="Your Top Tracks" link="/tracks" />
           <NavListItem listItem="Your Top Artists" link="/artists" />
           <NavListItem listItem="Recently Played" link="/recentlyPlayed" />
           <NavListItem listItem="Spotify Playlists" link="/spotifyPlaylists" />
           <NavListItem listItem="New Releases" link="/newReleases" />
-        </MobileLinks>
-      </Overlay>
+          <button onClick={handleLogout}>Logout</button>
+        </Links>
+      </Menu>
     </StyledNav>
   );
 };
 
 export default MobileNav;
-
-{
-  /* <NavListItem listItem="Profile" link="" />
-        <NavListItem listItem="Your Playlists" link="/playlists" />
-        <NavListItem listItem="Your Top Tracks" link="/tracks" />
-        <NavListItem listItem="Your Top Artists" link="/artists" />
-        <NavListItem listItem="Recently Played" link="/recentlyPlayed" />
-        <NavListItem listItem="Spotify Playlists" link="/spotifyPlaylists" />
-        <NavListItem listItem="New Releases" link="/newReleases" /> */
-}

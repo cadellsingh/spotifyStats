@@ -61,8 +61,6 @@ const UserTopTracks = () => {
       return <DisplayTrack key={index} data={data} />;
     });
 
-  console.log(topTracks);
-
   return (
     <>
       {topTracks.length > 0 ? (
