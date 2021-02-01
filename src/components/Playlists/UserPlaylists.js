@@ -39,7 +39,9 @@ const UserPlaylists = () => {
           data-aos-easing="ease-in-out"
         >
           <Text>Your Playlists</Text>
-          <SixGridContainer>{displayPlaylists}</SixGridContainer>
+          {playlists.length > 0 ? (
+            <SixGridContainer>{displayPlaylists}</SixGridContainer>
+          ) : null}
         </div>
       ) : (
         <Loading />

@@ -94,7 +94,9 @@ const UserTopTracks = () => {
               </RangeButton>
             </Range>
           </Text>
-          <TwoGridContainer>{displayTracks}</TwoGridContainer>
+          {topTracks.length > 0 ? (
+            <TwoGridContainer>{displayTracks}</TwoGridContainer>
+          ) : null}
         </div>
       ) : (
         <Loading />

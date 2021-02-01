@@ -36,19 +36,19 @@ export const getMyTopTracks = async (limit, timeRange = "long_term") => {
     limit: limit,
     time_range: timeRange,
   });
-  const { items } = data;
+  const { items } = data || {};
   return items;
 };
 
 export const getMyRecentlyPlayed = async (limit) => {
   const data = await spotifyApi.getMyRecentlyPlayedTracks({ limit: limit });
-  const { items } = data;
+  const { items } = data || {};
   return items;
 };
 
 export const getUserPlaylists = async (limit = 50) => {
   const data = await spotifyApi.getUserPlaylists({ limit: limit });
-  const { items } = data;
+  const { items } = data || {};
   return items;
 };
 
@@ -71,7 +71,7 @@ export const getArtist = async (id) => {
   const data = await spotifyApi.getArtist(id);
   const { followers, genres, images, name } = data;
   const { total } = followers;
-  const { url: imageUrl } = images[0];
+  const { url: imageUrl } = images[0] || {};
   return { total, genres, imageUrl, name };
 };
 
@@ -93,7 +93,7 @@ export const getArtistAlbums = async (id, type, code) => {
 
 export const getArtistRelatedArtists = async (id) => {
   const data = await spotifyApi.getArtistRelatedArtists(id);
-  const { artists } = data;
+  const { artists } = data || {};
   return artists;
 };
 
@@ -101,9 +101,9 @@ export const getTrackFromAlbum = async (id) => {
   // using album id to get track
   const data = await spotifyApi.getAlbum(id);
   const { tracks, images } = data;
-  const { url } = images[0];
+  const { url } = images[0] || {};
   const { items } = tracks;
-  const song = items[0];
+  const song = items[0] || {};
   return { song, url };
 };
 
@@ -136,4 +136,14 @@ export const getAlbumTracks = async (id) => {
   const data = await spotifyApi.getAlbumTracks(id);
   const { items } = data;
   return items;
+};
+
+export const searchItem = async (query) => {
+  const data = await spotifyApi.search(query, [
+    "artist",
+    "track",
+    "playlist",
+    "album",
+  ]);
+  return data;
 };

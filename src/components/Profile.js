@@ -15,6 +15,7 @@ import UserPlaylists from "./Playlists/UserPlaylists";
 import Categories from "./SpotifyPlaylists/Categories";
 import NewReleases from "./NewReleases";
 import AlbumTracks from "./AlbumTracks";
+import Results from "./SearchResults/Results";
 
 const Layout = styled.div`
   display: grid;
@@ -64,8 +65,7 @@ const Profile = () => {
 
           <Route path="/newReleases" component={NewReleases} />
 
-          {/* <Route path="/track/:trackId" component={Track} /> */}
-          {/* maybe dont need this ^ */}
+          <Route path="/search/:query" component={Results} />
 
           <Route component={NotFound} />
         </Switch>

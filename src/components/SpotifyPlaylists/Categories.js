@@ -86,7 +86,7 @@ const Categories = () => {
             />
           </Header>
 
-          {displayCategories}
+          {categories.length > 0 ? displayCategories : null}
         </Container>
       ) : (
         <Loading />

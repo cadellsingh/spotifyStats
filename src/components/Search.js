@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 const Input = styled.input`
@@ -20,12 +21,15 @@ const Input = styled.input`
 
 const Search = () => {
   const [search, setSearch] = useState("");
+  const history = useHistory();
+
+  // if query is updated refresh page
 
   const handleOnSubmit = (event) => {
-    console.log(search);
+    const query = search.trim();
+    history.push(`/search/${query}`);
 
-    // clean up string
-    // and then redirect to route /:searchString
+    setSearch("");
 
     event.preventDefault();
   };
@@ -33,6 +37,7 @@ const Search = () => {
   return (
     <form onSubmit={handleOnSubmit}>
       <Input
+        required
         aria-label="Search"
         type="text"
         placeholder="Search"

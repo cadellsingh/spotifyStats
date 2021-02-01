@@ -85,7 +85,10 @@ const UserTopArtists = () => {
               </RangeButton>
             </Range>
           </Text>
-          <SixGridContainer>{displayArtists}</SixGridContainer>
+
+          {topArtists.length > 0 ? (
+            <SixGridContainer>{displayArtists}</SixGridContainer>
+          ) : null}
         </div>
       ) : (
         <Loading />

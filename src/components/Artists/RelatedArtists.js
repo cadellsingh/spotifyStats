@@ -44,7 +44,9 @@ const RelatedArtists = ({ artistId, setReloadArtist }) => {
   return (
     <Container>
       <h3>Related Artists</h3>
-      <Artists>{displayRelatedArtists}</Artists>
+      {relatedArtists.length > 0 ? (
+        <Artists>{displayRelatedArtists}</Artists>
+      ) : null}
     </Container>
   );
 };

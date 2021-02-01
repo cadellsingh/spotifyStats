@@ -77,3 +77,9 @@ export const SixGridContainer = styled.div`
     grid-template-columns: 1fr 1fr;
   }
 `;
+
+export const ResultsContainer = styled(ThreeGridContainer)`
+  & h3 {
+    grid-column: span 3 / auto;
+  }
+`;

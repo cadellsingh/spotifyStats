@@ -31,7 +31,8 @@ const RecentlyPlayedTracks = () => {
           <Link to="/recentlyPlayed">See more</Link>
         </span>
       </SeeMoreText2>
-      {displayTracks}
+
+      {recentTracks.length > 0 ? displayTracks : null}
     </OneGridContainer>
   );
 };

@@ -114,7 +114,7 @@ const NewReleases = () => {
               </ReleaseButton>
             </Release>
           </Text>
-          {displayNewReleases}
+          {releases.length > 0 ? displayNewReleases : null}
         </div>
       ) : (
         <Loading />

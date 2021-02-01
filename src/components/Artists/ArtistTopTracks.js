@@ -32,7 +32,7 @@ const ArtistTopTracks = ({ artistId }) => {
   return (
     <div>
       <h3>Top Tracks</h3>
-      <Container>{displayTracks}</Container>
+      {topTracks.length > 0 ? <Container>{displayTracks}</Container> : null}
     </div>
   );
 };

@@ -46,13 +46,10 @@ const DesktopNav = ({ userName }) => {
       </User>
       <StyledUl>
         <NavListItem listItem="Profile" link="" />
-
         <NavListItem listItem="Your Playlists" link="/playlists" />
         <NavListItem listItem="Your Top Tracks" link="/tracks" />
         <NavListItem listItem="Your Top Artists" link="/artists" />
         <NavListItem listItem="Recently Played" link="/recentlyPlayed" />
-
-        <NavListItem listItem="Charts" link="/charts" />
         <NavListItem listItem="Spotify Playlists" link="/spotifyPlaylists" />
         <NavListItem listItem="New Releases" link="/newReleases" />
       </StyledUl>
