@@ -43,12 +43,11 @@ const Categories = () => {
   const [categories, setCategories] = useState([]);
   const [query, setQuery] = useState("");
 
-  const getData = async () => {
-    const data = await getAllCategories();
-    setCategories(data);
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      const data = await getAllCategories();
+      setCategories(data);
+    };
     getData();
   }, []);
 

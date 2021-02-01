@@ -7,12 +7,17 @@ import { Link } from "react-router-dom";
 const TopArtists = () => {
   const [topArtists, setTopArtists] = useState([]);
 
-  const getData = async () => {
-    const data = await getMyTopArtists(6);
-    setTopArtists(data);
-  };
+  // const getData = async () => {
+  //   const data = await getMyTopArtists(6);
+  //   setTopArtists(data);
+  // };
 
   useEffect(() => {
+    const getData = async () => {
+      const data = await getMyTopArtists(6);
+      setTopArtists(data);
+    };
+
     getData();
   }, []);
 

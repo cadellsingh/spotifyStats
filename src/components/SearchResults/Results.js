@@ -31,12 +31,11 @@ const Results = () => {
   const { query } = useParams();
   const [results, setResults] = useState([]);
 
-  const getData = async () => {
-    const data = await searchItem(query);
-    setResults(data);
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      const data = await searchItem(query);
+      setResults(data);
+    };
     getData();
   }, []);
 

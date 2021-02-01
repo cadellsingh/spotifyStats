@@ -70,12 +70,11 @@ const Playlist = () => {
   const { playlistId } = useParams();
   const [playlistInfo, setPlaylistInfo] = useState([]);
 
-  const getData = async () => {
-    const data = await getPlaylist(playlistId);
-    setPlaylistInfo(data);
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      const data = await getPlaylist(playlistId);
+      setPlaylistInfo(data);
+    };
     getData();
   }, []);
 

@@ -7,12 +7,11 @@ import { Link } from "react-router-dom";
 const RecentlyPlayedTracks = () => {
   const [recentTracks, setRecentTracks] = useState([]);
 
-  const getData = async () => {
-    const data = await getMyRecentlyPlayed(10);
-    setRecentTracks(data);
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      const data = await getMyRecentlyPlayed(10);
+      setRecentTracks(data);
+    };
     getData();
   }, []);
 

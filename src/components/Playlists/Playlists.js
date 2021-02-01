@@ -7,12 +7,11 @@ import { Link } from "react-router-dom";
 const Playlists = () => {
   const [playlists, setPlaylists] = useState([]);
 
-  const getData = async () => {
-    const data = await getUserPlaylists(6);
-    setPlaylists(data);
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      const data = await getUserPlaylists(6);
+      setPlaylists(data);
+    };
     getData();
   }, []);
 

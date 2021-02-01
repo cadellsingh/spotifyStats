@@ -15,12 +15,11 @@ const Text = styled.h2`
 const UserPlaylists = () => {
   const [playlists, setPlaylists] = useState([]);
 
-  const getData = async () => {
-    const data = await getUserPlaylists();
-    setPlaylists(data);
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      const data = await getUserPlaylists();
+      setPlaylists(data);
+    };
     getData();
   }, []);
 

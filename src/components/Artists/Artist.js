@@ -88,17 +88,16 @@ const Artist = () => {
   const [artistInfo, setArtistInfo] = useState([]);
   const [reloadArtist, setReloadArtist] = useState(false);
 
-  const getData = async () => {
-    const { total, genres, imageUrl, name } = await getArtist(artistId);
-    setArtistInfo({
-      total,
-      genres,
-      imageUrl,
-      name,
-    });
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      const { total, genres, imageUrl, name } = await getArtist(artistId);
+      setArtistInfo({
+        total,
+        genres,
+        imageUrl,
+        name,
+      });
+    };
     getData();
   }, []);
 

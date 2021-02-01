@@ -47,12 +47,11 @@ const NewReleases = () => {
   const [releases, setReleases] = useState([]);
   const [type, setType] = useState("album");
 
-  const getData = async () => {
-    const data = await getNewReleases();
-    setReleases(data);
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      const data = await getNewReleases();
+      setReleases(data);
+    };
     getData();
   }, []);
 

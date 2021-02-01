@@ -1,8 +1,11 @@
-const {
-  REACT_APP_CLIENT_ID,
-  REACT_APP_REDIRECT_URL,
-  REACT_APP_AUTH_URL,
-} = process.env;
+const { REACT_APP_CLIENT_ID, REACT_APP_AUTH_URL } = process.env;
+
+const REDIRECT_URI =
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_PRODUCTION_URI
+    : process.env.REACT_APP_REDIRECT_URL;
+
+console.log(REDIRECT_URI);
 
 const scopes = [
   "user-read-recently-played",
@@ -12,6 +15,6 @@ const scopes = [
   "user-follow-read",
 ];
 
-export const loginUrl = `${REACT_APP_AUTH_URL}?client_id=${REACT_APP_CLIENT_ID}&redirect_uri=${REACT_APP_REDIRECT_URL}&scope=${scopes.join(
+export const loginUrl = `${REACT_APP_AUTH_URL}?client_id=${REACT_APP_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${scopes.join(
   "%20"
 )}&response_type=token&show_dialog=true`;

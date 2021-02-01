@@ -18,12 +18,11 @@ const Container = styled.div`
 const AllRecentlyPlayed = () => {
   const [recentTracks, setRecentTracks] = useState([]);
 
-  const getData = async () => {
-    const data = await getMyRecentlyPlayed(50);
-    setRecentTracks(data);
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      const data = await getMyRecentlyPlayed(50);
+      setRecentTracks(data);
+    };
     getData();
   }, []);
 

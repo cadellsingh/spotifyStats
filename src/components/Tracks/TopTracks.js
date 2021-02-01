@@ -7,12 +7,11 @@ import { Link } from "react-router-dom";
 const TopTracks = () => {
   const [topTracks, setTopTracks] = useState([]);
 
-  const getData = async () => {
-    const data = await getMyTopTracks(10);
-    setTopTracks(data);
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      const data = await getMyTopTracks(10);
+      setTopTracks(data);
+    };
     getData();
   }, []);
 

@@ -46,12 +46,11 @@ const UserTopTracks = () => {
   const [timeRange, setTimeRange] = useState("long_term");
   const [topTracks, setTopTracks] = useState([]);
 
-  const getData = async () => {
-    const data = await getMyTopTracks(50, timeRange);
-    setTopTracks(data);
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      const data = await getMyTopTracks(50, timeRange);
+      setTopTracks(data);
+    };
     getData();
   }, [timeRange]);
 

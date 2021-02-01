@@ -68,15 +68,14 @@ const AlbumTracks = () => {
   const { albumId } = useParams();
   const [albumTracks, setAlbumTracks] = useState([]);
 
-  const getData = async () => {
-    const tracks = await getAlbumTracks(albumId);
-    const data = await getAlbum(albumId);
-    const { name, release_date, total_tracks, images } = data;
-    const { url: imageUrl } = images[0];
-    setAlbumTracks({ name, release_date, total_tracks, tracks, imageUrl });
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      const tracks = await getAlbumTracks(albumId);
+      const data = await getAlbum(albumId);
+      const { name, release_date, total_tracks, images } = data;
+      const { url: imageUrl } = images[0];
+      setAlbumTracks({ name, release_date, total_tracks, tracks, imageUrl });
+    };
     getData();
   }, []);
 

@@ -42,12 +42,11 @@ const UserTopArtists = () => {
   const [timeRange, setTimeRange] = useState("long_term");
   const [topArtists, setTopArtists] = useState([]);
 
-  const getData = async () => {
-    const data = await getMyTopArtists(50, timeRange);
-    setTopArtists(data);
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      const data = await getMyTopArtists(50, timeRange);
+      setTopArtists(data);
+    };
     getData();
   }, [timeRange]);
 

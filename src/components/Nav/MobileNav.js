@@ -4,11 +4,8 @@ import Header from "../Header";
 import NavListItem from "../NavListItem";
 import { slide as Menu } from "react-burger-menu";
 import { handleLogout } from "../../utils/functions";
-import Logout from "../Logout";
 
-const StyledNav = styled.div``;
-
-let styles = {
+const styles = {
   bmBurgerButton: {
     position: "absolute",
     width: "36px",
@@ -60,7 +57,7 @@ const MobileNav = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <StyledNav>
+    <div>
       <Header setOpenMenu={setOpenMenu} />
       <Menu right styles={styles}>
         <Links>
@@ -78,7 +75,7 @@ const MobileNav = () => {
           <button onClick={handleLogout}>Logout</button>
         </Links>
       </Menu>
-    </StyledNav>
+    </div>
   );
 };
 
