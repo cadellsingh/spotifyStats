@@ -37,8 +37,6 @@ const Profile = () => {
   tokenExpired();
 
   useEffect(() => {
-    tokenExpired();
-
     const expiry = getExpiryTime();
     const timer = setTimeout(() => handleLogout(), expiry);
     return () => clearTimeout(timer);
