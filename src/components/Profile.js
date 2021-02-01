@@ -34,6 +34,8 @@ const Layout = styled.div`
 `;
 
 const Profile = () => {
+  tokenExpired();
+
   useEffect(() => {
     tokenExpired();
 

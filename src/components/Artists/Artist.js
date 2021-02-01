@@ -57,6 +57,16 @@ const ArtistDetails = styled.div`
     border-radius: 10px;
     height: auto;
   }
+
+  @media (max-width: 500px) {
+    & img {
+      width: 150px;
+    }
+
+    & p {
+      font-size: 16px;
+    }
+  }
 `;
 
 const Artist = () => {

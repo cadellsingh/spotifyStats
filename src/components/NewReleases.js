@@ -22,7 +22,6 @@ const Release = styled.div`
 
   @media (max-width: 430px) {
     font-size: 15px;
-    justify-content: center;
   }
 `;
 

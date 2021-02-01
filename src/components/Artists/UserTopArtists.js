@@ -32,6 +32,10 @@ const RangeButton = styled.button`
   :hover {
     text-decoration: underline;
   }
+
+  @media (max-width: 430px) {
+    font-size: 15px;
+  }
 `;
 
 const UserTopArtists = () => {

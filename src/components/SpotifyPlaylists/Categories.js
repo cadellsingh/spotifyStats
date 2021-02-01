@@ -18,12 +18,6 @@ const Header = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-
-  @media (max-width: 500px) {
-    & h2 {
-      margin: 0 auto;
-    }
-  }
 `;
 
 const Input = styled.input`

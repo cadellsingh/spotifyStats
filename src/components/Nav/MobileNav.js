@@ -47,12 +47,12 @@ const MobileNav = () => {
             <FontAwesomeIcon icon={faTimes} />
           </span>
           <NavListItem listItem="Profile" link="" />
-          <NavListItem listItem="Audio Analysis" link="/audioAnalysis" />
-          <NavListItem listItem="Playlists" link="/playlists" />
-          <NavListItem listItem="Top Tracks" link="/tracks" />
-          <NavListItem listItem="Top Artists" link="/artists" />
-          <NavListItem listItem="Top Genres" link="/genres" />
+          <NavListItem listItem="Your Playlists" link="/playlists" />
+          <NavListItem listItem="Your Top Tracks" link="/tracks" />
+          <NavListItem listItem="Your Top Artists" link="/artists" />
           <NavListItem listItem="Recently Played" link="/recentlyPlayed" />
+          <NavListItem listItem="Spotify Playlists" link="/spotifyPlaylists" />
+          <NavListItem listItem="New Releases" link="/newReleases" />
         </MobileLinks>
       </Overlay>
     </StyledNav>
@@ -60,3 +60,13 @@ const MobileNav = () => {
 };
 
 export default MobileNav;
+
+{
+  /* <NavListItem listItem="Profile" link="" />
+        <NavListItem listItem="Your Playlists" link="/playlists" />
+        <NavListItem listItem="Your Top Tracks" link="/tracks" />
+        <NavListItem listItem="Your Top Artists" link="/artists" />
+        <NavListItem listItem="Recently Played" link="/recentlyPlayed" />
+        <NavListItem listItem="Spotify Playlists" link="/spotifyPlaylists" />
+        <NavListItem listItem="New Releases" link="/newReleases" /> */
+}
