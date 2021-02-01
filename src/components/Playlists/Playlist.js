@@ -7,6 +7,8 @@ import DisplayTrack from "../DisplayTrack";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeadphonesAlt } from "@fortawesome/free-solid-svg-icons";
 import { TwoGridContainer } from "../../styles/sharedContainers";
+import _ from "lodash";
+import Loading from "../Loading";
 
 const Container = styled.div`
   width: 100%;
@@ -95,21 +97,27 @@ const Playlist = () => {
   );
 
   return (
-    <Container
-      data-aos="fade-down"
-      data-aos-duration="1500"
-      data-aos-easing="ease-in-out"
-    >
-      <PlaylistInfo>
-        {displayImg}
-        <div>
-          <h3>{name}</h3>
-          <p>{description}</p>
-        </div>
-      </PlaylistInfo>
+    <>
+      {_.isEmpty(playlistInfo) ? (
+        <Loading />
+      ) : (
+        <Container
+          data-aos="fade-down"
+          data-aos-duration="1500"
+          data-aos-easing="ease-in-out"
+        >
+          <PlaylistInfo>
+            {displayImg}
+            <div>
+              <h3>{name}</h3>
+              <p>{description}</p>
+            </div>
+          </PlaylistInfo>
 
-      <TwoGridContainer>{displayTracks}</TwoGridContainer>
-    </Container>
+          <TwoGridContainer>{displayTracks}</TwoGridContainer>
+        </Container>
+      )}
+    </>
   );
 };
 

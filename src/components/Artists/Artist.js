@@ -6,6 +6,11 @@ import { ContainerBackground } from "../../styles/sharedStyles";
 import { formatNumber } from "../../utils/functions";
 import ArtistTopTracks from "./ArtistTopTracks";
 import RelatedArtists from "./RelatedArtists";
+import Img from "react-cool-img";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeadphonesAlt } from "@fortawesome/free-solid-svg-icons";
+import _ from "lodash";
+import Loading from "../Loading";
 
 const Container = styled.div`
   display: grid;
@@ -69,6 +74,15 @@ const ArtistDetails = styled.div`
   }
 `;
 
+const Icon = styled.div`
+  font-size: 100px;
+  text-align: center;
+
+  @media (max-width: 450px) {
+    font-size: 100px;
+  }
+`;
+
 const Artist = () => {
   const { artistId } = useParams();
   const [artistInfo, setArtistInfo] = useState([]);
@@ -97,27 +111,55 @@ const Artist = () => {
 
   const { total, genres, imageUrl, name } = artistInfo;
 
+  const displayImg = imageUrl ? (
+    <Img
+      style={{
+        maxWidth: "100%",
+        width: "200px",
+        height: "auto",
+        borderRadius: "10px",
+      }}
+      src={imageUrl}
+      alt={name}
+    />
+  ) : (
+    <Icon>
+      <span>
+        <FontAwesomeIcon icon={faHeadphonesAlt} />
+      </span>
+    </Icon>
+  );
+
   return (
-    <div
-      data-aos="fade-down"
-      data-aos-duration="1500"
-      data-aos-easing="ease-in-out"
-    >
-      <ArtistDetails>
-        <div>
-          <img src={imageUrl} alt={name} />
-          <div>
-            <h2>{name}</h2>
-            <p>Followers: {formatNumber(total)}</p>
-            <p>{genres && genres.join(", ")}</p>
-          </div>
+    <>
+      {_.isEmpty(artistInfo) ? (
+        <Loading />
+      ) : (
+        <div
+          data-aos="fade-down"
+          data-aos-duration="1500"
+          data-aos-easing="ease-in-out"
+        >
+          <ArtistDetails>
+            <div>
+              {displayImg}
+              <div>
+                <h2>{name}</h2>
+                <p>Followers: {formatNumber(total)}</p>
+                <p>{genres && genres.join(", ")}</p>
+              </div>
+            </div>
+          </ArtistDetails>
+          <Container>
+            <ArtistTopTracks artistId={artistId} />
+            <RelatedArtists
+              artistId={artistId}
+              setReloadArtist={setReloadArtist}
+            />
+          </Container>
         </div>
-      </ArtistDetails>
-      <Container>
-        <ArtistTopTracks artistId={artistId} />
-        <RelatedArtists artistId={artistId} setReloadArtist={setReloadArtist} />
-      </Container>
-    </div>
+      )}
+    </>
   );
 };
 

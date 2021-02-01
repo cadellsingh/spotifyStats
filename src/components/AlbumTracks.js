@@ -7,6 +7,8 @@ import { faHeadphonesAlt } from "@fortawesome/free-solid-svg-icons";
 import { ContainerBackground } from "../styles/sharedStyles";
 import DisplayTrack from "./DisplayTrack";
 import { TwoGridContainer } from "../styles/sharedContainers";
+import _ from "lodash";
+import Loading from "./Loading";
 
 const Container = styled.div``;
 
@@ -80,6 +82,8 @@ const AlbumTracks = () => {
 
   const { name, release_date, total_tracks, tracks, imageUrl } = albumTracks;
 
+  console.log(albumTracks);
+
   const displayImg = imageUrl ? (
     <img src={imageUrl} alt={name} />
   ) : (
@@ -95,18 +99,28 @@ const AlbumTracks = () => {
     });
 
   return (
-    <Container>
-      <AlbumInfo>
-        {displayImg}
-        <div>
-          <h3>{name}</h3>
-          <p>Release Date: {release_date}</p>
-          <p>Total number of tracks: {total_tracks}</p>
-        </div>
-      </AlbumInfo>
+    <>
+      {_.isEmpty(albumTracks) ? (
+        <Loading />
+      ) : (
+        <Container
+          data-aos="fade-down"
+          data-aos-duration="1500"
+          data-aos-easing="ease-in-out"
+        >
+          <AlbumInfo>
+            {displayImg}
+            <div>
+              <h3>{name}</h3>
+              <p>Release Date: {release_date}</p>
+              <p>Total number of tracks: {total_tracks}</p>
+            </div>
+          </AlbumInfo>
 
-      <TwoGridContainer>{displayTracks}</TwoGridContainer>
-    </Container>
+          <TwoGridContainer>{displayTracks}</TwoGridContainer>
+        </Container>
+      )}
+    </>
   );
 };
 
