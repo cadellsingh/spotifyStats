@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { ResultsContainer } from "../../styles/sharedContainers";
 import Album from "../Album";
 

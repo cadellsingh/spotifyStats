@@ -10,6 +10,7 @@ import {
 
 const Redirect = () => {
   const history = useHistory();
+  console.log("redirect");
 
   useEffect(() => {
     const { location } = window;

@@ -5,8 +5,6 @@ const REDIRECT_URI =
     ? process.env.REACT_APP_PRODUCTION_URI
     : process.env.REACT_APP_REDIRECT_URL;
 
-console.log(REDIRECT_URI);
-
 const scopes = [
   "user-read-recently-played",
   "user-top-read",
