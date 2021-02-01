@@ -82,4 +82,10 @@ export const ResultsContainer = styled(ThreeGridContainer)`
   & h3 {
     grid-column: span 3 / auto;
   }
+
+  @media (max-width: 450px) {
+    & h3 {
+      grid-column: span 2 / auto;
+    }
+  }
 `;

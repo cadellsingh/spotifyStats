@@ -23,15 +23,11 @@ const Search = () => {
   const [search, setSearch] = useState("");
   const history = useHistory();
 
-  // if query is updated refresh page
-
   const handleOnSubmit = (event) => {
     const query = search.trim();
     history.push(`/search/${query}`);
 
     setSearch("");
-
-    event.preventDefault();
   };
 
   return (
@@ -41,7 +37,7 @@ const Search = () => {
         aria-label="Search"
         type="text"
         placeholder="Search"
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => setSearch(e.target.value.trim())}
         value={search}
       />
     </form>

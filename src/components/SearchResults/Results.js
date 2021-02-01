@@ -31,10 +31,6 @@ const Results = () => {
   const { query } = useParams();
   const [results, setResults] = useState([]);
 
-  // i can prob put query in state
-  // when query is updated
-  // refresh page
-
   const getData = async () => {
     const data = await searchItem(query);
     setResults(data);
@@ -44,11 +40,7 @@ const Results = () => {
     getData();
   }, []);
 
-  // if items is empty display no results
-
   const { albums, artists, playlists, tracks } = results;
-
-  console.log(results);
 
   return (
     <Container

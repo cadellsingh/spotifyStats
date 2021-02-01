@@ -11,7 +11,6 @@ export const getTopArtists = async () => {
   return await spotifyApi.getMyTopArtists({ limit: 50 });
 };
 
-// returns display name and image url
 export const getUserInfo = async () => {
   const data = await spotifyApi.getMe();
   const { display_name: displayName } = data;
