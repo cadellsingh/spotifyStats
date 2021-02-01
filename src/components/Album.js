@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getAlbum } from "../spotify/apis";
 import DisplayImg from "./DisplayImg";
+import _ from "lodash";
 
 const Album = ({ albumId }) => {
   const [album, setAlbum] = useState([]);

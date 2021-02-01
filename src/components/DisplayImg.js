@@ -31,7 +31,7 @@ const Icon = styled.div`
 `;
 
 const DisplayImg = ({ data, type, setReloadArtist }) => {
-  const { url, path } = useRouteMatch();
+  const { path } = useRouteMatch();
   const { name, images, id } = data || {};
 
   let displayImg;
