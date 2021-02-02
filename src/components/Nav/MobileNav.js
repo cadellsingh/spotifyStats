@@ -10,6 +10,7 @@ const Links = styled.div`
   display: ${(props) => (props.openMenu ? "flex" : "none")};
   flex-direction: column;
   margin-top: 10px;
+
   & button {
     font-size: 15px;
     text-align: left;

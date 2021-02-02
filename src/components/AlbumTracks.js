@@ -9,6 +9,7 @@ import DisplayTrack from "./DisplayTrack";
 import { TwoGridContainer } from "../styles/sharedContainers";
 import _ from "lodash";
 import Loading from "./Loading";
+import Img from "react-cool-img";
 
 const Container = styled.div``;
 
@@ -22,7 +23,13 @@ const AlbumInfo = styled.div`
     width: 200px;
     height: auto;
     border-radius: 10px;
-    height: auto;
+  }
+
+  @media (max-width: 500px) {
+    & img {
+      width: 100px;
+      height: 150px;
+    }
   }
 
   & span {
@@ -84,7 +91,7 @@ const AlbumTracks = () => {
   console.log(albumTracks);
 
   const displayImg = imageUrl ? (
-    <img src={imageUrl} alt={name} />
+    <Img src={imageUrl} alt={name} />
   ) : (
     <span>
       <FontAwesomeIcon icon={faHeadphonesAlt} />

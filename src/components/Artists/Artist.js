@@ -43,6 +43,13 @@ const ArtistDetails = styled.div`
     margin-top: 25px;
   }
 
+  @media (max-width: 500px) {
+    & div:first-child div {
+      margin: auto 0;
+      margin-left: 15px;
+    }
+  }
+
   & h2 {
     font-size: 25px;
     text-align: left;
@@ -60,12 +67,12 @@ const ArtistDetails = styled.div`
     width: 200px;
     height: auto;
     border-radius: 10px;
-    height: auto;
   }
 
   @media (max-width: 500px) {
     & img {
-      width: 150px;
+      width: 100px;
+      height: 150px;
     }
 
     & p {
@@ -111,16 +118,7 @@ const Artist = () => {
   const { total, genres, imageUrl, name } = artistInfo;
 
   const displayImg = imageUrl ? (
-    <Img
-      style={{
-        maxWidth: "100%",
-        width: "200px",
-        height: "auto",
-        borderRadius: "10px",
-      }}
-      src={imageUrl}
-      alt={name}
-    />
+    <Img src={imageUrl} alt={name} />
   ) : (
     <Icon>
       <span>
