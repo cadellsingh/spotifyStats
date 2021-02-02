@@ -30,9 +30,9 @@ const ListItem = styled.li`
   }
 `;
 
-const NavListItem = ({ listItem, link }) => {
+const NavListItem = ({ listItem, link, toggleMenu }) => {
   return (
-    <ListItem>
+    <ListItem onClick={toggleMenu}>
       <Link to={link}>{listItem}</Link>
       <span>
         <FontAwesomeIcon icon={faChevronRight} />

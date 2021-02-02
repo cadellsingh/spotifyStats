@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { TextColor, ContainerBackground } from "../styles/sharedStyles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -22,6 +24,7 @@ const StyledHeader = styled.header`
       display: block;
       font-size: 20px;
       margin: auto 0;
+      cursor: pointer;
     }
   }
 
@@ -32,10 +35,13 @@ const StyledHeader = styled.header`
   }
 `;
 
-const Header = ({ setOpenMenu }) => {
+const Header = ({ toggleMenu }) => {
   return (
     <StyledHeader>
       <h1>SpotoStats</h1>
+      <span onClick={toggleMenu}>
+        <FontAwesomeIcon icon={faBars} onClick={toggleMenu} />
+      </span>
     </StyledHeader>
   );
 };
