@@ -12,7 +12,7 @@
 - React
 - React Router
 - Styled Components
-- And of course... ☕️
+- And of course.... ☕️
 
 ## Installation
 
