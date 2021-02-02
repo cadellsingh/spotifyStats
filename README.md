@@ -1,6 +1,6 @@
 # SpotoStats
 
-- Web app for viewing your top tracks & artists as well as discovering new music.
+- Web app for viewing your top tracks & artists as well as discovering new music on Spotify.
 
 ## Demo
 
