@@ -41,7 +41,7 @@ cd spotifyStats
 - Install any dependencies
 
 ```
-yarn start
+yarn install
 ```
 
 - Run application
