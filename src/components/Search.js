@@ -25,7 +25,12 @@ const Search = () => {
 
   const handleOnSubmit = (event) => {
     const query = search.trim();
-    history.push(`/search/${query}`);
+
+    if (query !== "") {
+      history.push(`/search/${query}`);
+    } else {
+      event.preventDefault();
+    }
 
     setSearch("");
   };
@@ -37,7 +42,7 @@ const Search = () => {
         aria-label="Search"
         type="text"
         placeholder="Search"
-        onChange={(e) => setSearch(e.target.value.trim())}
+        onChange={(e) => setSearch(e.target.value)}
         value={search}
       />
     </form>
