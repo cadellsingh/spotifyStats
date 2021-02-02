@@ -17,7 +17,7 @@
 ## Installation
 
 - Head over to [Spotify Dashboard](https://developer.spotify.com/dashboard/login)
-- Add http://localhost:3000/redirect as the Redirect URI in settings
+- Add `http://localhost:3000/redirect` as the Redirect URI in settings
 - Create a `.env` file at the root of your project and set your environment variables
 
 ```
